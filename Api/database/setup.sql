@@ -44,5 +44,5 @@ VALUES
     ('Work on the English literature essay.', 'Read 10 pages Of Mice and Men', '2023-12-25', 'English', 2, 19);
 
 INSERT INTO user_account (username, password)
-VALUES ('Ollie', 'assword1'), 
+VALUES ('Ollie', 'Password1'), 
        ('Abdul', 'Password2');
