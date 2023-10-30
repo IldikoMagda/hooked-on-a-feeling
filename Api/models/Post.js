@@ -26,11 +26,11 @@ class Post {
     }
 
     static async create(data) {
-        const {user_id, title, content,dueDate,subject,completed,repeatable,generalXp,subjectXp } = data;
-        let response = await db.query("INSERT INTO post ( post_title, post_content, post_date,post_categories) VALUES ($1, $2,$3,$4) RETURNING post_id;", [post_title, post_content,post_date,post_categories]);
-        const newId = response.rows[0].post_id;
-        const newPost = await Post.getOneById(newId);
-        return newPost;
+        const {user_id, title, content,dueDate,subject,completed="FALSE",repeatable="FALSE",generalXp,subjectXp } = data;
+        let response = await db.query("INSERT INTO post ( user_id, title, content,dueDate,subject,completed,repeatable,generalXp,subjectXp ) VALUES ($1, $2,$3,$4,$5,$6,$7,$8,$9) RETURNING user_id;", [user_id, title, content,dueDate,subject,completed,repeatable,generalXp,subjectXp ]);
+        //const newId = response.rows[-1].post_id;
+        //const newPost = await Post.getOneById(newId);
+        return response;
     }
 
 }

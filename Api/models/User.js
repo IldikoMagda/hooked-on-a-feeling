@@ -50,10 +50,48 @@ class User {
 }
 
   //create
-  // update
-  // destroy
-  
+  static async create(data) {
+    const { username, password } = data;
+    let response = await db.query("INSERT INTO user_account (username, password) VALUES ($1, $2) RETURNING user_id;",
+        [username, password]);
+    const newId = response.rows[0].user_id;
+    const newUser = await User.getOneById(newId);
+    return newUser;
+}
+  // update (for XPs)
+  async update(data) {
+    let response = await db.query("UPDATE user SET generalXp = $1 WHERE user_id = $2 RETURNING *", [data.generalXp, this.id]);
+    if (response.rows.length != 1) {
+      throw new Error("Unable to update notes.")
+    }
+    return new User(response.rows[0]);
+  }
+  //more updates
+  async updateMaths(data) {
+    let response = await db.query("UPDATE user SET subjectXpMaths = $1 WHERE user_id = $2 RETURNING *", [data.subjectXpMaths, this.id]);
+    if (response.rows.length != 1) {
+      throw new Error("Unable to update notes.")
+    }
+    return new User(response.rows[0]);
+  }
+  async updateEnglish(data) {
+    let response = await db.query("UPDATE user SET subjectXpEnglish = $1 WHERE user_id = $2 RETURNING *", [data.subjectXpEnglish, this.id]);
+    if (response.rows.length != 1) {
+      throw new Error("Unable to update notes.")
+    }
+    return new User(response.rows[0]);
+  }
+  async updateScience(data) {
+    let response = await db.query("UPDATE user SET subjectXpScience = $1 WHERE user_id = $2 RETURNING *", [data.subjectXpScience, this.id]);
+    if (response.rows.length != 1) {
+      throw new Error("Unable to update notes.")
+    }
+    return new User(response.rows[0]);
+  }
 
+
+
+  //need destroy?
 }
 
 
