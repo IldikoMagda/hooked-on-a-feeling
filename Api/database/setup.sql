@@ -6,11 +6,11 @@ CREATE TABLE user_account (
     user_id INT GENERATED ALWAYS AS IDENTITY,
     username VARCHAR(30) UNIQUE NOT NULL,
     password CHAR(60) NOT NULL,
-    generalXp INT NOT NULL,
-    subjectXpMaths INT NOT NULL,
-    subjectXpEnglish INT NOT NULL,
-    subjectXpScience INT NOT NULL,
-    Role VARCHAR(30) NOT NULL,
+    generalXp INT DEFAULT 0 NOT NULL,
+    subjectXpMaths INT DEFAULT 0 NOT NULL,
+    subjectXpEnglish INT DEFAULT 0 NOT NULL,
+    subjectXpScience INT DEFAULT 0 NOT NULL,
+    Role VARCHAR(30) DEFAULT 'Wizard',
     PRIMARY KEY (user_id)
 );
 
@@ -42,3 +42,7 @@ VALUES
     ('Complete Math homework assignments.', 'Complete Mr Abduls Homework', '2023-10-09', 'Maths', 3, 19),
     ('Study for upcoming Maths exam.', 'Read through the book and create notes', '2023-04-19', 'Maths', 10, 15),
     ('Work on the English literature essay.', 'Read 10 pages Of Mice and Men', '2023-12-25', 'English', 2, 19);
+
+INSERT INTO user_account (username, password)
+VALUES ('Ollie', 'assword1'), 
+       ('Abdul', 'Password2');
