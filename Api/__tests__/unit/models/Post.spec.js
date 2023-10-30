@@ -48,10 +48,11 @@ describe('Post Model Tests', () => {
         });
     });
 
+    //I might have to change it if generalXp becomes generalxp!!! etc
     describe('getPostsById', () => {
         it('resolves with a post on successful db query', async () => {
             let testPost = {
-                Item_id: 2,
+                item_id: 2,
                 user_id: 1,
                 title: 'Title 2',
                 content: 'Content 2',
@@ -65,11 +66,22 @@ describe('Post Model Tests', () => {
             jest.spyOn(db, 'query')
                 .mockResolvedValueOnce({ rows: [testPost] });
 
-            const result = await Post.getPostsById(2);
+            const result = await Post.getPostsByUserId(2);
             expect(result).toBeInstanceOf(Post);
             expect(result.title).toBe('Title 2');
-            expect(result.Item_id).toBe(2);
+            expect(result.item_id).toBe(2);
         });
+
+        it('should throw an Error on db query error', async () => {
+            jest.spyOn(db, 'query').mockRejectedValue(new Error('Unable to locate post'))
+      
+            try {
+              await Post.getPostsByUserId('red')
+            } catch (error) {
+              expect(error).toBeTruthy()
+              expect(error.message).toBe('Unable to locate post')
+            }
+          })
     });
 });
 

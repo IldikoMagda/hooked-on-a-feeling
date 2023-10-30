@@ -2,8 +2,8 @@ const db = require('../database/connect');
 
 class Post {
 
-    constructor({ Item_id, user_id, title, content,dueDate,subject,completed,repeatable,generalXp,subjectXp}) {
-        this.Item_id = Item_id;
+    constructor({ item_id, user_id, title, content,dueDate,subject,completed,repeatable,generalXp,subjectXp}) {
+        this.item_id = item_id;
         this.user_id =user_id
         this.title = title;
         this.content = content;
