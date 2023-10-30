@@ -5,15 +5,16 @@ import {useAuth} from "../../contexts"
 export default function LoginPage() {
   const [textInput, setTextInput] = useState("")
   const [passwordInput,setPasswordInput] = useState("")
+  const [message,setMessage] = useState("")
   const {setUser} = useAuth()
   const handleTextInput = (e) => {
     setTextInput(e.target.value)
   }
-  const handlePasswordInput = () => {
+  const handlePasswordInput = (e) => {
     setPasswordInput(e.target.value)
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
     e.preventDefault()
     const login = async () => {
       const options = {
@@ -23,14 +24,20 @@ export default function LoginPage() {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          username: username,
-          password: password
+          username: textInput,
+          password: passwordInput
         })
       }
-      const response = await fetch("https://project-3-backend-l4m5.onrender.com/users/register", options);
+      const response = await fetch("https://project-3-backend-l4m5.onrender.com/users/login", options);
       const data = await response.json();
+
       if (response.status == 200) {
         localStorage.setItem("token", data.token); //correct?
+        setUser(data.user_id)
+        setMessage("Login successful.")
+        setTimeout(()=> {
+          setMessage("")
+        }, 5000)
       } else {
         alert(data.error)
       }
@@ -44,6 +51,7 @@ export default function LoginPage() {
         <input type="password" placeholder='Enter password...' onChange={handlePasswordInput} value={passwordInput} />
         <input type="submit" value="Login"/>
       </form>
+      <p>{message}</p>
       <NavLink to="/CreateAccount">Don't have an account? Register here</NavLink>
     </div>
   )
