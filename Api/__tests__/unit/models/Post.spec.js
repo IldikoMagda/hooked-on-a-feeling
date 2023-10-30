@@ -224,7 +224,7 @@ describe('Post Model Tests', () => {
     
         it('should throw an error when trying to delete a non-existent post', async () => {
             try {
-                await Post.destroy(-1); // Assuming -1 is an invalid item_id
+                await Post.destroy(-1);
             } catch (error) {
                 expect(error).toBeTruthy();
                 expect(error.message).toBe('Unable to locate post');
