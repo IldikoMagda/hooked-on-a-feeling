@@ -14,22 +14,22 @@ class User {
 
   //getAll (order by generalXP)
   static async getAll() {
-    const response = await db.query("SELECT * FROM user_account ORDER BY generalXp");
+    const response = await db.query("SELECT * FROM user_account ORDER BY generalXp DESC");
     return response.rows.map(el => new User(el));
   }
   //get All (order by maths)
   static async getAllOrderMaths() {
-    const response = await db.query("SELECT * FROM user_account ORDER BY subjectXpMaths");
+    const response = await db.query("SELECT * FROM user_account ORDER BY subjectXpMaths DESC");
     return response.rows.map(el => new User(el));
   }
   //get All (order by english)
   static async getAllOrderEnglish() {
-    const response = await db.query("SELECT * FROM user_account ORDER BY subjectXpEnglish");
+    const response = await db.query("SELECT * FROM user_account ORDER BY subjectXpEnglish DESC");
     return response.rows.map(el => new User(el));
   }
   //get All (order by science)
   static async getAllOrderScience() {
-    const response = await db.query("SELECT * FROM user_account ORDER BY subjectXpScience");
+    const response = await db.query("SELECT * FROM user_account ORDER BY subjectXpScience DESC");
     return response.rows.map(el => new User(el));
   }
   //getOneById
@@ -60,29 +60,29 @@ class User {
 }
   // update (for XPs)
   async update(data) {
-    let response = await db.query("UPDATE user SET generalXp = $1 WHERE user_id = $2 RETURNING *", [data.generalXp, this.id]);
+    let response = await db.query("UPDATE user_account SET generalXp = $1 WHERE user_id = $2 RETURNING *", [data.generalXp, this.id]);
     if (response.rows.length != 1) {
-      throw new Error("Unable to update notes.")
+      throw new Error("Unable to update user.")
     }
     return new User(response.rows[0]);
   }
   //more updates
   async updateMaths(data) {
-    let response = await db.query("UPDATE user SET subjectXpMaths = $1 WHERE user_id = $2 RETURNING *", [data.subjectXpMaths, this.id]);
+    let response = await db.query("UPDATE user_account SET subjectXpMaths = $1 WHERE user_id = $2 RETURNING *", [data.subjectXpMaths, this.id]);
     if (response.rows.length != 1) {
       throw new Error("Unable to update notes.")
     }
     return new User(response.rows[0]);
   }
   async updateEnglish(data) {
-    let response = await db.query("UPDATE user SET subjectXpEnglish = $1 WHERE user_id = $2 RETURNING *", [data.subjectXpEnglish, this.id]);
+    let response = await db.query("UPDATE user_account SET subjectXpEnglish = $1 WHERE user_id = $2 RETURNING *", [data.subjectXpEnglish, this.id]);
     if (response.rows.length != 1) {
       throw new Error("Unable to update notes.")
     }
     return new User(response.rows[0]);
   }
   async updateScience(data) {
-    let response = await db.query("UPDATE user SET subjectXpScience = $1 WHERE user_id = $2 RETURNING *", [data.subjectXpScience, this.id]);
+    let response = await db.query("UPDATE user_account SET subjectXpScience = $1 WHERE user_id = $2 RETURNING *", [data.subjectXpScience, this.id]);
     if (response.rows.length != 1) {
       throw new Error("Unable to update notes.")
     }

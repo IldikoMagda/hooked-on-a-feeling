@@ -43,6 +43,6 @@ VALUES
     ('Study for upcoming Maths exam.', 'Read through the book and create notes', '2023-04-19', 'Maths', 10, 15),
     ('Work on the English literature essay.', 'Read 10 pages Of Mice and Men', '2023-12-25', 'English', 2, 19);
 
-INSERT INTO user_account (username, password)
-VALUES ('Ollie', 'assword1'), 
-       ('Abdul', 'Password2');
+INSERT INTO user_account (username, password, generalXp, subjectXpMaths)
+VALUES ('Ollie', 'Password1', 10, 20), 
+       ('Abdul', 'Password2', 20, 10);
