@@ -3,7 +3,7 @@ const cors = require("cors");
 const logger = require('morgan')
 
 const postRouter = require("./routers/post")
-
+const userRouter = require("./routers/user")
 const app = express();
 
 app.use(express.json());
@@ -18,6 +18,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/posts", postRouter)
+app.use("/users", userRouter)
 
 
 module.exports = app;
