@@ -47,3 +47,4 @@ VALUES
 INSERT INTO user_account (username, password, generalXp, subjectXpMaths)
 VALUES ('Ollie', 'Password1', 10, 20), 
        ('Abdul', 'Password2', 20, 10);
+
