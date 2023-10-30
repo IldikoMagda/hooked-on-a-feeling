@@ -2,12 +2,14 @@ import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import * as Pages from "./pages";
 import { Header } from './components'
+import { AuthProvider } from "./contexts";
 import "./App.css";
 
 function App() {
 
   return (
     <>
+    <AuthProvider>
       <Routes>
         <Route path="/" element={<Header />}>
           <Route index element={<Pages.HomePage />} />
@@ -16,6 +18,7 @@ function App() {
           <Route path="/CreateAccount" element={<Pages.CreateAccountPage />} />
         </Route>
       </Routes>
+    </AuthProvider>
     </>
   );
 }
