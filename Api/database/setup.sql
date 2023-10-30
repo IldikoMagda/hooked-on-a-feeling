@@ -10,7 +10,8 @@ CREATE TABLE user_account (
     subjectXpMaths INT DEFAULT 0 NOT NULL,
     subjectXpEnglish INT DEFAULT 0 NOT NULL,
     subjectXpScience INT DEFAULT 0 NOT NULL,
-    Role VARCHAR(30) DEFAULT 'Wizard',
+    Role VARCHAR(30) DEFAULT 'Student',
+    favColor VARCHAR(30) DEFAULT 'Red',
     PRIMARY KEY (user_id)
 );
 

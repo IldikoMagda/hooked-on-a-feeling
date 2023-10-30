@@ -51,9 +51,9 @@ class User {
 
   //create
   static async create(data) {
-    const { username, password } = data;
-    let response = await db.query("INSERT INTO user_account (username, password) VALUES ($1, $2) RETURNING user_id;",
-        [username, password]);
+    const { username, password, favColor } = data;
+    let response = await db.query("INSERT INTO user_account (username, password, favColor) VALUES ($1, $2, $3) RETURNING user_id;",
+        [username, password, favColor]);
     const newId = response.rows[0].user_id;
     const newUser = await User.getOneById(newId);
     return newUser;
