@@ -40,3 +40,8 @@
 .read-the-docs {
   color: #888;
 }
+
+body {
+  background-image: url('./assets/Background.png');
+  background-position: center center;
+}
