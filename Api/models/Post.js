@@ -7,7 +7,7 @@ class Post {
         this.user_id =user_id
         this.title = title;
         this.content = content;
-        this.date =dueDate;
+        this.dueDate =dueDate;
         this.subject =subject;
         this.completed =completed;
         this.repeatable =repeatable;
@@ -22,7 +22,8 @@ class Post {
 
     static async getPostsById(id) {
         const response = await db.query("SELECT * FROM post WHERE user_id = $1", [id]);
-        return response.rows.map(p => new Post(p));
+        const posts = response.rows.map(p => new Post(p));
+        return posts.length > 0 ? posts[0] : null;
     }
 
     static async create(data) {
@@ -32,7 +33,6 @@ class Post {
         //const newPost = await Post.getOneById(newId);
         return response;
     }
-
 }
 
 module.exports = Post;
