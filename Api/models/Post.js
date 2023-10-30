@@ -21,8 +21,9 @@ class Post {
     }
 
     static async getPostsById(id) {
-        const response = await db.query("SELECT * FROM post WHERE user_id = $1", [id]);
-        return response.rows.map(p => new Post(p));
+        const response = await db.query("SELECT * FROM post WHERE Item_id = $1", [id]);
+        const posts = response.rows.map(p => new Post(p));
+        return posts.length > 0 ? posts[0] : null;
     }
 
     static async create(data) {
