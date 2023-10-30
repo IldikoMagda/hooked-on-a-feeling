@@ -1,22 +1,4 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 
 @keyframes logo-spin {
   from {
@@ -33,10 +15,95 @@
   }
 }
 
-.card {
-  padding: 2em;
+body {
+  background-image: url('./assets/Background.png');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  font-family: 'VT323', monospace;
 }
 
-.read-the-docs {
-  color: #888;
+.rpg-header {
+  display: flex;
+  justify-content: space-between; /* Spread out the buttons */
+  align-items: center;
+  padding: 10px 5%; /* Padding on the left and right for some space */
+  background-color: rgba(255, 255, 255, 0.1); /* Transparency */
+  position: sticky; /* Make the header sticky */
+  top: 0; /* Stick it to the top of the page */
+  z-index: 1000; /* Ensure it stays on top of other elements */
+  width: 100%; /* Ensure it takes the full width */
+  padding: 10px 3%;
+}
+
+.rpg-button {
+  font-family: 'VT323', monospace;
+  padding: 10px 20px;
+  background-color: #3e3e3e;
+  border: 2px solid #aaa;
+  text-decoration: none;
+  color: #fff;
+  transition: background-color 0.3s, transform 0.1s;
+  flex-grow: 1; /* Allow the buttons to grow and take available space */
+  text-align: center; /* Center the text on the button */
+  margin: 0 5px;
+}
+
+.rpg-button:hover {
+  background-color: #5e5e5e;
+  transform: scale(1.05);
+}
+
+.rpg-button:active {
+  transform: scale(0.95);
+}
+
+.rpg-button.active {
+  border-color: #f5a623;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.home-container {
+  display: flex;
+  height: 75vh;
+  padding: 20px; /* Added some padding to give space from edges */
+}
+
+.left-box, .right-box {
+  border-radius: 10px;
+  padding: 20px;
+  background: linear-gradient(to bottom, rgba(2, 157, 182, 0.95), rgba(2, 157, 182, 0.95));
+  overflow: auto; /* If content grows, allow scroll */
+}
+
+.left-box {
+  flex: 1;
+  margin-right: 10px;
+}
+
+.sprite {
+  width: 100%;
+  max-width: 150px;
+  display: block;
+  margin: 0 auto 20px auto; /* Added margin to the bottom */
+}
+
+.xp-section {
+  margin-top: 20px;
+}
+
+.right-box {
+  flex: 2;
+}
+
+.todo-item {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
 }
