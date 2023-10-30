@@ -21,6 +21,7 @@ class Post {
     }
 
     static async getPostsByUserId(id) {
+        console.log("P1")
         const response = await db.query("SELECT * FROM post WHERE user_id = $1", [id]);
         return response.rows.map(p => new Post(p));
     }
@@ -42,12 +43,17 @@ class Post {
         return newPost;
     }
 
-    async updatePost(data,id) {
+    static async updatePost(data,id) {
         const {title, content,dueDate,subject,completed="FALSE",repeatable="FALSE",generalXp,subjectXp } = data;
-        const response = await db.query("UPDATE post SET title= $1, content=$2, dueDate=$3,subject =$4,completed =$4,repeatable =$4,generalXp =$4,subjectXp =$4 WHERE item_id= $5 RETURNING *;",[ title, content,dueDate,subject,completed,repeatable,generalXp,subjectXp ,id ]);
+        const response = await db.query("UPDATE post SET title= $1, content=$2, dueDate=$3,subject =$4,completed =$5,repeatable =$6,generalXp =$7,subjectXp =$8 WHERE item_id= $9 RETURNING *;",[ title, content,dueDate,subject,completed,repeatable,generalXp,subjectXp ,id ]);
         if (response.rows.length != 1) {
             throw new Error("Unable to update Post.")
         }
+        return new Post(response.rows[0]);
+    }
+    
+    static async destroy(id) {
+        let response = await db.query("DELETE FROM post WHERE item_id = $1 RETURNING *;", [id]);
         return new Post(response.rows[0]);
     }
 
