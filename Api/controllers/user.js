@@ -94,6 +94,41 @@ async function update(req,res) {
 
 //more updates
 
+async function updateMaths(req,res) {
+  try {
+    const id = req.params.id
+    const data = req.body
+    const user = await User.getOneById(id);
+    const result = await user.updateMaths(data);
+    res.status(200).json(result);
+  } catch (err) {
+    res.status(404).json({"error": err.message})
+}
+}
+async function updateEnglish(req,res) {
+  try {
+    const id = req.params.id
+    const data = req.body
+    const user = await User.getOneById(id);
+    const result = await user.updateEnglish(data);
+    res.status(200).json(result);
+  } catch (err) {
+    res.status(404).json({"error": err.message})
+}
+}
+
+async function updateScience(req,res) {
+  try {
+    const id = req.params.id
+    const data = req.body
+    const user = await User.getOneById(id);
+    const result = await user.updateScience(data);
+    res.status(200).json(result);
+  } catch (err) {
+    res.status(404).json({"error": err.message})
+}
+}
+
 module.exports = {
-  register, login, index,indexMaths,indexEnglish,indexScience, show, update
+  register, login, index,indexMaths,indexEnglish,indexScience, show, update , updateMaths,updateEnglish,updateScience
 }
