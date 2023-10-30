@@ -1,8 +1,6 @@
 import React from "react";
 import { NavLink, Outlet } from "react-router-dom";
 
-import "./style.css";
-
 function Header() {
   return (
     <>
@@ -13,7 +11,7 @@ function Header() {
         <NavLink to="/leaderboard" className="rpg-button">
           Leaderboard
         </NavLink>
-        <NavLink to="/posts" className="rpg-button">
+        <NavLink to="/create-task" className="rpg-button">
           Create New Task
         </NavLink>
         <NavLink to="/login" className="rpg-button">
