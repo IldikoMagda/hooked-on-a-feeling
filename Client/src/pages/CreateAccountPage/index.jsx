@@ -124,23 +124,23 @@ export default function CreateAccount() {
   }, [user])
   return (
     <>
-    <div>
-      <form onSubmit={handleSubmit}>
-        <input type="text" placeholder='Enter username...' onChange={handleTextInput} value={textInput} />
-        <input type="password" placeholder='Enter password...' onChange={handlePasswordInput} value={passwordInput} />
-        <input type="password" placeholder='Enter password again...' onChange={handlePasswordInput2} value={passwordInput2} />
-        <select name='favColor' onChange={handleSelect}>
-          <option value="orange">Orange</option>
-          <option value="red">Red</option>
-          <option value="blue">Blue</option>
-          <option value="green">Green</option>
-        </select>
-        <input type="submit" value='Create Account' />
-      </form>
-      <NavLink to="/login">Already have an account? Login</NavLink>
-      <h3>{message}</h3>
+   <div className="register-container">
+  <form className="register-form" onSubmit={handleSubmit}>
+    <input className="register-input" type="text" placeholder='Enter username...' onChange={handleTextInput} value={textInput} />
+    <input className="register-input" type="password" placeholder='Enter password...' onChange={handlePasswordInput} value={passwordInput} />
+    <input className="register-input" type="password" placeholder='Enter password again...' onChange={handlePasswordInput2} value={passwordInput2} />
+    <select className="register-input" name='favColor' onChange={handleSelect}>
+      <option value="orange">Orange</option>
+      <option value="red">Red</option>
+      <option value="blue">Blue</option>
+      <option value="green">Green</option>
+    </select>
+    <input className="register-button" type="submit" value='Create Account' />
+  </form>
+  <NavLink className="login-link" to="/login">Already have an account? Login</NavLink>
+  <h3 className="register-message">{message}</h3>
+</div>
 
-    </div>
     </>
   )
 }
