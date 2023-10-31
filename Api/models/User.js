@@ -2,7 +2,7 @@ const db = require("../database/connect")
 
 class User {
   
-  constructor({user_id, username,password,generalXp, subjectXpMaths,subjectXpEnglish, subjectXpScience}) {
+  constructor({user_id, username,password,generalxp, subjectxpmaths,subjectxpenglish, subjectxpscience, role, favcolor}) {
     this.user_id = user_id;
     this.username = username;
     this.password = password;

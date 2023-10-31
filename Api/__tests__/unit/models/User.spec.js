@@ -17,7 +17,7 @@ describe('User Model Tests', () => {
                     {
                     user_id: 1,
                     username: 'user1',
-                    generalXp: 50,
+                    generalxp: 50,
                     subjectXpMaths: 30,
                     subjectXpEnglish: 20,
                     subjectXpScience: 10,
@@ -26,7 +26,7 @@ describe('User Model Tests', () => {
                 {
                     user_id: 2,
                     username: 'user2',
-                    generalXp: 60,
+                    generalxp: 60,
                     subjectXpMaths: 25,
                     subjectXpEnglish: 25,
                     subjectXpScience: 10,
@@ -47,7 +47,7 @@ describe('User Model Tests', () => {
             const testUser = {
                 user_id: 1,
                 username: 'testuser',
-                generalXp: 100,
+                generalxp: 100,
                 subjectXpMaths: 50,
                 subjectXpEnglish: 30,
                 subjectXpScience: 20,
@@ -77,7 +77,7 @@ describe('User Model Tests', () => {
             const testUser = {
                 user_id: 2,
                 username: 'testuser2',
-                generalXp: 200,
+                generalxp: 200,
                 subjectXpMaths: 100,
                 subjectXpEnglish: 60,
                 subjectXpScience: 40,
@@ -145,7 +145,7 @@ describe('User Model Tests', () => {
             const mockUserData = {
                 user_id: 1,
                 username: 'user1',
-                generalXp: 50,
+                generalxp: 50,
                 subjectXpMaths: 30,
                 subjectXpEnglish: 20,
                 subjectXpScience: 10,
@@ -174,7 +174,7 @@ describe('User Model Tests', () => {
             const mockUserData = {
                 user_id: 1,
                 username: 'user1',
-                generalXp: 50,
+                generalxp: 50,
                 subjectXpMaths: 30,
                 subjectXpEnglish: 20,
                 subjectXpScience: 10,
@@ -214,7 +214,7 @@ describe('User Model Tests', () => {
                 const mockUserData = {
                     user_id: 1,
                     username: 'user1',
-                    generalXp: 50,
+                    generalxp: 50,
                     subjectXpMaths: 30,
                     subjectXpEnglish: 20,
                     subjectXpScience: 10,
