@@ -5,15 +5,19 @@ import { useAuth } from "../../contexts"
 import CreatePostModal from "../../components/CreatePostModal/CreatePostModal";
 
 function Header() {
-  const [isCreateTaskModalVisible, setCreateTaskModalVisible]  = useState(false);
-  const { user, setUser, userData, setUserData } = useAuth()
-  const [title, setTitle] = useState('')
-  const [content, setContent] = useState('')
-  const [duedate, setDueDate] = useState('')
-  const [subject, setSubject] = useState('')
-  const [repeatable, setRepeatable] = useState(false)
-  const [generalXp, setGeneralXp] = useState(50)
-  const [subjectXp, setSubjectXp] = useState(50)
+  const [isCreateTaskModalVisible, setCreateTaskModalVisible] = useState(false);
+  const { user, setUser, userData, setUserData } = useAuth();
+  const [title, setTitle] = useState('');
+  const [content, setContent] = useState('');
+  const [duedate, setDueDate] = useState('');
+  const [subject, setSubject] = useState('');
+  const [repeatable, setRepeatable] = useState(false);
+  const [generalXp, setGeneralXp] = useState(50);
+  const [subjectXp, setSubjectXp] = useState(50);
+
+  const toggleCreateTaskModal = () => {
+    setCreateTaskModalVisible(!isCreateTaskModalVisible);
+  };
 
   const logout = () => {
     localStorage.removeItem('token');
@@ -59,7 +63,7 @@ function Header() {
           Leaderboard
         </NavLink>
 
-        <button onClick={toggleCreateTaskModal} className="rpg-button"></button>
+        <button onClick={toggleCreateTaskModal} className="rpg-button">Create New Task</button>
         {!localStorage.getItem('user') &&
           <NavLink to="/login" className="rpg-button">
             Login
@@ -76,22 +80,22 @@ function Header() {
 
       {isCreateTaskModalVisible && (
         <div className="create-task-modal">
-          <CreatePostModal
-        title={title}
-        setTitle={setTitle}
-        content={content}
-        setContent={setContent}
-        duedate={duedate}
-        setDueDate={setDueDate}
-        subject={subject}
-        setSubject={setSubject}
-        repeatable={repeatable}
-        setRepeatable={setRepeatable}
-        generalXp={generalXp}
-        setGeneralXp={setGeneralXp}
-        subjectXp={subjectXp}
-        setSubjectXp={setSubjectXp}
-    />
+            <CreatePostModal
+              title={title}
+              setTitle={setTitle}
+              content={content}
+              setContent={setContent}
+              duedate={duedate}
+              setDueDate={setDueDate}
+              subject={subject}
+              setSubject={setSubject}
+              repeatable={repeatable}
+              setRepeatable={setRepeatable}
+              generalXp={generalXp}
+              setGeneralXp={setGeneralXp}
+              subjectXp={subjectXp}
+              setSubjectXp={setSubjectXp}
+            />
           <button onClick={toggleCreateTaskModal}>Close</button>
         </div>
       )}
