@@ -1,7 +1,71 @@
-import React from 'react';
+import React, {useState,useEffect} from 'react';
+import {useParams} from "react-router-dom"
 import BasicSprite from '../../assets/BasicSprite.png';
+import {TaskCard} from "../../components"
+import {useAuth} from "../../contexts"
 
 function HomePage() {
+  const {user,setUser,userData} = useAuth()
+  const [tasks, setTasks] = useState([]);
+  const { id } = useParams();
+
+  //dont need as this data is fetched during login
+  // async function displayUser() {
+  //   const response = await fetch(`https://project-3-backend-l4m5.onrender.com/users/${user}`);
+  //   const data = await response.json();
+  //   setUser(data);
+  // }
+
+
+  async function fetchTasks() {
+    const response = await fetch(`https://project-3-backend-l4m5.onrender.com/posts/${user}`)
+    const data = await response.json()
+    setTasks(data)
+  }
+  useEffect(()=> {
+    fetchTasks()
+  },[user])
+  
+  //mock tasks
+  // const tasks = [
+  //   {
+  //   "item_id": 1,
+  //   "user_id": 18,
+  //   "title": "Complete Math homework assignments.",
+  //   "content": "Complete Mr Abduls Homework",
+  //   "duedate": "2023-10-09T00:00:00.000Z",
+  //   "subject": "Maths",
+  //   "completed": false,
+  //   "repeatable": false,
+  //   "generalxp": 3,
+  //   "subjectxp": 19
+  //   },
+  //   {
+  //   "item_id": 2,
+  //   "user_id": 18,
+  //   "title": "Study for upcoming Maths exam.",
+  //   "content": "Read through the book and create notes",
+  //   "duedate": "2023-04-19T00:00:00.000Z",
+  //   "subject": "Maths",
+  //   "completed": false,
+  //   "repeatable": false,
+  //   "generalxp": 10,
+  //   "subjectxp": 15
+  //   },
+  //   {
+  //   "item_id": 3,
+  //   "user_id": 18,
+  //   "title": "Work on the English literature essay.",
+  //   "content": "Read 10 pages Of Mice and Men",
+  //   "duedate": "2023-12-25T00:00:00.000Z",
+  //   "subject": "English",
+  //   "completed": false,
+  //   "repeatable": false,
+  //   "generalxp": 2,
+  //   "subjectxp": 19
+  //   }
+  //   ]
+
   return (
     <div className="home-container">
       <div className="left-box">
@@ -16,15 +80,8 @@ function HomePage() {
       </div>
 
       <div className="right-box">
-        {/* Example of a single to-do item; you can map over your tasks array to display them */}
-        <h1>Task List</h1>
-        <div className="todo-item">
-          <h3>Task Title</h3>
-          <p>Due Date: MM/DD/YYYY</p>
-          <p>XP Worth: XX</p>
-          <input type="checkbox" /> Completed
-        </div>
-        {/* Add more to-do items as needed */}
+        {user && tasks.map((el,i)=><TaskCard task={el}/>)}
+      
       </div>
     </div>
   );
