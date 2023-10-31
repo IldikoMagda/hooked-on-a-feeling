@@ -1,12 +1,14 @@
 import React, {useState} from 'react'
-import {NavLink} from "react-router-dom"
+import {NavLink, useNavigate} from "react-router-dom"
 import {useAuth} from "../../contexts"
 
 export default function LoginPage() {
+  const navigate = useNavigate()
   const [textInput, setTextInput] = useState("")
   const [passwordInput,setPasswordInput] = useState("")
   const [message,setMessage] = useState("")
   const {setUser} = useAuth()
+  
   const handleTextInput = (e) => {
     setTextInput(e.target.value)
   }
@@ -37,7 +39,8 @@ export default function LoginPage() {
         setMessage("Login successful.")
         setTimeout(()=> {
           setMessage("")
-        }, 5000)
+          navigate("/")
+        }, 700)
       } else {
         alert(data.error)
       }
