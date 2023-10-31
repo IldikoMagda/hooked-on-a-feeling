@@ -17,7 +17,7 @@ function HomePage() {
 
       <div className="right-box">
         {/* Example of a single to-do item; you can map over your tasks array to display them */}
-        <h2>Task List</h2>
+        <h1>Task List</h1>
         <div className="todo-item">
           <h3>Task Title</h3>
           <p>Due Date: MM/DD/YYYY</p>
