@@ -1,12 +1,23 @@
 import React, {useState, useEffect} from "react";
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import {useAuth} from "../../contexts"
 
 function Header() {
-  const {user,setUser, userData} = useAuth()
+  const navigate= useNavigate()
+  const {user,setUser, userData, setUserData} = useAuth()
   const logout = () => {
     localStorage.removeItem('token');
     setUser(null)
+    setUserData({
+      username: "",
+        generalxp: 0,
+        subjectxpmaths: 0,
+        subjectxpenglish:0,
+        subjectxpscience: 0,
+        favcolor:""
+    })
+    navigate("/login")
+
   }
   return (
     <>
