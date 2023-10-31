@@ -3,7 +3,7 @@ import { NavLink, Outlet } from "react-router-dom";
 import {useAuth} from "../../contexts"
 
 function Header() {
-  const {user,setUser} = useAuth()
+  const {user,setUser, userData} = useAuth()
   const logout = () => {
     localStorage.removeItem('token');
     setUser(null)
@@ -27,7 +27,7 @@ function Header() {
         }
         {user && 
         <NavLink onClick={logout} className="rpg-button">
-        {"Hi" + user} Logout
+        {"Hi " + userData.username} Logout
     </NavLink>
         }
       </header>
