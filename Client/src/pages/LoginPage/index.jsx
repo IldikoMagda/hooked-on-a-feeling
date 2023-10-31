@@ -99,7 +99,7 @@ export default function LoginPage() {
         <input className="login-button" type="submit" value="Login" />
       </form>
       <p>{message}</p>
-      <NavLink to="/CreateAccount">Don't have an account? Register here</NavLink>
+      <NavLink className="register-link" to="/CreateAccount">Don't have an account? Register here</NavLink>
     </div>
   )
 }
