@@ -6,10 +6,13 @@ class User {
     this.user_id = user_id;
     this.username = username;
     this.password = password;
-    this.generalXp = generalXp;
-    this.subjectXpMaths = subjectXpMaths;
-    this.subjectXpEnglish = subjectXpEnglish;
-    this.subjectXpScience = subjectXpScience;
+    this.generalxp = generalxp;
+    this.subjectxpmaths = subjectxpmaths;
+    this.subjectxpenglish = subjectxpenglish;
+    this.subjectxpscience = subjectxpscience;
+    this.role = role;
+    this.favcolor = favcolor;
+
   }
 
   //getAll (order by generalXP)
@@ -25,6 +28,15 @@ class User {
     }
     return new User(response.rows[0]);
 }
+
+static async checkRole(id) {
+  const response = await db.query("SELECT role FROM user_account WHERE user_id = $1", [id]);
+  if (response.rows.length != 1) {
+      throw new Error("Unable to locate user.");
+  }
+  return new User(response.rows[0]);
+}
+
   //getOneByUsername
   static async getOneByUsername(username) {
     const response = await db.query("SELECT * FROM user_account WHERE username = $1", [username]);
@@ -33,6 +45,7 @@ class User {
     }
     return new User(response.rows[0]);
 }
+
 
   //create
   static async create(data) {

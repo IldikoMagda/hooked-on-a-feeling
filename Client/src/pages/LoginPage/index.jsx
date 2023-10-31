@@ -1,20 +1,25 @@
-import React, {useState} from 'react'
-import {NavLink} from "react-router-dom"
-import {useAuth} from "../../contexts"
+import React, { useState, useEffect } from 'react'
+import { NavLink, useNavigate } from "react-router-dom"
+import { useAuth } from "../../contexts"
 
 export default function LoginPage() {
+  const navigate = useNavigate()
   const [textInput, setTextInput] = useState("")
-  const [passwordInput,setPasswordInput] = useState("")
-  const {setUser} = useAuth()
+  const [passwordInput, setPasswordInput] = useState("")
+  const [message, setMessage] = useState("")
+  const { user, setUser, setUserData } = useAuth()
+
   const handleTextInput = (e) => {
     setTextInput(e.target.value)
   }
-  const handlePasswordInput = () => {
+  const handlePasswordInput = (e) => {
     setPasswordInput(e.target.value)
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
     e.preventDefault()
+
+
     const login = async () => {
       const options = {
         method: "POST",
@@ -23,28 +28,67 @@ export default function LoginPage() {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          username: username,
-          password: password
+          username: textInput,
+          password: passwordInput
         })
       }
-      const response = await fetch("https://project-3-backend-l4m5.onrender.com/users/register", options);
+      const response = await fetch("https://project-3-backend-l4m5.onrender.com/users/login", options);
       const data = await response.json();
+
       if (response.status == 200) {
         localStorage.setItem("token", data.token); //correct?
+        setUser(data.user_id)
+        setMessage("Login successful.")
+
+
       } else {
         alert(data.error)
       }
     }
     login()
   }
+
+  useEffect(() => {
+    const getUserData = async () => {
+      console.log(user)
+      try {
+        const response = await fetch(`https://project-3-backend-l4m5.onrender.com/users/${user}`);
+        if (response.ok) {
+          const data = await response.json();
+          console.log(data);
+          setUserData({
+            username: data.username,
+            generalxp: data.generalxp,
+            subjectxpmaths: data.subjectxpmaths,
+            subjectxpenglish: data.subjectxpenglish,
+            subjectxpscience: data.subjectxpscience,
+            favcolor: data.favcolor
+          });
+          setTimeout(() => {
+            setMessage("")
+            navigate("/")
+          }, 700)
+        } else {
+          console.error(`Failed to fetch user data. Status code: ${response.status}`);
+        }
+      } catch (error) {
+        // Handle network or other errors
+        console.error('Error fetching user data:', error);
+      }
+    };
+    getUserData()
+  }, [user])
+
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-      <input type="text" placeholder='Enter username...' onChange={handleTextInput} value={textInput} />
-        <input type="password" placeholder='Enter password...' onChange={handlePasswordInput} value={passwordInput} />
-        <input type="submit" value="Login"/>
+
+    <div className="login-container">
+      <form className="login-form" onSubmit={handleSubmit}>
+        <input className="login-input" type="text" placeholder='Enter username...' onChange={handleTextInput} value={textInput} />
+        <input className="login-input" type="password" placeholder='Enter password...' onChange={handlePasswordInput} value={passwordInput} />
+        <input className="login-button" type="submit" value="Login"/>
       </form>
-      <NavLink to="/CreateAccount">Don't have an account? Register here</NavLink>
+      <p>{message}</p>
+      <NavLink className="register-link" to="/CreateAccount">Don't have an account? Register here</NavLink>
     </div>
   )
 }

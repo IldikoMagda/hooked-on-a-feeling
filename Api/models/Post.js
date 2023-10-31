@@ -2,7 +2,7 @@ const db = require('../database/connect');
 
 class Post {
 
-    constructor({ item_id, user_id, title, content,duedate,subject,completed,repeatable, generalxp, subjectxp}) {
+    constructor({ item_id, user_id, title, content,duedate,subject,completed,repeatable,generalxp,subjectxp}) {
         this.item_id = item_id;
         this.user_id =user_id
         this.title = title;
@@ -21,7 +21,6 @@ class Post {
     }
 
     static async getPostsByUserId(id) {
-        console.log("P1")
         const response = await db.query("SELECT * FROM post WHERE user_id = $1", [id]);
         const posts = response.rows.map(p => new Post(p));
         return posts.length > 0 ? posts[0] : null;
@@ -39,7 +38,6 @@ class Post {
         const {user_id, title, content,dueDate,subject,completed="FALSE",repeatable="FALSE",generalXp,subjectXp } = data;
         let response = await db.query("INSERT INTO post ( user_id, title, content,dueDate,subject,completed,repeatable,generalXp,subjectXp ) VALUES ($1, $2,$3,$4,$5,$6,$7,$8,$9) RETURNING item_id;", [user_id, title, content,dueDate,subject,completed,repeatable,generalXp,subjectXp ]);
         const newId = response.rows[0].item_id;
-        //console.log(response.rows[0].item_id)
         const newPost = await Post.getPostsByItemId(newId);
         return newPost;
     }
