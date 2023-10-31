@@ -16,13 +16,13 @@ function HomePage() {
   const { user, setUser, userData } = useAuth()
   const [tasks, setTasks] = useState([]);
   async function fetchTasks() {
-    const response = await fetch(`https://project-3-backend-l4m5.onrender.com/posts/${user}`)
+    const response = await fetch(`https://project-3-backend-l4m5.onrender.com/posts/${localStorage.getItem('user')}`)
     const data = await response.json()
     setTasks(data)
   }
   useEffect(() => {
     fetchTasks()
-  }, [user])
+  }, [localStorage.getItem("user")])
  
 
   let userSprite = ""
@@ -54,7 +54,7 @@ function HomePage() {
 
       <div className="right-box">
         <button>Create new task (creates modal)</button>
-        {user && tasks.length>0 && tasks.map((el, i) => <TaskCard task={el} />)}
+        {localStorage.getItem("user") && tasks.length>0 && tasks.map((el, i) => <TaskCard task={el} />)}
       </div>
     </div>
   );
