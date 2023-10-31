@@ -15,5 +15,6 @@ userRouter.patch("/:id", userController.update)
 userRouter.patch("/maths/:id", userController.updateMaths)
 userRouter.patch("/english/:id", userController.updateEnglish)
 userRouter.patch("/science/:id", userController.updateScience)
+userRouter.get("/Role/:id", userController.CheckRole)
 
 module.exports = userRouter;
