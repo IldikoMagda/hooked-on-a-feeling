@@ -8,16 +8,14 @@ function Header() {
   const logout = () => {
     localStorage.removeItem('token');
     setUser(null)
-    setUserData({
-      username: "",
-        generalxp: 0,
-        subjectxpmaths: 0,
-        subjectxpenglish:0,
-        subjectxpscience: 0,
-        favcolor:""
-    })
-    navigate("/login")
-
+    // setUserData({
+    //   username: "",
+    //     generalxp: 0,
+    //     subjectxpmaths: 0,
+    //     subjectxpenglish:0,
+    //     subjectxpscience: 0,
+    //     favcolor:""
+    // })
   }
   return (
     <>
@@ -37,7 +35,7 @@ function Header() {
         </NavLink>
         }
         {user && 
-        <NavLink onClick={logout} className="rpg-button">
+        <NavLink to="/login" onClick={logout} className="rpg-button">
         {"Hi " + userData.username} Logout
     </NavLink>
         }
