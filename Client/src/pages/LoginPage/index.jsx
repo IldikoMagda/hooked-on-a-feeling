@@ -52,24 +52,35 @@ export default function LoginPage() {
     const getUserData = async () => {
       console.log(user)
       try {
-        const response = await fetch(`https://project-3-backend-l4m5.onrender.com/users/${user}`);
-        if (response.ok) {
-          const data = await response.json();
-          console.log(data);
+        if (user == null) {
           setUserData({
-            username: data.username,
-            generalxp: data.generalxp,
-            subjectxpmaths: data.subjectxpmaths,
-            subjectxpenglish: data.subjectxpenglish,
-            subjectxpscience: data.subjectxpscience,
-            favcolor: data.favcolor
-          });
-          setTimeout(() => {
-            setMessage("")
-            navigate("/")
-          }, 700)
+              username: "",
+                generalxp: 0,
+                subjectxpmaths: 0,
+                subjectxpenglish:0,
+                subjectxpscience: 0,
+                favcolor:""
+            })
         } else {
-          console.error(`Failed to fetch user data. Status code: ${response.status}`);
+          const response = await fetch(`https://project-3-backend-l4m5.onrender.com/users/${user}`);
+          if (response.ok) {
+            const data = await response.json();
+            console.log(data);
+            setUserData({
+              username: data.username,
+              generalxp: data.generalxp,
+              subjectxpmaths: data.subjectxpmaths,
+              subjectxpenglish: data.subjectxpenglish,
+              subjectxpscience: data.subjectxpscience,
+              favcolor: data.favcolor
+            });
+            setTimeout(() => {
+              setMessage("")
+              navigate("/")
+            }, 700)
+          } else {
+            console.error(`Failed to fetch user data. Status code: ${response.status}`);
+          }
         }
       } catch (error) {
         // Handle network or other errors
@@ -77,7 +88,7 @@ export default function LoginPage() {
       }
     };
     getUserData()
-  }, [user])
+  }, [user]) //
 
   return (
 
@@ -85,7 +96,7 @@ export default function LoginPage() {
       <form className="login-form" onSubmit={handleSubmit}>
         <input className="login-input" type="text" placeholder='Enter username...' onChange={handleTextInput} value={textInput} />
         <input className="login-input" type="password" placeholder='Enter password...' onChange={handlePasswordInput} value={passwordInput} />
-        <input className="login-button" type="submit" value="Login"/>
+        <input className="login-button" type="submit" value="Login" />
       </form>
       <p>{message}</p>
       <NavLink to="/CreateAccount">Don't have an account? Register here</NavLink>
