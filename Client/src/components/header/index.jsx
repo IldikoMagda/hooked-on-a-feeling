@@ -1,7 +1,13 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { NavLink, Outlet } from "react-router-dom";
+import {useAuth} from "../../contexts"
 
 function Header() {
+  const {user,setUser, userData} = useAuth()
+  const logout = () => {
+    localStorage.removeItem('token');
+    setUser(null)
+  }
   return (
     <>
       <header className="rpg-header">
@@ -14,9 +20,16 @@ function Header() {
         <NavLink to="/create-task" className="rpg-button">
           Create New Task
         </NavLink>
+        {!user &&
         <NavLink to="/login" className="rpg-button">
-          Logout
+            Login
         </NavLink>
+        }
+        {user && 
+        <NavLink onClick={logout} className="rpg-button">
+        {"Hi " + userData.username} Logout
+    </NavLink>
+        }
       </header>
       <Outlet />
     </>
