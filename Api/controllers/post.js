@@ -1,4 +1,5 @@
 const Post = require("../models/Post.js");
+const User = require("../models/User.js");
 
 async function index(req, res) {
   try {
@@ -32,7 +33,13 @@ async function showPost(req, res) {
 async function create(req, res) {
     try {
         const data = req.body;
+        const id=req.body.user_id
+        const Check = await User.checkRole(id);
+        const Role= Check.role
+        if (Role === "Student"){console.log("Student")}
+        else {console.log("Teacher")}
         const newPost = await Post.create(data);
+        //const newPost = await Post.createTeacher(data);
         res.status(201).json(newPost);
     } catch(err) {
         res.status(400).json({error: err.message});
