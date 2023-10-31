@@ -1,4 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
+import { NavLink } from 'react-router-dom'
+import "./CreateAccountPage.css"
+
 
 export default function CreateAccount() {
   const [textInput, setTextInput] = useState('')
@@ -52,6 +55,7 @@ export default function CreateAccount() {
   }
   return (
     <>
+    <div>
       <form onSubmit={handleSubmit}>
         <input type="text" placeholder='Enter username...' onChange={handleTextInput} value={textInput} />
         <input type="password" placeholder='Enter password...' onChange={handlePasswordInput} value={passwordInput} />
@@ -63,8 +67,10 @@ export default function CreateAccount() {
         </select>
         <input type="submit" value='Create Account' />
       </form>
+      <NavLink to="/login">Already have an account? Login</NavLink>
       <h3>{message}</h3>
+
+    </div>
     </>
   )
 }
-
