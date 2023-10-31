@@ -50,7 +50,7 @@ VALUES
     ('Go over Science notes', 'Conduct research for the upcoming Biology project.', '2023-07-01', 'Science', 2, 19);
 
 
-INSERT INTO user_account (username, password, generalXp, subjectXpMaths)
-VALUES ('Ollie', 'Password1', 10, 20), 
-       ('Abdul', 'Password2', 20, 10);
+INSERT INTO user_account (username, password, generalXp, subjectXpMaths,subjectXpEnglish,subjectXpScience)
+VALUES ('Ollie', 'Password1', 10, 20,12,34), 
+       ('Abdul', 'Password2', 20, 10,25,21);
 
