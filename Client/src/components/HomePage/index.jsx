@@ -13,19 +13,18 @@ import BasicOrange from "../../assets/Orange/BasicOrange.png";
 
 
 function HomePage() {
-    const {user,setUser,userData} = useAuth()
+  const { user, setUser, userData } = useAuth()
   const [tasks, setTasks] = useState([]);
-  const { id } = useParams()
-
   async function fetchTasks() {
-    const response = await fetch(`https://project-3-backend-l4m5.onrender.com/posts/${user}`)
+    const response = await fetch(`https://project-3-backend-l4m5.onrender.com/posts/${localStorage.getItem('user')}`)
     const data = await response.json()
     setTasks(data)
   }
-  useEffect(()=> {
+  useEffect(() => {
     fetchTasks()
-  },[user])
-  
+  }, [localStorage.getItem("user")])
+ 
+
   let userSprite = ""
 
   const getSpritePath = (color) => {
@@ -54,8 +53,8 @@ function HomePage() {
       </div>
 
       <div className="right-box">
-        {user && tasks.map((el,i)=><TaskCard task={el}/>)}
-      
+        <button>Create new task (creates modal)</button>
+        {localStorage.getItem("user") && tasks.length>0 && tasks.map((el, i) => <TaskCard task={el} />)}
       </div>
     </div>
   );

@@ -33,7 +33,7 @@ async function showPost(req, res) {
 async function create(req, res) {
     try {
         const data = req.body;
-        const id=req.body.user_id
+        const id = data.user_id
         const Check = await User.checkRole(id);
         const Role= Check.role
         if (Role === "Student"){console.log("Student")}
