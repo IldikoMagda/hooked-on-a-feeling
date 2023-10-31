@@ -1,7 +1,7 @@
 
 import React, {useState,useEffect} from 'react';
 import {useParams} from "react-router-dom"
-import BasicSprite from '../../assets/BasicSprite.png';
+
 import {TaskCard} from "../../components"
 import {useAuth} from "../../contexts"
   
