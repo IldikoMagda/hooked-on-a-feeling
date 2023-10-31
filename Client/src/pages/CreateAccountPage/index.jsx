@@ -94,12 +94,10 @@ export default function CreateAccount() {
 
   useEffect(() => {
     const getUserData = async () => {
-      console.log(user)
       try {
         const response = await fetch(`https://project-3-backend-l4m5.onrender.com/users/${user}`);
         if (response.ok) {
           const data = await response.json();
-          console.log(data);
           setUserData({
             username: data.username,
             generalxp: data.generalxp,
