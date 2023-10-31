@@ -107,3 +107,137 @@ body {
   padding-bottom: 10px;
   margin-bottom: 10px;
 }
+
+
+/* LOGIN PAGE */
+
+/* Container for the login form */
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+/* Styling the login form */
+.login-form {
+  background: rgba(2, 157, 182, 0.95);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Styling the input fields */
+.login-input {
+  display: block;
+  width: 200px;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: 2px solid #aaa;
+  font-family: 'VT323', monospace;
+}
+
+/* Styling the login button */
+.login-button {
+  background-color: #3e3e3e;
+  color: #fff;
+  padding: 10px 20px;
+  border: 2px solid #aaa;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: 'VT323', monospace;
+  transition: background-color 0.3s, transform 0.1s;
+}
+
+.login-button:hover {
+  background-color: #5e5e5e;
+  transform: scale(1.05);
+}
+
+.login-button:active {
+  transform: scale(0.95);
+}
+
+/* Styling the registration link */
+.register-link {
+  margin-top: 20px;
+  color: #fff;
+  font-family: 'VT323', monospace;
+  text-decoration: none;
+}
+
+.register-link:hover {
+  text-decoration: underline;
+}
+
+
+/* CREATE ACCOUNT
+
+/* Container for the registration form */
+.register-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+/* Styling the registration form */
+.register-form {
+  background: rgba(2, 157, 182, 0.95);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Styling the input fields and select dropdown */
+.register-input {
+  display: block;
+  width: 200px;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: 2px solid #aaa;
+  font-family: 'VT323', monospace;
+}
+
+/* Styling the registration button */
+.register-button {
+  background-color: #3e3e3e;
+  color: #fff;
+  padding: 10px 20px;
+  border: 2px solid #aaa;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: 'VT323', monospace;
+  transition: background-color 0.3s, transform 0.1s;
+}
+
+.register-button:hover {
+  background-color: #5e5e5e;
+  transform: scale(1.05);
+}
+
+.register-button:active {
+  transform: scale(0.95);
+}
+
+/* Styling the login link */
+.login-link {
+  margin-top: 20px;
+  color: #fff;
+  font-family: 'VT323', monospace;
+  text-decoration: none;
+}
+
+.login-link:hover {
+  text-decoration: underline;
+}
+
+/* Styling the message */
+.register-message {
+  color: #fff;
+  font-family: 'VT323', monospace;
+}

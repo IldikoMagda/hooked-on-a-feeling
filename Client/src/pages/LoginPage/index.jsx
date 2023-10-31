@@ -48,11 +48,11 @@ export default function LoginPage() {
     login()
   }
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-      <input type="text" placeholder='Enter username...' onChange={handleTextInput} value={textInput} />
-        <input type="password" placeholder='Enter password...' onChange={handlePasswordInput} value={passwordInput} />
-        <input type="submit" value="Login"/>
+    <div className="login-container">
+      <form className="login-form" onSubmit={handleSubmit}>
+        <input className="login-input" type="text" placeholder='Enter username...' onChange={handleTextInput} value={textInput} />
+        <input className="login-input" type="password" placeholder='Enter password...' onChange={handlePasswordInput} value={passwordInput} />
+        <input className="login-button" type="submit" value="Login"/>
       </form>
       <p>{message}</p>
       <NavLink to="/CreateAccount">Don't have an account? Register here</NavLink>
