@@ -2,17 +2,17 @@ const db = require('../database/connect');
 
 class Post {
 
-    constructor({ item_id, user_id, title, content,dueDate,subject,completed,repeatable,generalXp,subjectXp}) {
+    constructor({ item_id, user_id, title, content,duedate,subject,completed,repeatable, generalxp, subjectxp}) {
         this.item_id = item_id;
         this.user_id =user_id
         this.title = title;
         this.content = content;
-        this.dueDate =dueDate;
+        this.duedate =duedate;
         this.subject =subject;
         this.completed =completed;
         this.repeatable =repeatable;
-        this.generalXp =generalXp;
-        this.subjectXp =subjectXp;
+        this.generalxp =generalxp;
+        this.subjectxp =subjectxp;
     }
 
     static async getAll() {
