@@ -3,7 +3,11 @@ import { NavLink, Outlet } from "react-router-dom";
 import {useAuth} from "../../contexts"
 
 function Header() {
-  const {user} = useAuth()
+  const {user,setUser} = useAuth()
+  const logout = () => {
+    localStorage.removeItem('token');
+    setUser(null)
+  }
   return (
     <>
       <header className="rpg-header">
@@ -22,7 +26,7 @@ function Header() {
         </NavLink>
         }
         {user && 
-        <NavLink to="/logout" className="rpg-button">
+        <NavLink onClick={logout} className="rpg-button">
         {"Hi" + user} Logout
     </NavLink>
         }
