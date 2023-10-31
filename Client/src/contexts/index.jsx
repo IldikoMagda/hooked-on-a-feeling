@@ -10,7 +10,7 @@ export const AuthProvider = ({ children }) => {
         subjectxpmaths: 0,
         subjectxpenglish:0,
         subjectxpscience: 0,
-        favcolor:"orange"
+        favcolor:""
     })
 
     return (
