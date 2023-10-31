@@ -3,10 +3,18 @@ import { NavLink, Outlet } from "react-router-dom";
 import {useAuth} from "../../contexts"
 
 function Header() {
-  const {user,setUser, userData} = useAuth()
+  const {user,setUser, userData, setUserData} = useAuth()
   const logout = () => {
     localStorage.removeItem('token');
     setUser(null)
+    setUserData({
+      username: "",
+        generalxp: 0,
+        subjectxpmaths: 0,
+        subjectxpenglish:0,
+        subjectxpscience: 0,
+        favcolor:""
+    })
   }
   return (
     <>
