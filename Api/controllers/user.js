@@ -145,3 +145,4 @@ async function updateScience(req,res) {
 module.exports = {
   register, login, index,indexMaths,indexEnglish,indexScience, show, update , updateMaths,updateEnglish,updateScience,CheckRole
 }
+
