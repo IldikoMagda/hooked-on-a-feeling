@@ -1,10 +1,10 @@
 
-import React, {useState,useEffect} from 'react';
-import {useParams} from "react-router-dom"
+import React, { useState, useEffect } from 'react';
+import { useParams } from "react-router-dom"
 
-import {TaskCard} from "../../components"
-import {useAuth} from "../../contexts"
-  
+import { TaskCard } from "../../components"
+import { useAuth } from "../../contexts"
+
 
 import BasicSprite from "../../assets/BasicSprite.png";
 import BasicRed from "../../assets/Red/BasicRed.png";
@@ -14,20 +14,29 @@ import BasicOrange from "../../assets/Orange/BasicOrange.png";
 
 
 function HomePage() {
-    const {user,setUser,userData} = useAuth()
-  const [tasks, setTasks] = useState([]);
-  const { id } = useParams()
-
-
+  const { user, setUser, userData } = useAuth()
+  // const [tasks, setTasks] = useState([]);
   async function fetchTasks() {
     const response = await fetch(`https://project-3-backend-l4m5.onrender.com/posts/${user}`)
     const data = await response.json()
     setTasks(data)
   }
-  useEffect(()=> {
-    fetchTasks()
-  },[user])
-  
+  // useEffect(() => {
+  //   fetchTasks()
+  // }, [user])
+ const tasks = [{
+  "item_id": 1,
+  "user_id": 1,
+  "title": "Complete Math homework assignments.",
+  "content": "Complete Mr Abduls Homework",
+  "duedate": "2023-10-09T00:00:00.000Z",
+  "subject": "Maths",
+  "completed": false,
+  "repeatable": false,
+  "generalxp": 3,
+  "subjectxp": 19
+  }]
+
   let userSprite = ""
 
   const getSpritePath = (color) => {
@@ -55,7 +64,7 @@ function HomePage() {
         <div className="profile-card">
           <div className="profile-sprite">
             <img src={spritePath} alt="User Sprite" className="sprite" />
-            
+
           </div>
           <div className="profile-header">
             <h2>{userData.username}</h2>
@@ -74,8 +83,8 @@ function HomePage() {
       </div>
 
       <div className="right-box">
-        {user && tasks.map((el,i)=><TaskCard task={el}/>)}
-      
+        <button>Create new task (creates modal)</button>
+        {user && tasks.length>0 && tasks.map((el, i) => <TaskCard task={el} />)}
       </div>
     </div>
   );
