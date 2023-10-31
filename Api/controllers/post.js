@@ -3,7 +3,6 @@ const Post = require("../models/Post.js");
 async function index(req, res) {
   try {
     const posts = await Post.getAll();
-    console.log(posts)
     res.status(200).json(posts);
   } catch (err) {
     res.status(500).json({ "error": err.message });
@@ -33,7 +32,6 @@ async function showPost(req, res) {
 async function create(req, res) {
     try {
         const data = req.body;
-        //console.log(data)
         const newPost = await Post.create(data);
         res.status(201).json(newPost);
     } catch(err) {
@@ -46,8 +44,6 @@ async function update(req, res) {
       const id = parseInt(req.params.id);
       const data = req.body;
       const updatePost = await Post.updatePost(data,id);
-      //console.log(post)
-      //const result = await post.updatePost(data,id);
       res.status(200).json(updatePost)
   } catch (err) {
       res.status(404).json({error: err.message})

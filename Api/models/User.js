@@ -2,14 +2,17 @@ const db = require("../database/connect")
 
 class User {
   
-  constructor({user_id, username,password,generalXp, subjectXpMaths,subjectXpEnglish, subjectXpScience}) {
+  constructor({user_id, username,password,generalxp, subjectxpmaths,subjectxpenglish, subjectxpscience,role,favcolor}) {
     this.id = user_id;
     this.username = username;
     this.password = password;
-    this.generalXp = generalXp;
-    this.subjectXpMaths = subjectXpMaths;
-    this.subjectXpEnglish = subjectXpEnglish;
-    this.subjectXpScience = subjectXpScience;
+    this.generalxp = generalxp;
+    this.subjectxpmaths = subjectxpmaths;
+    this.subjectxpenglish = subjectxpenglish;
+    this.subjectxpscience = subjectxpscience;
+    this.role = role;
+    this.favcolor = favcolor;
+
   }
 
   //getAll (order by generalXP)
