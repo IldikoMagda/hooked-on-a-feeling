@@ -1,15 +1,33 @@
-import React from "react";
+
+import React, {useState,useEffect} from 'react';
+import {useParams} from "react-router-dom"
+import BasicSprite from '../../assets/BasicSprite.png';
+import {TaskCard} from "../../components"
+import {useAuth} from "../../contexts"
+  
+
 import BasicSprite from "../../assets/BasicSprite.png";
 import BasicRed from "../../assets/Red/BasicRed.png";
 import BasicGreen from "../../assets/Green/BasicGreen.png";
 import BasicBlue from "../../assets/Blue/BasicBlue.png";
 import BasicOrange from "../../assets/Orange/BasicOrange.png";
 
-import { useAuth } from "../../contexts";
 
 function HomePage() {
-  const { userData } = useAuth();
-  console.log(userData);
+    const {user,setUser,userData} = useAuth()
+  const [tasks, setTasks] = useState([]);
+  const { id } = useParams()
+
+
+  async function fetchTasks() {
+    const response = await fetch(`https://project-3-backend-l4m5.onrender.com/posts/${user}`)
+    const data = await response.json()
+    setTasks(data)
+  }
+  useEffect(()=> {
+    fetchTasks()
+  },[user])
+  
   let userSprite = ""
 
   const getSpritePath = (color) => {
@@ -56,15 +74,8 @@ function HomePage() {
       </div>
 
       <div className="right-box">
-        {/* Example of a single to-do item; you can map over your tasks array to display them */}
-        <h1>Task List</h1>
-        <div className="todo-item">
-          <h3>Task Title</h3>
-          <p>Due Date: MM/DD/YYYY</p>
-          <p>XP Worth: XX</p>
-          <input type="checkbox" /> Completed
-        </div>
-        {/* Add more to-do items as needed */}
+        {user && tasks.map((el,i)=><TaskCard task={el}/>)}
+      
       </div>
     </div>
   );
