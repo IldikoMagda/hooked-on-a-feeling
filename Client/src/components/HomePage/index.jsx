@@ -1,11 +1,10 @@
-
 import React, {useState,useEffect} from 'react';
 import {useParams} from "react-router-dom"
-import BasicSprite from '../../assets/BasicSprite.png';
+
+import ProfileCard from "../ProfileCard";
 import {TaskCard} from "../../components"
 import {useAuth} from "../../contexts"
   
-
 import BasicSprite from "../../assets/BasicSprite.png";
 import BasicRed from "../../assets/Red/BasicRed.png";
 import BasicGreen from "../../assets/Green/BasicGreen.png";
@@ -52,25 +51,7 @@ function HomePage() {
   return (
     <div className="home-container">
       <div className="left-box">
-        <div className="profile-card">
-          <div className="profile-sprite">
-            <img src={spritePath} alt="User Sprite" className="sprite" />
-            
-          </div>
-          <div className="profile-header">
-            <h2>{userData.username}</h2>
-          </div>
-          <div className="profile-info">
-            <div className="left-half">
-              <p>Generic XP: {userData.generalxp}</p>
-              <p>Maths XP: {userData.subjectxpenglish}</p>
-            </div>
-            <div className="right-half">
-              <p>Science XP: {userData.subjectxpmaths}</p>
-              <p>English XP: {userData.subjectxpscience}</p>
-            </div>
-          </div>
-        </div>
+        <ProfileCard />
       </div>
 
       <div className="right-box">
