@@ -15,27 +15,16 @@ import BasicOrange from "../../assets/Orange/BasicOrange.png";
 
 function HomePage() {
   const { user, setUser, userData } = useAuth()
-  // const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState([]);
   async function fetchTasks() {
     const response = await fetch(`https://project-3-backend-l4m5.onrender.com/posts/${user}`)
     const data = await response.json()
     setTasks(data)
   }
-  // useEffect(() => {
-  //   fetchTasks()
-  // }, [user])
- const tasks = [{
-  "item_id": 1,
-  "user_id": 1,
-  "title": "Complete Math homework assignments.",
-  "content": "Complete Mr Abduls Homework",
-  "duedate": "2023-10-09T00:00:00.000Z",
-  "subject": "Maths",
-  "completed": false,
-  "repeatable": false,
-  "generalxp": 3,
-  "subjectxp": 19
-  }]
+  useEffect(() => {
+    fetchTasks()
+  }, [user])
+ 
 
   let userSprite = ""
 
