@@ -17,7 +17,6 @@ function HomePage() {
   const [tasks, setTasks] = useState([]);
   const { id } = useParams()
 
-
   async function fetchTasks() {
     const response = await fetch(`https://project-3-backend-l4m5.onrender.com/posts/${user}`)
     const data = await response.json()

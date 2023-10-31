@@ -1,10 +1,19 @@
 import React, {useState, useEffect} from "react";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import {useAuth} from "../../contexts"
+import CreatePostModal from "../../components/CreatePostModal/CreatePostModal";
 
 function Header() {
-  const navigate= useNavigate()
+  const [isCreateTaskModalVisible, setCreateTaskModalVisible] = useState(false);
   const {user,setUser, userData, setUserData} = useAuth()
+  const [title, setTitle] = useState('')
+  const [content, setContent] = useState('')
+  const [duedate, setDueDate] = useState('')
+  const [subject, setSubject] = useState('')
+  const [repeatable, setRepeatable] = useState(false)
+  const [generalXp, setGeneralXp] = useState(50)
+  const [subjectXp, setSubjectXp] = useState(50)
+
   const logout = () => {
     localStorage.removeItem('token');
     setUser(null)
@@ -17,6 +26,9 @@ function Header() {
     //     favcolor:""
     // })
   }
+  const toggleCreateTaskModal = () => {
+    setCreateTaskModalVisible(!isCreateTaskModalVisible);
+  };
   return (
     <>
       <header className="rpg-header">
@@ -26,21 +38,46 @@ function Header() {
         <NavLink to="/leaderboard" className="rpg-button">
           Leaderboard
         </NavLink>
-        <NavLink to="/create-task" className="rpg-button">
+
+        <button onClick={toggleCreateTaskModal} className="rpg-button">
           Create New Task
-        </NavLink>
-        {!user &&
-        <NavLink to="/login" className="rpg-button">
+        </button>
+
+        {!user && (
+          <NavLink to="/login" className="rpg-button">
             Login
-        </NavLink>
-        }
-        {user && 
-        <NavLink to="/login" onClick={logout} className="rpg-button">
-        {"Hi " + userData.username} Logout
-    </NavLink>
-        }
+          </NavLink>
+        )}
+        {user && (
+          <NavLink to="/login" onClick={logout} className="rpg-button">
+            {"Hi " + userData.username} Logout
+          </NavLink>
+        )}
       </header>
+
       <Outlet />
+
+      {isCreateTaskModalVisible && (
+        <div className="create-task-modal">
+          <CreatePostModal
+        title={title}
+        setTitle={setTitle}
+        content={content}
+        setContent={setContent}
+        duedate={duedate}
+        setDueDate={setDueDate}
+        subject={subject}
+        setSubject={setSubject}
+        repeatable={repeatable}
+        setRepeatable={setRepeatable}
+        generalXp={generalXp}
+        setGeneralXp={setGeneralXp}
+        subjectXp={subjectXp}
+        setSubjectXp={setSubjectXp}
+    />
+          <button onClick={toggleCreateTaskModal}>Close</button>
+        </div>
+      )}
     </>
   );
 }
