@@ -12,7 +12,6 @@ class User {
     this.subjectxpscience = subjectxpscience;
     this.role = role;
     this.favcolor = favcolor;
-
   }
 
   //getAll (order by generalXP)
