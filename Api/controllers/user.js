@@ -42,6 +42,19 @@ async function index(req, res) {
     res.status(500).json({ "error": err.message });
   }
 }
+
+//CheckRole
+async function CheckRole(req, res) {
+  try {
+    const id = req.params.id
+    const Role = await User.checkRole(id);
+    //console.log(Role.role)
+    res.status(200).json(Role.role);
+  } catch (err) {
+    res.status(500).json({ "error": err.message });
+  }
+}
+
 //indexMaths
 async function indexMaths(req, res) {
   try {
@@ -130,5 +143,6 @@ async function updateScience(req,res) {
 }
 
 module.exports = {
-  register, login, index,indexMaths,indexEnglish,indexScience, show, update , updateMaths,updateEnglish,updateScience
+  register, login, index,indexMaths,indexEnglish,indexScience, show, update , updateMaths,updateEnglish,updateScience,CheckRole
 }
+

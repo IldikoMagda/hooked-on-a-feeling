@@ -1,22 +1,4 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 
 @keyframes logo-spin {
   from {
@@ -33,10 +15,263 @@
   }
 }
 
-.card {
-  padding: 2em;
+body {
+  background-image: url('./assets/RGP-Style-Background.png');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  max-height: 100%;
+  font-family: 'VT323', monospace;
 }
 
-.read-the-docs {
-  color: #888;
+.rpg-header {
+  display: flex;
+  justify-content: space-between; /* Spread out the buttons */
+  align-items: center;
+  padding: 10px 5%; /* Padding on the left and right for some space */
+  background-color: rgba(255, 255, 255, 0.1); /* Transparency */
+  position: sticky; /* Make the header sticky */
+  top: 0; /* Stick it to the top of the page */
+  z-index: 1000; /* Ensure it stays on top of other elements */
+  width: 100%; /* Ensure it takes the full width */
+  padding: 10px 3%;
+}
+
+.rpg-button {
+  font-family: 'VT323', monospace;
+  padding: 10px 20px;
+  background-color: #3e3e3e;
+  /* background-color: #4b4231; */
+  border: 2px solid #aaa;
+  text-decoration: none;
+  color: #fff;
+  transition: background-color 0.3s, transform 0.1s;
+  flex-grow: 1; /* Allow the buttons to grow and take available space */
+  text-align: center; /* Center the text on the button */
+  margin: 0 5px;
+}
+
+.rpg-button:hover {
+  background-color: #5e5e5e;
+  transform: scale(1.05);
+}
+
+.rpg-button:active {
+  transform: scale(0.95);
+}
+
+.rpg-button.active {
+  border-color: #f5a623;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.home-container {
+  display: flex;
+  height: 75vh;
+  padding: 20px; /* Added some padding to give space from edges */
+}
+
+.left-box, .right-box {
+  padding: 20px;
+  background: rgba(255, 248, 220, 0.9); /* Light parchment-like color for the form background */
+  border: 8px solid transparent;
+  background-clip: padding-box, border-box;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  margin-bottom: 20px;
+  font-family: 'VT323', monospace;
+  color: #333;
+  overflow: auto; /* If content grows, allow scroll */
+  border: 10px solid transparent; 
+  border-image: url('./assets/qubodup-light_wood.png') 40% ;
+}
+
+.left-box {
+  flex: 1;
+  margin-right: 10px;
+}
+
+.sprite {
+  width: 100%;
+  max-width: 150px;
+  display: block;
+  margin: 0 auto 20px auto; /* Added margin to the bottom */
+}
+
+.xp-section {
+  margin-top: 20px;
+}
+
+.right-box {
+  flex: 2;
+}
+
+.todo-item {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+
+/* LOGIN PAGE */
+
+/* Container for the login form */
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+}
+
+/* Styling the login form */
+.login-form {
+  position: relative;
+  background: rgba(255, 248, 220, 0.9); /* Light parchment-like color for the form background */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  border: 10px solid transparent; 
+  border-image: url('./assets/qubodup-light_wood.png') 40% ;
+}
+
+/* Styling the input fields */
+.login-input {
+  display: block;
+  width: 200px;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: 2px solid #aaa;
+  font-family: 'VT323', monospace;
+}
+
+/* Styling the login button */
+.login-button {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  background-color: #8b4513;
+  color: white;
+  font-family: 'VT323', monospace;
+  font-size: 16px;
+}
+
+.login-button:hover {
+  background-color: #f8f1e4; /* Light paper-like color */
+  transform: scale(1.05);
+  color: black;
+}
+
+.login-button:active {
+  transform: scale(0.95);
+}
+
+/* Styling the registration link */
+.register-link {
+  margin-top: 20px;
+  color: #fff;
+  font-family: 'VT323', monospace;
+  text-decoration: none;
+  background-color: rgba(136, 85, 19, 0.747);
+}
+
+.register-link:hover {
+  text-decoration: underline;  
+  background-color: rgba(136, 85, 19, 0.99);
+
+}
+
+
+/* CREATE ACCOUNT */
+
+.register-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+}
+
+.register-form {
+  position: relative;
+  background: rgba(255, 248, 220, 0.9); /* Light parchment-like color for the form background */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  border: 10px solid transparent; 
+  border-image: url('./assets/qubodup-light_wood.png') 40% ;
+}
+
+.register-form::before,
+.register-form::after {
+  content: '';
+  position: absolute;
+  border-style: solid;
+  display: block;
+  width: 0;
+  z-index: 1;
+}
+
+/* Top-left corner */
+.register-form::before {
+  top: -5px;
+  left: -5px;
+  border-width: 15px 15px 0 0;
+  border-color: #8b4513 transparent transparent transparent;
+}
+
+/* Bottom-right corner */
+.register-form::after {
+  right: -5px;
+  bottom: -5px;
+  border-width: 0 15px 15px 0;
+  border-color: transparent #8b4513 #8b4513 transparent;
+}
+
+/* Style for the text, placeholders, and dropdown menu */
+.register-form input, .register-form select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #8b4513;
+  background-color: #f8f1e4; /* Light paper-like color */
+  font-family: 'VT323', monospace;
+  font-size: 16px;
+}
+
+.register-form input[type="submit"] {
+  background-color: #8b4513;
+  /* background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./assets/qubodup-light_wood.png') ; */
+
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.register-form input[type="submit"]:hover {
+  background-color: #a0522d;
+}
+
+
+.login-link, .register-message {
+  margin-top: 20px;
+  color: #fff;
+  font-family: 'VT323', monospace;
+  text-decoration: none;
+
+}
+
+.login-link:hover {
+  text-decoration: underline;
 }
