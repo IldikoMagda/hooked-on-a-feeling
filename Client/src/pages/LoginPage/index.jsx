@@ -1,14 +1,14 @@
-import React, {useState} from 'react'
-import {NavLink, useNavigate} from "react-router-dom"
-import {useAuth} from "../../contexts"
+import React, { useState, useEffect } from 'react'
+import { NavLink, useNavigate } from "react-router-dom"
+import { useAuth } from "../../contexts"
 
 export default function LoginPage() {
   const navigate = useNavigate()
   const [textInput, setTextInput] = useState("")
-  const [passwordInput,setPasswordInput] = useState("")
-  const [message,setMessage] = useState("")
-  const {setUser} = useAuth()
-  
+  const [passwordInput, setPasswordInput] = useState("")
+  const [message, setMessage] = useState("")
+  const { user, setUser, setUserData } = useAuth()
+
   const handleTextInput = (e) => {
     setTextInput(e.target.value)
   }
@@ -18,6 +18,8 @@ export default function LoginPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+
+
     const login = async () => {
       const options = {
         method: "POST",
@@ -37,17 +39,48 @@ export default function LoginPage() {
         localStorage.setItem("token", data.token); //correct?
         setUser(data.user_id)
         setMessage("Login successful.")
-        setTimeout(()=> {
-          setMessage("")
-          navigate("/")
-        }, 700)
+
+
       } else {
         alert(data.error)
       }
     }
     login()
   }
+
+  useEffect(() => {
+    const getUserData = async () => {
+      console.log(user)
+      try {
+        const response = await fetch(`https://project-3-backend-l4m5.onrender.com/users/${user}`);
+        if (response.ok) {
+          const data = await response.json();
+          console.log(data);
+          setUserData({
+            username: data.username,
+            generalxp: data.generalxp,
+            subjectxpmaths: data.subjectxpmaths,
+            subjectxpenglish: data.subjectxpenglish,
+            subjectxpscience: data.subjectxpscience,
+            favcolor: data.favcolor
+          });
+          setTimeout(() => {
+            setMessage("")
+            navigate("/")
+          }, 700)
+        } else {
+          console.error(`Failed to fetch user data. Status code: ${response.status}`);
+        }
+      } catch (error) {
+        // Handle network or other errors
+        console.error('Error fetching user data:', error);
+      }
+    };
+    getUserData()
+  }, [user])
+
   return (
+
     <div className="login-container">
       <form className="login-form" onSubmit={handleSubmit}>
         <input className="login-input" type="text" placeholder='Enter username...' onChange={handleTextInput} value={textInput} />

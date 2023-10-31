@@ -11,7 +11,7 @@ export default function CreateAccount() {
   const [passwordInput2, setPasswordInput2] = useState('') //so user inputs correct password
   const [color, setColor] = useState("orange")
   const [message,setMessage] = useState("")
-  const {setUser} = useAuth()
+  const {user, setUser} = useAuth()
 
   const handleTextInput = (e) => {
     setTextInput(e.target.value)
@@ -49,7 +49,6 @@ export default function CreateAccount() {
         setMessage("Login successful.")
         setTimeout(()=> {
           setMessage("")
-          navigate("/")
         }, 700)
       } else {
         alert(data.error)
@@ -92,6 +91,37 @@ export default function CreateAccount() {
     setPasswordInput("")
     setPasswordInput2("")
   }
+
+  useEffect(() => {
+    const getUserData = async () => {
+      console.log(user)
+      try {
+        const response = await fetch(`https://project-3-backend-l4m5.onrender.com/users/${user}`);
+        if (response.ok) {
+          const data = await response.json();
+          console.log(data);
+          setUserData({
+            username: data.username,
+            generalxp: data.generalxp,
+            subjectxpmaths: data.subjectxpmaths,
+            subjectxpenglish: data.subjectxpenglish,
+            subjectxpscience: data.subjectxpscience,
+            favcolor: data.favcolor
+          });
+          setTimeout(() => {
+            setMessage("")
+            navigate("/")
+          }, 700)
+        } else {
+          console.error(`Failed to fetch user data. Status code: ${response.status}`);
+        }
+      } catch (error) {
+        // Handle network or other errors
+        console.error('Error fetching user data:', error);
+      }
+    };
+    getUserData()
+  }, [user])
   return (
     <>
    <div className="register-container">
