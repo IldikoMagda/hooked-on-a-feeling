@@ -333,10 +333,15 @@ body {
 
 .leaderboard-sprite {
   margin-right: 50px;
+  height: 20px;
 }
 
 .leaderboard-username {
   margin-right: 100px;
+}
+
+.leaderSprite {
+  height: 80px
 }
 /*PROFILE*/
 .profile-header {
@@ -358,7 +363,7 @@ body {
   font-family: "VT323", monospace;
   color: #333;
   text-align: center;
-  height: 40vh;
+  height: 30vh;
 }
 
 .left-half,
