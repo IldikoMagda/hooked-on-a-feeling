@@ -36,7 +36,8 @@ export default function LoginPage() {
       const data = await response.json();
 
       if (response.status == 200) {
-        localStorage.setItem("token", data.token); //correct?
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("user", data.user_id);
         setUser(data.user_id)
         setMessage("Login successful.")
 
@@ -52,7 +53,7 @@ export default function LoginPage() {
     const getUserData = async () => {
     
       try {
-        if (user == null) {
+        if (!localStorage.getItem("user")) {
           setUserData({
               username: "",
                 generalxp: 0,
@@ -62,7 +63,7 @@ export default function LoginPage() {
                 favcolor:""
             })
         } else {
-          const response = await fetch(`https://project-3-backend-l4m5.onrender.com/users/${user}`);
+          const response = await fetch(`https://project-3-backend-l4m5.onrender.com/users/${localStorage.getItem("user")}`);
           if (response.ok) {
             const data = await response.json();
             setUserData({
@@ -87,7 +88,7 @@ export default function LoginPage() {
       }
     };
     getUserData()
-  }, [user]) //
+  }, [localStorage.getItem("user")])
 
   return (
 
@@ -104,34 +105,10 @@ export default function LoginPage() {
 }
 
 
-//async function loadPosts() {
-
+//ADD THIS FOR AUTHORIZATION?
 // const options = {
 //   headers: {
 //       'Authorization': localStorage.getItem("token")
 //   }
 // }
 // const response = await fetch("http://localhost:3000/posts", options);
-
-// if (response.status == 200) {
-//   const posts = await response.json();
-
-//   const container = document.getElementById("posts");
-
-//   posts.forEach(p => {
-//       const elem = createPostElement(p);
-//       container.appendChild(elem);
-//   })
-// } else {
-//   window.location.assign("./index.html");
-// }
-
-// }
-
-// document.getElementById('logout').addEventListener('click', () => {
-// localStorage.removeItem('token');
-// window.location.assign('./index.html');
-
-// })
-
-// loadPosts();

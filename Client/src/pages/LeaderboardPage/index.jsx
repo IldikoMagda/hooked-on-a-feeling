@@ -19,6 +19,7 @@ export default function LeaderboardPage() {
   const sortedUsers = users.slice().sort((a, b) => b.generalXp - a.generalXp);
 
   const topUsers = sortedUsers.slice(0, 4);
+  console.log(topUsers);
 
   const leaders = topUsers.map(user => {
     return (
