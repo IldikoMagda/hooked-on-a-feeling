@@ -20,9 +20,9 @@ export default function LeaderboardPage() {
     loadLeaderboard();
   }, []);
 
-  const leaders = users.map(user => {
+  const leaders = users.map((user,i) => {
     return (
-      <LeaderboardCard key={user.user_id} {...user} />
+      <LeaderboardCard key={user.user_id} index={i} {...user} />
     )
   })
 

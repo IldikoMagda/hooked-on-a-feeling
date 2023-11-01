@@ -18,9 +18,8 @@ export default function CreateTaskForm({
   setGeneralXp,
   setSubjectXp,
 }) {
-  const { user } = useAuth();
 
-  function handleSubmit(e) {
+function handleSubmit(e) {
     e.preventDefault();
     if (title) {
       fetch("https://project-3-backend-l4m5.onrender.com/posts", {
@@ -84,22 +83,22 @@ export default function CreateTaskForm({
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
-        </div>
-        <div className="details">
-          <label htmlFor="subject">Subject:</label>
-          <select id="subject" value={subject} onChange={(e) => setSubject(e.target.value)}>
-            <option value="Maths">Maths</option>
-            <option value="Science">Science</option>
-            <option value="English">English</option>
-          </select>
-          <br></br>
-          <label htmlFor="repeatable">Repeatable:</label>
-          <input
-            type="checkbox"
-            id="repeatable"
-            name="repeatable"
-            checked={repeatable}
-            onChange={() => setRepeatable(!repeatable)}
+      </div>
+      <div className="details">
+        <label htmlFor="subject">Subject:</label>
+        <select id="subject" value={subject} onChange={(e) => setSubject(e.target.value)}>
+          <option value="Maths">Maths</option>
+          <option value="Science">Science</option>
+          <option value="English">English</option>
+        </select>
+        <br></br>
+        <label htmlFor="duedate">Due Date:</label>
+        <input
+          type="date"
+          id="duedate"
+          name="duedate"
+          value={duedate}
+          onChange={(e) => setDueDate(e.target.value)}
           />
           <br></br>
           <label htmlFor="duedate">Due Date:</label>
@@ -110,42 +109,8 @@ export default function CreateTaskForm({
             value={duedate}
             onChange={(e) => setDueDate(e.target.value)}
           />
-          <div>
-            <label htmlFor="generalXp">General XP:</label>
-            <input
-              type="number"
-              id="generalXp"
-              min="0"
-              max="50"
-              value={generalXp}
-              onChange={(e) => {
-                const value = parseInt(e.target.value);
-                if (!isNaN(value) && value >= 0 && value <= 50) {
-                  setGeneralXp(value);
-                }
-              }}
-            />
-          </div>
-          <div>
-            <label htmlFor="subjectXp">Subject XP:</label>
-            <input
-              type="number"
-              id="subjectXp"
-              min="0"
-              max="50"
-              value={subjectXp}
-              onChange={(e) => {
-                const value = parseInt(e.target.value);
-                if (!isNaN(value) && value >= 0 && value <= 50) {
-                  setSubjectXp(value);
-                }
-              }}
-            />
-          </div>
-          <button type="submit" className="homeworkModal-btn">
-            Submit
-          </button>
-        </div>
+          <button type="submit" className="homeworkModal-btn">Submit</button>
+       </div>
       </form>
     </div>
   );
