@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useAuth } from '../../contexts';
+import Swal from 'sweetalert2'
 
 export default function CreateTaskForm({
     title,
@@ -41,16 +42,31 @@ export default function CreateTaskForm({
             
             .then((data) =>{
                 console.log('Post request successful:', data);
-                
+                Swal.fire(
+                  'Task Added',
+                  'Are you working hard or hardly working?',
+                  'success'
+                )
 
             })
             .catch((err)=>{
                 console.log(err.message)
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Oops...',
+                  text: err.message,
+                  footer: 'Make sure you fill out all the form.'
+                })
             })
             }
             else{
                 console.log('Title:', title);
                 console.log('Content:', content);
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Oops...',
+                  text: 'Make sure you fill out all the form.'
+                })
             }
         }
 
