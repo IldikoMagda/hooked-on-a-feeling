@@ -12,7 +12,7 @@ export default function LeaderboardPage() {
       const data = await response.json();
       const sortedUsers = data.slice().sort((a, b) => b.generalxp - a.generalxp);
       // console.log(users)
-      const topUsers = sortedUsers.slice(0, 6);
+      const topUsers = sortedUsers.slice(0, 10);
       // console.log(topUsers);
       setUsers(topUsers);
     };
