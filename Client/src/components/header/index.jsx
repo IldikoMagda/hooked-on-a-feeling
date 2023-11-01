@@ -33,7 +33,7 @@ function Header() {
     Swal.fire(
       'Logging Out',
       'Please wait to be redirected',
-      'success'
+      'warning'
     )
     localStorage.removeItem('token');
     localStorage.removeItem('user')
