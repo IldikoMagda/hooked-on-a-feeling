@@ -93,14 +93,26 @@ export default function CreateTaskForm({
             onChange={(e) => setTitle(e.target.value)}
           />
         </div>
+        <div className="homeworkModal-content">
+          <label htmlFor="content" className="homeworkModal-label">
+            Content:
+          </label>
+          <textarea
+            id="content"
+            placeholder="Content"
+            className="homeworkModal-textarea"
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+          />
+        </div>
         <div className="details">
           <label htmlFor="subject">Subject:</label>
           <select id="subject" value={subject} onChange={(e) => setSubject(e.target.value)}>
-            <option value="Maths" >Maths</option>
+            <option value="Maths">Maths</option>
             <option value="Science">Science</option>
             <option value="English">English</option>
           </select>
-          <br></br>
+          <br />
           <label htmlFor="duedate">Due Date:</label>
           <input
             type="date"
@@ -109,16 +121,9 @@ export default function CreateTaskForm({
             value={duedate}
             onChange={(e) => setDueDate(e.target.value)}
           />
-          <br></br>
-          <label htmlFor="duedate">Due Date:</label>
-          <input
-            type="date"
-            id="duedate"
-            name="duedate"
-            value={duedate}
-            onChange={(e) => setDueDate(e.target.value)}
-          />
+
           <button type="submit" className="homeworkModal-btn">Submit</button>
+
         </div>
       </form>
     </div>
