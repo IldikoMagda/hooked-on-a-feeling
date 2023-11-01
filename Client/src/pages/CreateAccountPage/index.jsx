@@ -162,9 +162,10 @@ export default function CreateAccount() {
       <option value="green">Green</option>
     </select>
     <input className="register-button" type="submit" value='Create Account' />
-  </form>
-  <NavLink className="login-link" to="/login">Already have an account? Login</NavLink>
+    <NavLink className="login-link" to="/login">Already have an account? Login</NavLink>
   <h3 className="register-message">{message}</h3>
+
+  </form>
 </div>
 
     </>
