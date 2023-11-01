@@ -18,6 +18,7 @@ function Header() {
       subjectxpscience: 0,
       favcolor: ""
     })
+
   }
   useEffect(() => { //onLoad or user_id change, get userData
     const getUserData = async () => {
@@ -57,10 +58,12 @@ function Header() {
             Login
           </NavLink>
         }
+
         {localStorage.getItem('user') &&
           <NavLink to="/login" onClick={logout} className="rpg-button">
             {"Hi " + userData.username} Logout
           </NavLink>
+
         }
       </header>
       <Outlet />
