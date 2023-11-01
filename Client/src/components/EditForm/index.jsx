@@ -49,7 +49,21 @@ export default function EditForm({ task, closeModal }) {
     closeModal()
   }
 
-  
+  const handleDelete = () => {
+    const deleteTask = async () => {
+      try {
+        const options = {
+          method: "DELETE"
+        }
+        const response = await fetch(`https://project-3-backend-l4m5.onrender.com/posts/post/${task.item_id}`, options)
+        const data = await response.json()
+      } catch (err) {
+        console.error(err.message)
+      }
+    }
+    deleteTask()
+    closeModal()
+  }
 
   return (
     <>
@@ -92,10 +106,10 @@ export default function EditForm({ task, closeModal }) {
           value={duedate}
           onChange={handleDuedate}
         />
-        <button onClick={closeModal}>Back</button>
         <button type="submit" className="homeworkModal-btn">Submit Tasks</button>
-        <button className="homeworkModal-btn" onClick={handleDelete}>Delete Task</button>
       </form>
+        <button onClick={closeModal}>Back</button>
+        <button className="homeworkModal-btn" onClick={handleDelete}>Delete Task</button>
     </>
   )
 }
