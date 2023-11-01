@@ -53,6 +53,7 @@ function HomePage() {
       </div>
 
       <div className="right-box">
+        <h1>Task List</h1>
         {/* <button>Create new task (creates modal)</button> */}
         {localStorage.getItem("user") && tasks.length>0 && tasks.map((el, i) => <TaskCard task={el} />)}
       </div>
