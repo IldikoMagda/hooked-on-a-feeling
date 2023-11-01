@@ -111,10 +111,9 @@ export default function EditForm({ task, closeModal}) {
           <label htmlFor="content" className="homeworkModal-label">
             Content:
           </label>
-          <input
-            type="text"
+          <textarea
             id="content"
-            className="homeworkModal-input"
+            className="homeworkModal-textarea"
             value={content}
             onChange={handleContent}
           />
