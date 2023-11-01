@@ -1,6 +1,6 @@
 import React, {useState} from "react"
 
-export default function TaskCard ({task}) {
+export default function TaskCard ({ task, deleteTask }) {
   const [completed,setCompleted] = useState(false);
   const handleCheckbox = () => {
     setCompleted(!completed)
@@ -12,7 +12,7 @@ export default function TaskCard ({task}) {
           <h3>{task.title}</h3>
           <p>Due: {task.duedate.substring(0,10)}</p>
           <p>XP Worth: {task.generalxp}</p>
-          <input type="checkbox" onChange={handleCheckbox}/> Completed
+          <input type="checkbox" onChange={handleCheckbox} onClick={deleteTask} /> Completed
         </div>
     </>
   )

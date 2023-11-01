@@ -15,6 +15,7 @@ import BasicOrange from "../../assets/Orange/BasicOrange.png";
 function HomePage() {
   const { user, setUser, userData } = useAuth()
   const [tasks, setTasks] = useState([]);
+  const { id } = useParams();
   async function fetchTasks() {
     const response = await fetch(`https://project-3-backend-l4m5.onrender.com/posts/${localStorage.getItem('user')}`)
     const data = await response.json()
@@ -23,7 +24,17 @@ function HomePage() {
   useEffect(() => {
     fetchTasks()
   }, [localStorage.getItem("user")])
- 
+
+  async function deleteTask(id) {
+        const options = {
+            method: "DELETE",
+            headers: { 'Content-Type': 'application/json' }
+        }
+        const response = await fetch(`https://project-3-backend-l4m5.onrender.com/posts/${id}`, options);
+        const data = await response.json();
+        console.log(data)
+        setTasks(data.filter(task => task.id !== id))
+    }
 
   let userSprite = ""
 
@@ -55,7 +66,7 @@ function HomePage() {
       <div className="right-box">
         <h1>Task List</h1>
         {/* <button>Create new task (creates modal)</button> */}
-        {localStorage.getItem("user") && tasks.length>0 && tasks.map((el, i) => <TaskCard task={el} />)}
+        {localStorage.getItem("user") && tasks.length>0 && tasks.map((el, i) => <TaskCard task={el} deleteTask={deleteTask} />)}
       </div>
     </div>
   );
