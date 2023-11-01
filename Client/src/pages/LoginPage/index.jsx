@@ -38,6 +38,10 @@ export default function LoginPage() {
       if (response.status == 200) {
         localStorage.setItem("token", data.token);
         localStorage.setItem("user", data.user_id);
+        
+        const responseRole = await fetch(`https://project-3-backend-l4m5.onrender.com/users/Role/${localStorage.getItem("user")}`);;
+        const dataRole = await responseRole.json();
+        localStorage.setItem("Role", dataRole);
         setUser(data.user_id)
         setMessage("Login successful.")
 
