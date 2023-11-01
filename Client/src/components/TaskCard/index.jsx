@@ -1,11 +1,11 @@
 import React, {useState} from "react"
 import Swal from 'sweetalert2'
-
 import Modal from '../Modal';
 import EditForm from "../EditForm";
 
 
-export default function TaskCard ({task}) {
+export default function TaskCard ({task,completeTask}) {
+  
   const [completed,setCompleted] = useState(false);
   const handleCheckbox = () => {
     setCompleted(!completed)
@@ -33,8 +33,7 @@ export default function TaskCard ({task}) {
           <h3>{task.title}</h3>
           <p>Due: {task.duedate.substring(0,10)}</p>
           <p>XP Worth: {task.generalxp}</p>
-          <input type="checkbox" onChange={handleCheckbox}/> Completed
-          
+          <input type="checkbox" onChange={handleCheckbox}  onClick={completeTask}/> Completed
           <div>
             <button className="rpg-button" onClick={openModal}>Edit Task</button>
             <Modal isOpen={isModalOpen} >
