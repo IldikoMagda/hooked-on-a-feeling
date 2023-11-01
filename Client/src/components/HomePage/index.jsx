@@ -13,8 +13,8 @@ import BasicOrange from "../../assets/Orange/BasicOrange.png";
 
 
 function HomePage() {
-  const { user, setUser, userData } = useAuth()
-  const [tasks, setTasks] = useState([]);
+
+  const { user, setUser, userData, tasks, setTasks } = useAuth()
   const { id } = useParams();
   
   async function fetchTasks() {
@@ -68,7 +68,7 @@ function HomePage() {
         <h1>Task List</h1>
         {/* <button>Create new task (creates modal)</button> */}
 
-        {localStorage.getItem("user") && tasks.length>0 && tasks.map((el, i) => <TaskCard task={el} completeTask={completeTask} setTasks={setTasks} key={i} />)}
+        {localStorage.getItem("user") && tasks.length>0 && tasks.map((el, i) => <TaskCard task={el} completeTask={completeTask} key={i} />)}
 
       </div>
     </div>

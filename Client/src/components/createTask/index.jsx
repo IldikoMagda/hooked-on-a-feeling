@@ -19,8 +19,15 @@ export default function CreateTaskForm({
   setSubjectXp,
 }) {
 
-function handleSubmit(e) {
+  const { setTasks } = useAuth()
+
+  function handleSubmit(e) {
     e.preventDefault();
+    const fetchTasks = async () => {
+      const response = await fetch(`https://project-3-backend-l4m5.onrender.com/posts/${localStorage.getItem('user')}`)
+      const data = await response.json()
+      setTasks(data)
+    }
     if (title) {
       fetch("https://project-3-backend-l4m5.onrender.com/posts", {
         method: 'POST',
@@ -46,6 +53,8 @@ function handleSubmit(e) {
 
         .then((data) => {
           console.log('Post request successful:', data);
+
+          fetchTasks()
           Swal.fire('Task Added', 'Are you working hard or hardly working?', 'success');
         })
         .catch((err) => {
@@ -94,8 +103,6 @@ function handleSubmit(e) {
             className="homeworkModal-textarea"
             value={content}
             onChange={(e) => setContent(e.target.value)}
-
-
           />
         </div>
         <div className="details">
@@ -114,10 +121,9 @@ function handleSubmit(e) {
             value={duedate}
             onChange={(e) => setDueDate(e.target.value)}
           />
-          <br />
-          <button type="submit" className="homeworkModal-btn">
-            Submit
-          </button>
+
+          <button type="submit" className="homeworkModal-btn">Submit</button>
+
         </div>
       </form>
     </div>
