@@ -3,12 +3,12 @@ import {useAuth} from "../../contexts";
 import getSpritePath from "../Sprites";
 
 export default function LeaderboardCard({ username, generalxp, favcolor, index }) {
-
+    const spritePath = getSpritePath(favcolor.toLowerCase(), generalxp);
     return (
         <>
             <div className="leaderboard-entry">
-                <span className="leaderboard-position">#{index + 1}{favcolor}</span>
-                <span className="leaderboard-sprite"><img className="leaderSprite" src={getSpritePath(favcolor, generalxp)}/></span>
+                <span className="leaderboard-position">#{index + 1}</span>
+                <span className="leaderboard-sprite"><img className="leaderSprite" src={spritePath}/></span>
                 <span className="leaderboard-username">{username}</span>
                 <span>XP: {generalxp}</span>
             </div>
