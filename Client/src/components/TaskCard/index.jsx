@@ -1,4 +1,5 @@
 import React, {useState} from "react"
+import Swal from 'sweetalert2'
 import Modal from '../Modal';
 import EditForm from "../EditForm";
 
@@ -8,6 +9,11 @@ export default function TaskCard ({task,completeTask, setTasks}) {
   const [completed,setCompleted] = useState(false);
   const handleCheckbox = () => {
     setCompleted(!completed)
+    Swal.fire(
+      'Task Completed',
+      'Nice Work. Keep it Up',
+      'success'
+    )
   }
 
   //for modal
