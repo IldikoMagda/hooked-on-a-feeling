@@ -19,8 +19,15 @@ export default function CreateTaskForm({
   setSubjectXp,
 }) {
 
-function handleSubmit(e) {
+  const { setTasks } = useAuth()
+
+  function handleSubmit(e) {
     e.preventDefault();
+    const fetchTasks = async () => {
+      const response = await fetch(`https://project-3-backend-l4m5.onrender.com/posts/${localStorage.getItem('user')}`)
+      const data = await response.json()
+      setTasks(data)
+    }
     if (title) {
       fetch("https://project-3-backend-l4m5.onrender.com/posts", {
         method: 'POST',
@@ -46,6 +53,8 @@ function handleSubmit(e) {
 
         .then((data) => {
           console.log('Post request successful:', data);
+
+          fetchTasks()
           Swal.fire('Task Added', 'Are you working hard or hardly working?', 'success');
         })
         .catch((err) => {
@@ -83,22 +92,22 @@ function handleSubmit(e) {
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
-      </div>
-      <div className="details">
-        <label htmlFor="subject">Subject:</label>
-        <select id="subject" value={subject} onChange={(e) => setSubject(e.target.value)}>
-          <option value="Maths" >Maths</option>
-          <option value="Science">Science</option>
-          <option value="English">English</option>
-        </select>
-        <br></br>
-        <label htmlFor="duedate">Due Date:</label>
-        <input
-          type="date"
-          id="duedate"
-          name="duedate"
-          value={duedate}
-          onChange={(e) => setDueDate(e.target.value)}
+        </div>
+        <div className="details">
+          <label htmlFor="subject">Subject:</label>
+          <select id="subject" value={subject} onChange={(e) => setSubject(e.target.value)}>
+            <option value="Maths" >Maths</option>
+            <option value="Science">Science</option>
+            <option value="English">English</option>
+          </select>
+          <br></br>
+          <label htmlFor="duedate">Due Date:</label>
+          <input
+            type="date"
+            id="duedate"
+            name="duedate"
+            value={duedate}
+            onChange={(e) => setDueDate(e.target.value)}
           />
           <br></br>
           <label htmlFor="duedate">Due Date:</label>
@@ -110,7 +119,7 @@ function handleSubmit(e) {
             onChange={(e) => setDueDate(e.target.value)}
           />
           <button type="submit" className="homeworkModal-btn">Submit</button>
-       </div>
+        </div>
       </form>
     </div>
   );

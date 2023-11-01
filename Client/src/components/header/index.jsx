@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
-import { } from "../../contexts"
 import { useAuth } from "../../contexts"
 import CreatePostModal from "../../components/CreatePostModal/CreatePostModal";
 import Modal from "../Modal"

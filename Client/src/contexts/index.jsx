@@ -13,8 +13,10 @@ export const AuthProvider = ({ children }) => {
         favcolor:""
     })
 
+    const [tasks,setTasks] = useState([])
+
     return (
-        <AuthContext.Provider value={{ user, setUser, userData,setUserData}}>
+        <AuthContext.Provider value={{ user, setUser, userData,setUserData, tasks, setTasks}}>
             {children}
         </AuthContext.Provider>
     );

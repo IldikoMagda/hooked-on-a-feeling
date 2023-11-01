@@ -3,7 +3,7 @@ import Modal from '../Modal';
 import EditForm from "../EditForm";
 
 
-export default function TaskCard ({task,completeTask, setTasks}) {
+export default function TaskCard ({task,completeTask}) {
   
   const [completed,setCompleted] = useState(false);
   const handleCheckbox = () => {
@@ -36,7 +36,7 @@ export default function TaskCard ({task,completeTask, setTasks}) {
 
               <h2>Edit Task</h2>
               <div className="create-task-modal">
-                <EditForm task={task} closeModal={closeModal} setTasks={setTasks}/>
+                <EditForm task={task} closeModal={closeModal}/>
               </div>
               
             </Modal>

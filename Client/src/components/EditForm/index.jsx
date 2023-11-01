@@ -1,6 +1,8 @@
 import React, { useState } from "react"
+import {useAuth} from "../../contexts"
 
-export default function EditForm({ task, closeModal, setTasks}) {
+export default function EditForm({ task, closeModal}) {
+  const {setTasks} = useAuth()
   const [title, setTitle] = useState(task.title)
   const [content, setContent] = useState(task.content)
   const [duedate, setDuedate] = useState(task.duedate.substring(0, 10))
@@ -10,7 +12,6 @@ export default function EditForm({ task, closeModal, setTasks}) {
     const response = await fetch(`https://project-3-backend-l4m5.onrender.com/posts/${localStorage.getItem('user')}`)
     const data = await response.json()
     setTasks(data)
-    console.log("settasks")
   }
 
   const handleTitle = (e) => {
