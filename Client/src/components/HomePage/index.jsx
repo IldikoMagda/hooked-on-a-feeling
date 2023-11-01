@@ -16,7 +16,7 @@ function HomePage() {
   const { user, setUser, userData } = useAuth()
   const [tasks, setTasks] = useState([]);
   const { id } = useParams();
-  //order by duedate?
+  
   async function fetchTasks() {
     const response = await fetch(`https://project-3-backend-l4m5.onrender.com/posts/${localStorage.getItem('user')}`)
     const data = await response.json()
@@ -68,7 +68,7 @@ function HomePage() {
         <h1>Task List</h1>
         {/* <button>Create new task (creates modal)</button> */}
 
-        {localStorage.getItem("user") && tasks.length>0 && tasks.map((el, i) => <TaskCard task={el} completeTask={completeTask} key={i} />)}
+        {localStorage.getItem("user") && tasks.length>0 && tasks.map((el, i) => <TaskCard task={el} completeTask={completeTask} setTasks={setTasks} key={i} />)}
 
       </div>
     </div>
