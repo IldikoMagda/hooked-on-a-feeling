@@ -94,6 +94,8 @@ function handleSubmit(e) {
             className="homeworkModal-textarea"
             value={content}
             onChange={(e) => setContent(e.target.value)}
+
+
           />
         </div>
         <div className="details">
