@@ -21,9 +21,9 @@ export default function LeaderboardPage() {
   const topUsers = sortedUsers.slice(0, 4);
   console.log(topUsers);
 
-  const leaders = topUsers.map(user => {
+  const leaders = topUsers.map((user, i) => {
     return (
-      <LeaderboardCard key={user.id} {...user} />
+      <LeaderboardCard key={user.id} index={i} {...user} />
     )
   })
 
