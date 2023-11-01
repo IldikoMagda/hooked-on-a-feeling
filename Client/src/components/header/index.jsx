@@ -101,7 +101,7 @@ function Header() {
                   setGeneralXp={setGeneralXp}
                   subjectXp={subjectXp}
                   setSubjectXp={setSubjectXp}
-                  closeModal={closeModal}
+                  setIsModalOpen={setIsModalOpen}
                 />
               </div>
               <button onClick={closeModal}>Back</button>
