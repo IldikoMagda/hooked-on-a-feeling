@@ -32,7 +32,7 @@ export default function CreateTaskForm({
                     "content": content,
                     "dueDate": duedate,
                     "subject": subject,
-                    "generalXp": 10,
+                    "generalXp": 20,
                     "subjectXp": 10
                 }),
                 headers: {
