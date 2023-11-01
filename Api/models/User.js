@@ -2,8 +2,8 @@ const db = require("../database/connect")
 
 class User {
   
-  constructor({user_id, username,password,generalxp, subjectxpmaths,subjectxpenglish, subjectxpscience,role,favcolor}) {
-    this.id = user_id;
+  constructor({user_id, username,password,generalxp, subjectxpmaths,subjectxpenglish, subjectxpscience, role, favcolor}) {
+    this.user_id = user_id;
     this.username = username;
     this.password = password;
     this.generalxp = generalxp;
@@ -12,27 +12,11 @@ class User {
     this.subjectxpscience = subjectxpscience;
     this.role = role;
     this.favcolor = favcolor;
-
   }
 
   //getAll (order by generalXP)
   static async getAll() {
     const response = await db.query("SELECT * FROM user_account ORDER BY generalXp DESC");
-    return response.rows.map(el => new User(el));
-  }
-  //get All (order by maths)
-  static async getAllOrderMaths() {
-    const response = await db.query("SELECT * FROM user_account ORDER BY subjectXpMaths DESC");
-    return response.rows.map(el => new User(el));
-  }
-  //get All (order by english)
-  static async getAllOrderEnglish() {
-    const response = await db.query("SELECT * FROM user_account ORDER BY subjectXpEnglish DESC");
-    return response.rows.map(el => new User(el));
-  }
-  //get All (order by science)
-  static async getAllOrderScience() {
-    const response = await db.query("SELECT * FROM user_account ORDER BY subjectXpScience DESC");
     return response.rows.map(el => new User(el));
   }
   //getOneById
@@ -72,7 +56,7 @@ static async checkRole(id) {
     return newUser;
 }
   // update (for XPs)
-  async update(data) {
+  static async update(data) {
     let response = await db.query("UPDATE user_account SET generalXp = $1 WHERE user_id = $2 RETURNING *", [data.generalXp, this.id]);
     if (response.rows.length != 1) {
       throw new Error("Unable to update user.")
