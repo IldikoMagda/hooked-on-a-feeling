@@ -1,12 +1,28 @@
 import React, { useState, useEffect } from "react";
+
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { } from "../../contexts"
 import { useAuth } from "../../contexts"
 import CreatePostModal from "../../components/CreatePostModal/CreatePostModal";
+import Modal from "../Modal"
 import Swal from 'sweetalert2'
 
+
 function Header() {
-  const [isCreateTaskModalVisible, setCreateTaskModalVisible] = useState(false);
+  // const [show,setShow] = useState(false)
+  // const handleClose = () => setShow(false);
+  // const handleShow = () => setShow(true);
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   const { user, setUser, userData, setUserData } = useAuth();
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
@@ -16,9 +32,6 @@ function Header() {
   const [generalXp, setGeneralXp] = useState(50);
   const [subjectXp, setSubjectXp] = useState(50);
 
-  const toggleCreateTaskModal = () => {
-    setCreateTaskModalVisible(!isCreateTaskModalVisible);
-  };
 
   const logout = () => {
     Swal.fire(
@@ -55,7 +68,7 @@ function Header() {
       }
     }
 
-    if(localStorage.getItem("user")) {
+    if (localStorage.getItem("user")) {
       getUserData()
     }
   }, [localStorage.getItem("user")])
@@ -70,7 +83,35 @@ function Header() {
           Leaderboard
         </NavLink>
 
-        <button onClick={toggleCreateTaskModal} className="rpg-button">Create New Task</button>
+        {localStorage.getItem("user") &&
+
+          <div>
+            <button className="rpg-button" onClick={openModal}>Create New Task</button>
+            <Modal isOpen={isModalOpen} >
+
+              <h2>Create Task</h2>
+              <div className="create-task-modal">
+                <CreatePostModal
+                  title={title}
+                  setTitle={setTitle}
+                  content={content}
+                  setContent={setContent}
+                  duedate={duedate}
+                  setDueDate={setDueDate}
+                  subject={subject}
+                  setSubject={setSubject}
+                  repeatable={repeatable}
+                  setRepeatable={setRepeatable}
+                  generalXp={generalXp}
+                  setGeneralXp={setGeneralXp}
+                  subjectXp={subjectXp}
+                  setSubjectXp={setSubjectXp}
+                />
+              </div>
+              <button onClick={closeModal}>Close</button>
+            </Modal>
+          </div>
+        }
         {!localStorage.getItem('user') &&
           <NavLink to="/login" className="rpg-button">
             Login
@@ -86,28 +127,6 @@ function Header() {
       </header>
 
       <Outlet />
-
-      {isCreateTaskModalVisible && (
-        <div className="create-task-modal">
-            <CreatePostModal
-              title={title}
-              setTitle={setTitle}
-              content={content}
-              setContent={setContent}
-              duedate={duedate}
-              setDueDate={setDueDate}
-              subject={subject}
-              setSubject={setSubject}
-              repeatable={repeatable}
-              setRepeatable={setRepeatable}
-              generalXp={generalXp}
-              setGeneralXp={setGeneralXp}
-              subjectXp={subjectXp}
-              setSubjectXp={setSubjectXp}
-            />
-          <button onClick={toggleCreateTaskModal}>Close</button>
-        </div>
-      )}
     </>
   );
 }
