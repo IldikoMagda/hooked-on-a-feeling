@@ -25,14 +25,14 @@ function HomePage() {
     fetchTasks()
   }, [localStorage.getItem("user")])
 
-  async function deleteTask(id) {
+  async function completeTask(id, updatedData) {
         const options = {
-            method: "DELETE",
-            headers: { 'Content-Type': 'application/json' }
+            method: "PATCH",
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(updatedData)
         }
         const response = await fetch(`https://project-3-backend-l4m5.onrender.com/posts/${id}`, options);
         const data = await response.json();
-        console.log(data)
         setTasks(data.filter(task => task.id !== id))
     }
 
@@ -66,7 +66,7 @@ function HomePage() {
       <div className="right-box">
         <h1>Task List</h1>
         {/* <button>Create new task (creates modal)</button> */}
-        {localStorage.getItem("user") && tasks.length>0 && tasks.map((el, i) => <TaskCard task={el} deleteTask={deleteTask} />)}
+        {localStorage.getItem("user") && tasks.length>0 && tasks.map((el, i) => <TaskCard task={el} completeTask={completeTask} />)}
       </div>
     </div>
   );
