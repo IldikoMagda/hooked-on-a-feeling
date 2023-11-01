@@ -37,7 +37,7 @@ export default function CreateTaskForm({
       fetch("https://project-3-backend-l4m5.onrender.com/posts", {
         method: 'POST',
         body: JSON.stringify({
-          user_id: localStorage.getItem("user"), // set to 1 to try to make it work as I'm not logged in!!
+          user_id: localStorage.getItem("user"), 
           title: title,
           content: content,
           dueDate: duedate,
