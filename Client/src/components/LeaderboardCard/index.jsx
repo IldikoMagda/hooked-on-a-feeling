@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import {useAuth} from "../../contexts";
 import getSpritePath from "../Sprites";
 
+
 export default function LeaderboardCard({ username, subjectXp, favcolor, index }) {
 
     return (
