@@ -16,7 +16,8 @@ export default function CreatePostModal({
     setRepeatable,
     setGeneralXp,
     setSubjectXp,
-    handleSubmit
+    handleSubmit,
+    closeModal
   }) {
   return (
     <>
@@ -36,7 +37,10 @@ export default function CreatePostModal({
         subjectXp={subjectXp}
         setSubjectXp={setSubjectXp}
       />
-      <button onClick= {handleSubmit} type='button'></button>
+      <button onClick= {()=>{
+        closeModal()
+        handleSubmit()
+        }} type='button'></button>
     </>
   )
 }

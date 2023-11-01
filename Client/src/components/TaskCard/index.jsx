@@ -7,7 +7,7 @@ export default function TaskCard ({task}) {
   }
   return (
     <>
-  <h1>Task List</h1>
+
         <div className="todo-item">
           <h3>{task.title}</h3>
           <p>Due: {task.duedate.substring(0,10)}</p>

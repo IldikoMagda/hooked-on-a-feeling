@@ -22,10 +22,10 @@ export default function CreateTaskForm({
     function handleSubmit(e){
         e.preventDefault();
         if (title){
-            fetch("http://localhost:3000/posts",{
+            fetch("https://project-3-backend-l4m5.onrender.com/posts",{
                 method: 'POST',
                 body: JSON.stringify({
-                    "user_id": 1, // set to 1 to try to make it work as I'm not logged in!!
+                    "user_id": localStorage.getItem("user"), // set to 1 to try to make it work as I'm not logged in!!
                     "title": title,
                     "content": content,
                     "dueDate": duedate,
@@ -41,6 +41,8 @@ export default function CreateTaskForm({
             
             .then((data) =>{
                 console.log('Post request successful:', data);
+                
+
             })
             .catch((err)=>{
                 console.log(err.message)
@@ -54,7 +56,11 @@ export default function CreateTaskForm({
 
 
   return (
-    <form onSubmit={handleSubmit}>
+
+
+
+    <div className='w3-modal'>
+      <form  className= "w3-modal-content" onSubmit={handleSubmit}>
       <div className="Title">
         <label htmlFor="title">Title:</label>
         <input
@@ -63,7 +69,7 @@ export default function CreateTaskForm({
           placeholder="Title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-        />
+          />
       </div>
       <div className="Content">
         <label htmlFor="content">Content:</label>
@@ -73,7 +79,7 @@ export default function CreateTaskForm({
           placeholder="Content"
           value={content}
           onChange={(e) => setContent(e.target.value)}
-        />
+          />
       </div>
       <div className="details">
         <label htmlFor="subject">Subject:</label>
@@ -82,13 +88,14 @@ export default function CreateTaskForm({
           <option value="Science">Science</option>
         </select>
         <label htmlFor="repeatable">Repeatable:</label>
+        <br></br>
         <input
           type="checkbox"
           id="repeatable"
           name="repeatable"
           checked={repeatable}
           onChange={() => setRepeatable(!repeatable)}
-        />
+          />
         <label htmlFor="duedate">Due Date:</label>
         <input
           type="date"
@@ -96,7 +103,7 @@ export default function CreateTaskForm({
           name="duedate"
           value={duedate}
           onChange={(e) => setDueDate(e.target.value)}
-        />
+          />
         <div>
           <label htmlFor="generalXp">General XP:</label>
           <input
@@ -108,10 +115,10 @@ export default function CreateTaskForm({
             onChange={(e) => {
                 const value = parseInt(e.target.value);
                 if (!isNaN(value) && value >= 0 && value <= 50) {
-                  setGeneralXp(value);
+                    setGeneralXp(value);
                 }
             }}
-          />
+            />
         </div>
         <div>
           <label htmlFor="subjectXp">Subject XP:</label>
@@ -124,13 +131,14 @@ export default function CreateTaskForm({
             onChange={(e) => {
                 const value = parseInt(e.target.value);
                 if (!isNaN(value) && value >= 0 && value <= 50) {
-                  setSubjectXp(value);
+                    setSubjectXp(value);
                 }
             }}
-          />
+            />
         </div>
         <button type="submit">Submit</button>
       </div>
     </form>
+</div>
   )
 }
