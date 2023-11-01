@@ -19,7 +19,6 @@ export default function CreateTaskForm({
   setGeneralXp,
   setSubjectXp,
 }) {
-  const { user } = useAuth();
 
 
     function handleSubmit(e){
@@ -28,13 +27,13 @@ export default function CreateTaskForm({
             fetch("https://project-3-backend-l4m5.onrender.com/posts",{
                 method: 'POST',
                 body: JSON.stringify({
-                    "user_id": localStorage.getItem("user"), // set to 1 to try to make it work as I'm not logged in!!
+                    "user_id": localStorage.getItem("user"),
                     "title": title,
                     "content": content,
                     "dueDate": duedate,
                     "subject": subject,
-                    "generalXp": generalXp || 3,
-                    "subjectXp": subjectXp || 3,
+                    "generalXp": 10,
+                    "subjectXp": 10
                 }),
                 headers: {
                     'Content-type': 'application/json; charset=UTF-8',
@@ -109,15 +108,6 @@ export default function CreateTaskForm({
           <option value="English">English</option>
         </select>
         <br></br>
-        <label htmlFor="repeatable">Repeatable:</label>
-        <input
-          type="checkbox"
-          id="repeatable"
-          name="repeatable"
-          checked={repeatable}
-          onChange={() => setRepeatable(!repeatable)}
-          />
-        <br></br>
         <label htmlFor="duedate">Due Date:</label>
         <input
           type="date"
@@ -134,38 +124,6 @@ export default function CreateTaskForm({
             value={duedate}
             onChange={(e) => setDueDate(e.target.value)}
           />
-          <div>
-            <label htmlFor="generalXp">General XP:</label>
-            <input
-              type="number"
-              id="generalXp"
-              min="0"
-              max="50"
-              value={generalXp}
-              onChange={(e) => {
-                const value = parseInt(e.target.value);
-                if (!isNaN(value) && value >= 0 && value <= 50) {
-                  setGeneralXp(value);
-                }
-              }}
-            />
-          </div>
-          <div>
-            <label htmlFor="subjectXp">Subject XP:</label>
-            <input
-              type="number"
-              id="subjectXp"
-              min="0"
-              max="50"
-              value={subjectXp}
-              onChange={(e) => {
-                const value = parseInt(e.target.value);
-                if (!isNaN(value) && value >= 0 && value <= 50) {
-                  setSubjectXp(value);
-                }
-              }}
-            />
-          </div>
           <button type="submit" className="homeworkModal-btn">Submit</button>
         </div>
       </form>
