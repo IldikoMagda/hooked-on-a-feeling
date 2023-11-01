@@ -17,6 +17,7 @@ export default function CreateTaskForm({
   setRepeatable,
   setGeneralXp,
   setSubjectXp,
+  closeModal
 }) {
 
   const { setTasks } = useAuth()
@@ -75,6 +76,7 @@ export default function CreateTaskForm({
         text: 'Make sure you fill out all the form.',
       });
     }
+    closeModal()
   }
 
   return (
@@ -87,7 +89,7 @@ export default function CreateTaskForm({
           <input
             type="text"
             id="title"
-            placeholder="Title"
+            placeholder="Enter title..."
             className="homeworkModal-input"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
@@ -99,7 +101,7 @@ export default function CreateTaskForm({
           </label>
           <textarea
             id="content"
-            placeholder="Content"
+            placeholder="Enter content..."
             className="homeworkModal-textarea"
             value={content}
             onChange={(e) => setContent(e.target.value)}
