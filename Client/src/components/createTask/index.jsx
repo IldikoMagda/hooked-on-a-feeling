@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useAuth } from '../../contexts';
+import Swal from 'sweetalert2'
 
 export default function CreateTaskForm({
     title,
@@ -41,16 +42,31 @@ export default function CreateTaskForm({
             
             .then((data) =>{
                 console.log('Post request successful:', data);
-                
+                Swal.fire(
+                  'Task Added',
+                  'Are you working hard or hardly working?',
+                  'success'
+                )
 
             })
             .catch((err)=>{
                 console.log(err.message)
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Oops...',
+                  text: err.message,
+                  footer: 'Make sure you fill out all the form.'
+                })
             })
             }
             else{
                 console.log('Title:', title);
                 console.log('Content:', content);
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Oops...',
+                  text: 'Make sure you fill out all the form.'
+                })
             }
         }
 
@@ -86,9 +102,10 @@ export default function CreateTaskForm({
         <select id="subject" value={subject} onChange={(e) => setSubject(e.target.value)}>
           <option value="Maths">Maths</option>
           <option value="Science">Science</option>
+          <option value="English">English</option>
         </select>
-        <label htmlFor="repeatable">Repeatable:</label>
         <br></br>
+        <label htmlFor="repeatable">Repeatable:</label>
         <input
           type="checkbox"
           id="repeatable"
@@ -96,6 +113,7 @@ export default function CreateTaskForm({
           checked={repeatable}
           onChange={() => setRepeatable(!repeatable)}
           />
+        <br></br>
         <label htmlFor="duedate">Due Date:</label>
         <input
           type="date"
