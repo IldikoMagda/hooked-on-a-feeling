@@ -6,8 +6,6 @@ export default function EditForm({ task, closeModal }) {
   const [duedate, setDuedate] = useState(task.duedate)
   const [subject, setSubject] = useState(task.subject)
 
-
-  console.log(task)
   const handleTitle = (e) => {
     setTitle(e.target.value)
   }
@@ -51,6 +49,8 @@ export default function EditForm({ task, closeModal }) {
     closeModal()
   }
 
+  
+
   return (
     <>
       <form onSubmit={handleSubmit}>
@@ -92,7 +92,9 @@ export default function EditForm({ task, closeModal }) {
           value={duedate}
           onChange={handleDuedate}
         />
-        <button type="submit" className="homeworkModal-btn">Submit</button>
+        <button onClick={closeModal}>Back</button>
+        <button type="submit" className="homeworkModal-btn">Submit Tasks</button>
+        <button className="homeworkModal-btn" onClick={handleDelete}>Delete Task</button>
       </form>
     </>
   )
