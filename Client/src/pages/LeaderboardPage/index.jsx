@@ -10,20 +10,19 @@ export default function LeaderboardPage() {
     const loadLeaderboard = async () => {
       const response = await fetch(`https://project-3-backend-l4m5.onrender.com/users`);
       const data = await response.json();
-      setUsers(data);
+      const sortedUsers = data.slice().sort((a, b) => b.generalxp - a.generalxp);
+      // console.log(users)
+      const topUsers = sortedUsers.slice(0, 6);
+      // console.log(topUsers);
+      setUsers(topUsers);
     };
 
     loadLeaderboard();
   }, []);
 
-  const sortedUsers = users.slice().sort((a, b) => b.generalXp - a.generalXp);
-
-  const topUsers = sortedUsers.slice(0, 4);
-  console.log(topUsers);
-
-  const leaders = topUsers.map(user => {
+  const leaders = users.map(user => {
     return (
-      <LeaderboardCard key={user.id} {...user} />
+      <LeaderboardCard key={user.user_id} {...user} />
     )
   })
 
