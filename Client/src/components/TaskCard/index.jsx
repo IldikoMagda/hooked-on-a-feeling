@@ -36,9 +36,9 @@ export default function TaskCard ({task,completeTask}) {
 
               <h2>Edit Task</h2>
               <div className="create-task-modal">
-                <EditForm task={task}/>
+                <EditForm task={task} closeModal={closeModal}/>
               </div>
-              <button onClick={closeModal}>Close</button>
+              
             </Modal>
           </div>
         </div>

@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 
-export default function EditForm({ task }) {
+export default function EditForm({ task, closeModal }) {
   const [title, setTitle] = useState(task.title)
   const [content, setContent] = useState(task.content)
   const [duedate, setDuedate] = useState(task.duedate)
@@ -40,11 +40,15 @@ export default function EditForm({ task }) {
         }
         const response = await fetch(`https://project-3-backend-l4m5.onrender.com/posts/post/${task.item_id}`, options)
         const data = await response
+        if (response.status===200) {
+          alert("Task edited succesfully")
+        }
       } catch (err) {
         console.error(err.message)
       }
     }
     updateTask()
+    closeModal()
   }
 
   return (
