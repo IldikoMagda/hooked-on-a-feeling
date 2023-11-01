@@ -18,7 +18,7 @@ function HomePage() {
   const { id } = useParams();
   
   async function fetchTasks() {
-    const response = await fetch(`https://project-3-backend-l4m5.onrender.com/posts/${localStorage.getItem('user')}`)
+    const response = await fetch(`https://project-3-backend-l4m5.onrender.com/posts/Post/${localStorage.getItem('user')}`)
     const data = await response.json()
     setTasks(data)
   }
@@ -31,7 +31,7 @@ function HomePage() {
             method: "PATCH",
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-              completed: !completed
+              completed: true
             })
         }
         const response = await fetch(`https://project-3-backend-l4m5.onrender.com/posts/${id}`, options);

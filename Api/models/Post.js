@@ -43,8 +43,8 @@ class Post {
     }
 
     static async updatePost(data,id) {
-        const {title, content,dueDate,subject,completed="FALSE",repeatable="FALSE",generalXp,subjectXp } = data;
-        const response = await db.query("UPDATE post SET title= $1, content=$2, dueDate=$3,subject =$4,completed =$5,repeatable =$6,generalXp =$7,subjectXp =$8 WHERE item_id= $9 RETURNING *;",[ title, content,dueDate,subject,completed,repeatable,generalXp,subjectXp ,id ]);
+        const {title, content,duedate,subject,completed,repeatable,generalxp,subjectxp } = data;
+        const response = await db.query("UPDATE post SET title= $1, content=$2, dueDate=$3,subject =$4,completed =$5,repeatable =$6,generalXp =$7,subjectXp =$8 WHERE item_id= $9 RETURNING *;",[ title, content,duedate,subject,completed,repeatable,generalxp,subjectxp ,id ]);
         if (response.rows.length != 1) {
             throw new Error("Unable to update Post.")
         }
