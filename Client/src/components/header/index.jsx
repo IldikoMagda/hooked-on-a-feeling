@@ -82,7 +82,7 @@ function Header() {
 
           <div>
             <button className="rpg-button" onClick={openModal}>Create New Task</button>
-            <Modal isOpen={isModalOpen} >
+            <Modal isOpen={isModalOpen}  >
 
               <h2>Create Task</h2>
               <div className="create-task-modal">
@@ -101,9 +101,10 @@ function Header() {
                   setGeneralXp={setGeneralXp}
                   subjectXp={subjectXp}
                   setSubjectXp={setSubjectXp}
+                  closeModal={closeModal}
                 />
               </div>
-              <button onClick={closeModal}>Close</button>
+              <button onClick={closeModal}>Back</button>
             </Modal>
           </div>
         }
