@@ -83,24 +83,27 @@ function handleSubmit(e) {
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
-      </div>
-      <div className="details">
-        <label htmlFor="subject">Subject:</label>
-        <select id="subject" value={subject} onChange={(e) => setSubject(e.target.value)}>
-          <option value="Maths">Maths</option>
-          <option value="Science">Science</option>
-          <option value="English">English</option>
-        </select>
-        <br></br>
-        <label htmlFor="duedate">Due Date:</label>
-        <input
-          type="date"
-          id="duedate"
-          name="duedate"
-          value={duedate}
-          onChange={(e) => setDueDate(e.target.value)}
+        </div>
+        <div className="homeworkModal-content">
+          <label htmlFor="content" className="homeworkModal-label">
+            Content:
+          </label>
+          <textarea
+            id="content"
+            placeholder="Content"
+            className="homeworkModal-textarea"
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
           />
-          <br></br>
+        </div>
+        <div className="details">
+          <label htmlFor="subject">Subject:</label>
+          <select id="subject" value={subject} onChange={(e) => setSubject(e.target.value)}>
+            <option value="Maths">Maths</option>
+            <option value="Science">Science</option>
+            <option value="English">English</option>
+          </select>
+          <br />
           <label htmlFor="duedate">Due Date:</label>
           <input
             type="date"
@@ -109,8 +112,11 @@ function handleSubmit(e) {
             value={duedate}
             onChange={(e) => setDueDate(e.target.value)}
           />
-          <button type="submit" className="homeworkModal-btn">Submit</button>
-       </div>
+          <br />
+          <button type="submit" className="homeworkModal-btn">
+            Submit
+          </button>
+        </div>
       </form>
     </div>
   );
