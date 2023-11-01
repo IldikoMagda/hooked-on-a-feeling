@@ -5,7 +5,7 @@ import { } from "../../contexts"
 import { useAuth } from "../../contexts"
 import CreatePostModal from "../../components/CreatePostModal/CreatePostModal";
 import Modal from "../Modal"
-
+import Swal from 'sweetalert2'
 
 
 function Header() {
@@ -34,6 +34,11 @@ function Header() {
 
 
   const logout = () => {
+    Swal.fire(
+      'Logging Out',
+      'Please wait to be redirected',
+      'success'
+    )
     localStorage.removeItem('token');
     localStorage.removeItem('user')
     setUser(null) //unnecessary?
@@ -45,6 +50,7 @@ function Header() {
       subjectxpscience: 0,
       favcolor: ""
     })
+
   }
   useEffect(() => { //onLoad or user_id change, get userData
     const getUserData = async () => {
@@ -111,10 +117,12 @@ function Header() {
             Login
           </NavLink>
         }
+
         {localStorage.getItem('user') &&
           <NavLink to="/login" onClick={logout} className="rpg-button">
             {"Hi " + userData.username} Logout
           </NavLink>
+
         }
       </header>
 
