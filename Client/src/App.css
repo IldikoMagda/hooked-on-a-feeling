@@ -312,6 +312,7 @@ body {
   justify-content: flex-start; /* Changed from center to flex-start */
   min-height: 50vh;
   max-height: 80vh;
+  width: 80vh;
   background: rgba(255, 248, 220, 0.9);
   padding: 20px;
   border-radius: 10px;
@@ -335,10 +336,13 @@ body {
   border-radius: 10px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  width: 60vh;
 }
 
 .leaderboard-position {
   margin-right: 50px;
+  text-align: left;
 }
 
 .leaderboard-sprite {
@@ -347,11 +351,13 @@ body {
 }
 
 .leaderboard-username {
-  margin-right: 100px;
+flex-grow: 1;
 }
 
 .leaderSprite {
-  height: 80px
+  height: 80px;
+  margin-right: 20px; 
+  margin-left: 5px;
 }
 /*PROFILE*/
 .profile-header {
