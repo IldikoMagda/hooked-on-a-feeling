@@ -23,7 +23,7 @@ function Header() {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [duedate, setDueDate] = useState('');
-  const [subject, setSubject] = useState('');
+  const [subject, setSubject] = useState('Maths');
   const [repeatable, setRepeatable] = useState(false);
   const [generalXp, setGeneralXp] = useState(50);
   const [subjectXp, setSubjectXp] = useState(50);
