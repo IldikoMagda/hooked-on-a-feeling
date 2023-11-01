@@ -29,7 +29,7 @@ export default function TaskCard ({task,completeTask, setTasks}) {
           <p>{task.subject}</p>
           <p>Due: {task.duedate.substring(0,10)}</p>
           <p>XP Worth: {task.generalxp}</p>
-          <input type="checkbox" onChange={handleCheckbox}  onClick={completeTask}/> Completed
+          <input type="checkbox" onChange={handleCheckbox}  onClick={() => completeTask(task.item_id)}/> Completed
           <div>
             <button className="rpg-button" onClick={openModal}>Edit Task</button>
             <Modal isOpen={isModalOpen} >
