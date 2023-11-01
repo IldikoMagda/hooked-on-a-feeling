@@ -22,7 +22,7 @@ export default function CreateTaskForm({
 
     function handleSubmit(e){
         e.preventDefault();
-        if (title){
+        if (title && content){
             fetch("https://project-3-backend-l4m5.onrender.com/posts",{
                 method: 'POST',
                 body: JSON.stringify({
