@@ -4,7 +4,7 @@ import getSpritePath from "../Sprites";
 
 
 
-export default function LeaderboardCard({ username, subjectXp, favcolor, index,generalXp }) {
+export default function LeaderboardCard({ username, subjectXp, favcolor, index, generalXp }) {
     const spritePath = getSpritePath(favcolor.toLowerCase(), generalXp);
     return (
         <>

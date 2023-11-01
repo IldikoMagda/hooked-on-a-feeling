@@ -28,7 +28,7 @@ export default function LeaderboardPage() {
   };
   const leaders = sortedUsers.map((user, i) => {
     return (
-      <LeaderboardCard key={i} index={i} subjectXp={user[filterType.toLowerCase()]} {...user} />
+      <LeaderboardCard key={i} index={i} subjectXp={user[filterType.toLowerCase()]} generalXp={user.generalxp} {...user} />
     );
   });
   return (
