@@ -87,7 +87,7 @@ function handleSubmit(e) {
       <div className="details">
         <label htmlFor="subject">Subject:</label>
         <select id="subject" value={subject} onChange={(e) => setSubject(e.target.value)}>
-          <option value="Maths">Maths</option>
+          <option value="Maths" >Maths</option>
           <option value="Science">Science</option>
           <option value="English">English</option>
         </select>
