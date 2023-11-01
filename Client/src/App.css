@@ -309,19 +309,18 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start; /* Changed from center to flex-start */
   min-height: 50vh;
   max-height: 80vh;
+  width: 80vh;
   background: rgba(255, 248, 220, 0.9);
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-  /* max-width: 300px; */
   border: 10px solid transparent;
   border-image: url('./assets/qubodup-light_wood.png') 40%;
-  /* overflow: auto; */
-  overflow: hidden;
-
+  overflow: auto;
+  box-sizing: border-box; /* Added this line */
 }
 
 .leaderboard-heading {
@@ -337,10 +336,13 @@ body {
   border-radius: 10px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  width: 60vh;
 }
 
 .leaderboard-position {
   margin-right: 50px;
+  text-align: left;
 }
 
 .leaderboard-sprite {
@@ -349,11 +351,13 @@ body {
 }
 
 .leaderboard-username {
-  margin-right: 100px;
+flex-grow: 1;
 }
 
 .leaderSprite {
-  height: 80px
+  height: 80px;
+  margin-right: 20px; 
+  margin-left: 5px;
 }
 /*PROFILE*/
 .profile-header {
@@ -423,8 +427,6 @@ body {
   top: 10px;
   right: 10px;
 }
-
-
 
 /* CREATE TASK MODAL */
 
