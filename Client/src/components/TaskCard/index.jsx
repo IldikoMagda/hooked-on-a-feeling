@@ -25,6 +25,8 @@ export default function TaskCard ({task,completeTask}) {
 
         <div className="todo-item">
           <h3>{task.title}</h3>
+          <p>{task.content}</p>
+          <p>{task.subject}</p>
           <p>Due: {task.duedate.substring(0,10)}</p>
           <p>XP Worth: {task.generalxp}</p>
           <input type="checkbox" onChange={handleCheckbox}  onClick={completeTask}/> Completed
@@ -34,9 +36,9 @@ export default function TaskCard ({task,completeTask}) {
 
               <h2>Edit Task</h2>
               <div className="create-task-modal">
-                <EditForm/>
+                <EditForm task={task} closeModal={closeModal}/>
               </div>
-              <button onClick={closeModal}>Close</button>
+              
             </Modal>
           </div>
         </div>
