@@ -2,7 +2,7 @@ import React, { useState , useEffect} from 'react'
 import { NavLink , useNavigate} from 'react-router-dom'
 import "./CreateAccountPage.css"
 import {useAuth} from "../../contexts"
- 
+import Swal from 'sweetalert2'
 
 export default function CreateAccount() {
   const navigate = useNavigate()
@@ -46,16 +46,20 @@ export default function CreateAccount() {
       if (response.status == 200) {
         localStorage.setItem("token", data.token);
         localStorage.setItem("user_id", data.user_id);
-        console.log(data)
-        console.log("Role",data.Role)
-        localStorage.setItem("Role", data.Role);
         setUser(data.user_id)
         setMessage("Login successful.")
         setTimeout(()=> {
           setMessage("")
         }, 700)
       } else {
-        alert(data.error)
+        //alert(data.error)
+        console.log("Error Test")
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: data.error,
+          footer: 'Check you entered the correct details or register an account.'
+        })
       }
     }
 
@@ -77,10 +81,27 @@ export default function CreateAccount() {
           const response = await fetch("https://project-3-backend-l4m5.onrender.com/users/register", options);
           const data = await response.json();
           if (response.status == 201) {
+            Swal.fire(
+              'Register Successful',
+              'Please wait to be redirected',
+              'success'
+            )
             login()
           }
+          else{
+            Swal.fire({
+              icon: 'error',
+              title: 'Choose a different Username',
+              text: "Someone is already using that username"
+            })
+          }
         } else {
-          setMessage("Passwords don't match. Try again.")
+          //setMessage("Passwords don't match. Try again.")
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: "Your Passwords don't match. Please try again."
+          })
         }
     } catch (err) {
       console.error(err.message)
@@ -88,6 +109,7 @@ export default function CreateAccount() {
       setTimeout(()=> {
         setMessage("")
       }, 5000)
+     
     }
     }
     register()

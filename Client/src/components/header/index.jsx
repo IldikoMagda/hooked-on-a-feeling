@@ -3,6 +3,7 @@ import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { } from "../../contexts"
 import { useAuth } from "../../contexts"
 import CreatePostModal from "../../components/CreatePostModal/CreatePostModal";
+import Swal from 'sweetalert2'
 
 function Header() {
   const [isCreateTaskModalVisible, setCreateTaskModalVisible] = useState(false);
@@ -20,6 +21,11 @@ function Header() {
   };
 
   const logout = () => {
+    Swal.fire(
+      'Logging Out',
+      'Please wait to be redirected',
+      'success'
+    )
     localStorage.removeItem('token');
     localStorage.removeItem('user')
     setUser(null) //unnecessary?

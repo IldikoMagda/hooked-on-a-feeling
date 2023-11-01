@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { NavLink, useNavigate } from "react-router-dom"
 import { useAuth } from "../../contexts"
+import Swal from 'sweetalert2'
+
 
 export default function LoginPage() {
   const navigate = useNavigate()
@@ -43,11 +45,23 @@ export default function LoginPage() {
         const dataRole = await responseRole.json();
         localStorage.setItem("Role", dataRole);
         setUser(data.user_id)
-        setMessage("Login successful.")
+        //setMessage("Login successful.")
+        Swal.fire(
+          'Login Successful',
+          'Please wait to be redirected',
+          'success'
+        )
 
 
       } else {
-        alert(data.error)
+        //alert(data.error)
+        console.log("Error Test")
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: data.error,
+          footer: 'Check you entered the correct details or register an account.'
+        })
       }
     }
     login()
