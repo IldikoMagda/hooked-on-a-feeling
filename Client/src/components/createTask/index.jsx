@@ -86,9 +86,10 @@ export default function CreateTaskForm({
         <select id="subject" value={subject} onChange={(e) => setSubject(e.target.value)}>
           <option value="Maths">Maths</option>
           <option value="Science">Science</option>
+          <option value="English">English</option>
         </select>
-        <label htmlFor="repeatable">Repeatable:</label>
         <br></br>
+        <label htmlFor="repeatable">Repeatable:</label>
         <input
           type="checkbox"
           id="repeatable"
@@ -96,6 +97,7 @@ export default function CreateTaskForm({
           checked={repeatable}
           onChange={() => setRepeatable(!repeatable)}
           />
+        <br></br>
         <label htmlFor="duedate">Due Date:</label>
         <input
           type="date"
