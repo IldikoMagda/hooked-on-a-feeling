@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import Swal from 'sweetalert2'
 
 export default function EditForm({ task, closeModal, setTasks}) {
   const [title, setTitle] = useState(task.title)
@@ -48,7 +49,12 @@ export default function EditForm({ task, closeModal, setTasks}) {
         const response = await fetch(`https://project-3-backend-l4m5.onrender.com/posts/post/${task.item_id}`, options)
         const data = await response
         if (response.status === 200) {
-          alert("Task edited succesfully")
+          
+          Swal.fire(
+            'Task Edited',
+            'Having fun yet?',
+            'success'
+          )
           fetchTasks()
         }
       } catch (err) {
@@ -68,8 +74,13 @@ export default function EditForm({ task, closeModal, setTasks}) {
         const response = await fetch(`https://project-3-backend-l4m5.onrender.com/posts/post/${task.item_id}`, options)
         const data = await response.json()
         fetchTasks() // move to if statement below once deployed api is updated
-        if (response.status===204) {
-          alert("Task deleted succesfully")
+        console.log("Status",response.status)
+        if (response.status===200) {
+          Swal.fire(
+            'Task Deleted',
+            'Add more tasks',
+            'success'
+          )
         }
       } catch (err) {
         console.error(err.message)
