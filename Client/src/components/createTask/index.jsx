@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useAuth } from '../../contexts';
-import Swal from 'sweetalert2'
-
+import Swal from 'sweetalert2';
 
 export default function CreateTaskForm({
   title,
@@ -19,69 +18,53 @@ export default function CreateTaskForm({
   setGeneralXp,
   setSubjectXp,
 }) {
-  const { user } = useAuth();
 
-
-    function handleSubmit(e){
-        e.preventDefault();
-        if (title){
-            fetch("https://project-3-backend-l4m5.onrender.com/posts",{
-                method: 'POST',
-                body: JSON.stringify({
-                    "user_id": localStorage.getItem("user"), // set to 1 to try to make it work as I'm not logged in!!
-                    "title": title,
-                    "content": content,
-                    "dueDate": duedate,
-                    "subject": subject,
-                    "generalXp": generalXp || 3,
-                    "subjectXp": subjectXp || 3,
-                }),
-                headers: {
-                    'Content-type': 'application/json; charset=UTF-8',
-                },
-            })
-            .then((res)=> res.json())
-            
-            .then((data) =>{
-                console.log('Post request successful:', data);
-                Swal.fire(
-                  'Task Added',
-                  'Are you working hard or hardly working?',
-                  'success'
-                )
-
-            })
-            .catch((err)=>{
-                console.log(err.message)
-                Swal.fire({
-                  icon: 'error',
-                  title: 'Oops...',
-                  text: err.message,
-                  footer: 'Make sure you fill out all the form.'
-                })
-            })
-            }
-            else{
-                console.log('Title:', title);
-                console.log('Content:', content);
-                Swal.fire({
-                  icon: 'error',
-                  title: 'Oops...',
-                  text: 'Make sure you fill out all the form.'
-                })
-            }
-        }
-
+function handleSubmit(e) {
+    e.preventDefault();
+    if (title) {
+      fetch("https://project-3-backend-l4m5.onrender.com/posts", {
+        method: 'POST',
+        body: JSON.stringify({
+          user_id: localStorage.getItem("user"), // set to 1 to try to make it work as I'm not logged in!!
+          title: title,
+          content: content,
+          dueDate: duedate,
+          subject: subject,
+          generalXp: generalXp || 3,
+          subjectXp: subjectXp || 3,
+        }),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        },
+      })
+        .then((res) => {
+          if (!res.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return res.json();
+        })
 
         .then((data) => {
-          console.log("Post request successful:", data);
+          console.log('Post request successful:', data);
+          Swal.fire('Task Added', 'Are you working hard or hardly working?', 'success');
         })
         .catch((err) => {
           console.log(err.message);
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: err.message,
+            footer: 'Make sure you fill out all the form.',
+          });
         });
     } else {
-      console.log("Title:", title);
-      console.log("Content:", content);
+      console.log('Title:', title);
+      console.log('Content:', content);
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Make sure you fill out all the form.',
+      });
     }
   }
 
@@ -109,15 +92,6 @@ export default function CreateTaskForm({
           <option value="English">English</option>
         </select>
         <br></br>
-        <label htmlFor="repeatable">Repeatable:</label>
-        <input
-          type="checkbox"
-          id="repeatable"
-          name="repeatable"
-          checked={repeatable}
-          onChange={() => setRepeatable(!repeatable)}
-          />
-        <br></br>
         <label htmlFor="duedate">Due Date:</label>
         <input
           type="date"
@@ -126,6 +100,7 @@ export default function CreateTaskForm({
           value={duedate}
           onChange={(e) => setDueDate(e.target.value)}
           />
+          <br></br>
           <label htmlFor="duedate">Due Date:</label>
           <input
             type="date"
@@ -134,40 +109,8 @@ export default function CreateTaskForm({
             value={duedate}
             onChange={(e) => setDueDate(e.target.value)}
           />
-          <div>
-            <label htmlFor="generalXp">General XP:</label>
-            <input
-              type="number"
-              id="generalXp"
-              min="0"
-              max="50"
-              value={generalXp}
-              onChange={(e) => {
-                const value = parseInt(e.target.value);
-                if (!isNaN(value) && value >= 0 && value <= 50) {
-                  setGeneralXp(value);
-                }
-              }}
-            />
-          </div>
-          <div>
-            <label htmlFor="subjectXp">Subject XP:</label>
-            <input
-              type="number"
-              id="subjectXp"
-              min="0"
-              max="50"
-              value={subjectXp}
-              onChange={(e) => {
-                const value = parseInt(e.target.value);
-                if (!isNaN(value) && value >= 0 && value <= 50) {
-                  setSubjectXp(value);
-                }
-              }}
-            />
-          </div>
           <button type="submit" className="homeworkModal-btn">Submit</button>
-        </div>
+       </div>
       </form>
     </div>
   );
