@@ -9,10 +9,6 @@ import Swal from 'sweetalert2'
 
 
 function Header() {
-  // const [show,setShow] = useState(false)
-  // const handleClose = () => setShow(false);
-  // const handleShow = () => setShow(true);
-
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = () => {
