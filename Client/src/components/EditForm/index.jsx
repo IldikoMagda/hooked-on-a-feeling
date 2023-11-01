@@ -1,10 +1,17 @@
 import React, { useState } from "react"
 
-export default function EditForm({ task, closeModal }) {
+export default function EditForm({ task, closeModal, setTasks}) {
   const [title, setTitle] = useState(task.title)
   const [content, setContent] = useState(task.content)
-  const [duedate, setDuedate] = useState(task.duedate)
+  const [duedate, setDuedate] = useState(task.duedate.substring(0, 10))
   const [subject, setSubject] = useState(task.subject)
+
+  const fetchTasks = async () => {
+    const response = await fetch(`https://project-3-backend-l4m5.onrender.com/posts/${localStorage.getItem('user')}`)
+    const data = await response.json()
+    setTasks(data)
+    console.log("settasks")
+  }
 
   const handleTitle = (e) => {
     setTitle(e.target.value)
@@ -20,6 +27,8 @@ export default function EditForm({ task, closeModal }) {
   }
   const handleSubmit = (e) => {
     e.preventDefault()
+
+    
     const updateTask = async () => {
       try {
         const options = {
@@ -30,7 +39,7 @@ export default function EditForm({ task, closeModal }) {
             dueDate: duedate,
             subject: subject,
             generalXp: 20,
-            subjectXp:10
+            subjectXp: 10
           }),
           headers: {
             'Content-type': 'application/json; charset=UTF-8',
@@ -38,8 +47,9 @@ export default function EditForm({ task, closeModal }) {
         }
         const response = await fetch(`https://project-3-backend-l4m5.onrender.com/posts/post/${task.item_id}`, options)
         const data = await response
-        if (response.status===200) {
+        if (response.status === 200) {
           alert("Task edited succesfully")
+          fetchTasks()
         }
       } catch (err) {
         console.error(err.message)
@@ -57,6 +67,10 @@ export default function EditForm({ task, closeModal }) {
         }
         const response = await fetch(`https://project-3-backend-l4m5.onrender.com/posts/post/${task.item_id}`, options)
         const data = await response.json()
+        fetchTasks() // move to if statement below once deployed api is updated
+        if (response.status===204) {
+          alert("Task deleted succesfully")
+        }
       } catch (err) {
         console.error(err.message)
       }
@@ -108,8 +122,8 @@ export default function EditForm({ task, closeModal }) {
         />
         <button type="submit" className="homeworkModal-btn">Submit Tasks</button>
       </form>
-        <button onClick={closeModal}>Back</button>
-        <button className="homeworkModal-btn" onClick={handleDelete}>Delete Task</button>
+      <button onClick={closeModal}>Back</button>
+      <button className="homeworkModal-btn" onClick={handleDelete}>Delete Task</button>
     </>
   )
 }
