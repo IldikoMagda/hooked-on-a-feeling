@@ -37,10 +37,6 @@ export default function CreatePostModal({
         subjectXp={subjectXp}
         setSubjectXp={setSubjectXp}
       />
-      <button onClick= {()=>{
-        closeModal()
-        handleSubmit()
-        }} type='button'></button>
     </>
   )
 }

@@ -115,9 +115,10 @@ export default function LoginPage() {
         <input className="login-input" type="text" placeholder='Enter username...' onChange={handleTextInput} value={textInput} />
         <input className="login-input" type="password" placeholder='Enter password...' onChange={handlePasswordInput} value={passwordInput} />
         <input className="login-button" type="submit" value="Login" />
-      </form>
-      <p>{message}</p>
+        <p>{message}</p>
       <NavLink className="register-link" to="/CreateAccount">Don't have an account? Register here</NavLink>
+
+      </form>
     </div>
   )
 }
