@@ -5,19 +5,19 @@ import { BrowserRouter } from 'react-router-dom';
 import * as matchers from '@testing-library/jest-dom/matchers';
 expect.extend(matchers);
 
-import CreateAccountPage from '.';
+import LeaderboardPage from '.';
 
-describe("Homepage component", () => {
+describe("LeaderBoard component", () => {
 
     beforeEach(() => {
-        render(<BrowserRouter><Homepage /></BrowserRouter>);
+        render(<BrowserRouter><LeaderboardPage /></BrowserRouter>);
     });
 
     afterEach(() => {
         cleanup();
     });
 
-    it('renders Leaderboard component', () => {
+    it('Renders Leaderboard component', () => {
         const createAccountComponent = screen.getByText('LeaderboardPage');
         expect(createAccountComponent).toBeInTheDocument();
     });
