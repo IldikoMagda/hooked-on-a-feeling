@@ -26,15 +26,17 @@ function HomePage() {
     fetchTasks()
   }, [localStorage.getItem("user")])
 
-  async function completeTask(id, updatedData) {
+  async function completeTask(id) {
         const options = {
             method: "PATCH",
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(updatedData)
+            body: JSON.stringify({
+              completed: !completed
+            })
         }
         const response = await fetch(`https://project-3-backend-l4m5.onrender.com/posts/${id}`, options);
         const data = await response.json();
-        setTasks(data.filter(task => task.id !== id))
+        setTasks(data.filter(task => task.item_id !== id))
     }
 
   let userSprite = ""
