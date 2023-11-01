@@ -44,6 +44,7 @@ export default function CreateTaskForm({
           }
           return res.json();
         })
+
         .then((data) => {
           console.log('Post request successful:', data);
           Swal.fire('Task Added', 'Are you working hard or hardly working?', 'success');
