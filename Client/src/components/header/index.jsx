@@ -77,34 +77,35 @@ function Header() {
           Leaderboard
         </NavLink>
 
+        {localStorage.getItem("user") &&
 
-        <div>
-          <button className = "rpg-button" onClick={openModal}>Create New Task</button>
-          <Modal isOpen={isModalOpen} >
-       
-            <h2>Create Task</h2>
-            <div className="create-task-modal">
-              <CreatePostModal
-                title={title}
-                setTitle={setTitle}
-                content={content}
-                setContent={setContent}
-                duedate={duedate}
-                setDueDate={setDueDate}
-                subject={subject}
-                setSubject={setSubject}
-                repeatable={repeatable}
-                setRepeatable={setRepeatable}
-                generalXp={generalXp}
-                setGeneralXp={setGeneralXp}
-                subjectXp={subjectXp}
-                setSubjectXp={setSubjectXp}
-              />
-            </div>
-          <button onClick={closeModal}>Close</button>
-          </Modal>
-        </div>
+          <div>
+            <button className="rpg-button" onClick={openModal}>Create New Task</button>
+            <Modal isOpen={isModalOpen} >
 
+              <h2>Create Task</h2>
+              <div className="create-task-modal">
+                <CreatePostModal
+                  title={title}
+                  setTitle={setTitle}
+                  content={content}
+                  setContent={setContent}
+                  duedate={duedate}
+                  setDueDate={setDueDate}
+                  subject={subject}
+                  setSubject={setSubject}
+                  repeatable={repeatable}
+                  setRepeatable={setRepeatable}
+                  generalXp={generalXp}
+                  setGeneralXp={setGeneralXp}
+                  subjectXp={subjectXp}
+                  setSubjectXp={setSubjectXp}
+                />
+              </div>
+              <button onClick={closeModal}>Close</button>
+            </Modal>
+          </div>
+        }
         {!localStorage.getItem('user') &&
           <NavLink to="/login" className="rpg-button">
             Login
