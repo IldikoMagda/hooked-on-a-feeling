@@ -6,13 +6,13 @@ import userEvent from '@testing-library/user-event';
 import * as matchers from '@testing-library/jest-dom/matchers';
 expect.extend(matchers);
 
-import CreateTaskForm from '.';
+import EditForm from '.';
 
-describe('Create Task Form component', () => {
+describe('Edit Form component', () => {
     beforeEach(() => {
       render(
         <BrowserRouter>
-          <LeaderboardPage />
+          <EditForm />
         </BrowserRouter>
       );
     });

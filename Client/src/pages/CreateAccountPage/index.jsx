@@ -50,6 +50,8 @@ export default function CreateAccount() {
         setMessage("Login successful.")
         setTimeout(()=> {
           setMessage("")
+          navigate("/")
+
         }, 700)
       } else {
         //alert(data.error)
@@ -135,7 +137,6 @@ export default function CreateAccount() {
             });
             setTimeout(() => {
               setMessage("")
-              navigate("/")
             }, 700)
           } else {
             console.error(`Failed to fetch user data. Status code: ${response.status}`);
