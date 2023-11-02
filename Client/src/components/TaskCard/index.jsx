@@ -20,6 +20,8 @@ export default function TaskCard({ task, completeTask }) {
   const closeModal = () => {
     setIsModalOpen(false);
   };
+
+  
   return (
     <>
       <div className="todo-item">
@@ -37,6 +39,19 @@ export default function TaskCard({ task, completeTask }) {
         </div>
         <div className="todo-xp">
           <p>XP Worth: {task.generalxp}</p>
+
+          <div>
+            <button className="rpg-button" onClick={openModal}>Edit Task</button>
+            <Modal isOpen={isModalOpen} >
+
+              <h2>Edit Task</h2>
+              <div className="create-task-modal">
+                <EditForm task={task} closeModal={closeModal}/>
+              </div>
+              
+            </Modal>
+          </div>
+
         </div>
         <div className="todo-completed">
           <input
@@ -46,17 +61,7 @@ export default function TaskCard({ task, completeTask }) {
           />{" "}
           Completed
         </div>
-        <div>
-          <button className="rpg-button todo-edit-button" onClick={openModal}>
-            Edit Task
-          </button>
-          <Modal isOpen={isModalOpen}>
-            <h2>Edit Task</h2>
-            <div className="create-task-modal">
-              <EditForm task={task} closeModal={closeModal} />
-            </div>
-          </Modal>
-        </div>
+        
       </div>
     </>
   );
