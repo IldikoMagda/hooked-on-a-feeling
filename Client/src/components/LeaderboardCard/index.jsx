@@ -5,7 +5,8 @@ import getSpritePath from "../Sprites";
 
 
 export default function LeaderboardCard({ username, subjectXp, favcolor, index, generalXp }) {
-    const spritePath = getSpritePath(favcolor.toLowerCase(), generalXp);
+    const safeFavcolor = favcolor ? favcolor.toLowerCase() : 'orange'
+    const spritePath = getSpritePath(safeFavcolor, generalXp);
     return (
         <>
             <div className="leaderboard-entry">

@@ -56,30 +56,32 @@ static async checkRole(id) {
     return newUser;
 }
   // update (for XPs)
-  static async update(data) {
-    let response = await db.query("UPDATE user_account SET generalXp = $1 WHERE user_id = $2 RETURNING *", [data.generalXp, this.id]);
+  async update(data, user_id) {
+    console.log(data)
+    console.log(this.user_id) // this is undefined!! never going to work
+    let response = await db.query("UPDATE user_account SET generalxp = $1 WHERE user_id = $2 RETURNING *", [data.generalxp, user_id]);
     if (response.rows.length != 1) {
       throw new Error("Unable to update user.")
     }
     return new User(response.rows[0]);
   }
   //more updates
-  async updateMaths(data) {
-    let response = await db.query("UPDATE user_account SET subjectXpMaths = $1 WHERE user_id = $2 RETURNING *", [data.subjectXpMaths, this.id]);
+  async updateMaths(data, user_id) {
+    let response = await db.query("UPDATE user_account SET subjectxpmaths = $1 WHERE user_id = $2 RETURNING *", [data.subjectxpmaths, user_id]);
     if (response.rows.length != 1) {
       throw new Error("Unable to update notes.")
     }
     return new User(response.rows[0]);
   }
-  async updateEnglish(data) {
-    let response = await db.query("UPDATE user_account SET subjectXpEnglish = $1 WHERE user_id = $2 RETURNING *", [data.subjectXpEnglish, this.id]);
+  async updateEnglish(data, user_id) {
+    let response = await db.query("UPDATE user_account SET subjectXpEnglish = $1 WHERE user_id = $2 RETURNING *", [data.subjectxpenglish, user_id]);
     if (response.rows.length != 1) {
       throw new Error("Unable to update notes.")
     }
     return new User(response.rows[0]);
   }
-  async updateScience(data) {
-    let response = await db.query("UPDATE user_account SET subjectXpScience = $1 WHERE user_id = $2 RETURNING *", [data.subjectXpScience, this.id]);
+  async updateScience(data, user_id) {
+    let response = await db.query("UPDATE user_account SET subjectXpScience = $1 WHERE user_id = $2 RETURNING *", [data.subjectxpscience, user_id]);
     if (response.rows.length != 1) {
       throw new Error("Unable to update notes.")
     }

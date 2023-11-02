@@ -1,10 +1,10 @@
-import React, {useState,useEffect} from 'react';
-import {useParams} from "react-router-dom"
+import React, { useState, useEffect } from 'react';
+import { useParams } from "react-router-dom"
 
 import ProfileCard from "../ProfileCard";
-import {TaskCard} from "../../components"
-import {useAuth} from "../../contexts"
-  
+import { TaskCard } from "../../components"
+import { useAuth } from "../../contexts"
+
 import BasicSprite from "../../assets/BasicSprite.png";
 import BasicRed from "../../assets/Red/BasicRed.png";
 import BasicGreen from "../../assets/Green/BasicGreen.png";
@@ -26,40 +26,63 @@ function HomePage() {
   }, [localStorage.getItem("user")])
 
 
-  async function completeTask(id) {
-        const options = {
-            method: "PATCH",
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              completed: true
-            })
-        }
-        const response = await fetch(`https://project-3-backend-l4m5.onrender.com/posts/Post/${id}`, options);
-        const data = await response.json();
-        setTasks(data.filter(task => task.completed == false))
+  async function completeTask(id, task) {
 
-        if (data.subject == 'Maths') {
-          setUserData(prevData => ({
-            generalXp: prevData.generalXp + data.generalXp,
-            subjectXpMaths : prevData.subjectXpMaths + data.subjectXp,
-            ...prevData
-          }))
-        } else if (data.subject == 'English') {
-          setUserData(prevData => ({
-            generalXp: prevData.generalXp + data.generalXp,
-            subjectXpEnglish : prevData.subjectXpMaths + data.subjectXp,
-            ...prevData
-          }))
-        } else if (data.subject == 'Science') {
-          setUserData(prevData => ({
-            generalXp: prevData.generalXp + data.generalXp,
-            subjectXpScience : prevData.subjectXpMaths + data.subjectXp,
-            ...prevData
-          }))
+    if (task.subject == 'Maths') {
+      console.log(task.subjectxp)
+      setUserData(prevData => ({
+        generalxp: prevData.generalxp + 50,
+        // subjectxpmaths: prevData.subjectxpmaths + 50,
+        ...prevData
+      }))
+      const options = {
+        method: "PATCH",
+        body: JSON.stringify({
+          generalxp: 256464654,
+        }),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
         }
+      }
+      const optionsTOGET ={
+        method: "GET"
+      }
 
-        
+      // now update 
+      let integerversion = parseInt(localStorage.getItem("user"))
+
+      /// CHANGE LOCALHOST URLS AND VARIABLES 
+
+      const update = await fetch(`http://localhost:3000/users/1`, options) 
+      const updated = await update.json()
+      console.log("this is what fetch update returns: ", updated)
+
+    } else if (task.subject == 'English') {
+      setUserData(prevData => ({
+        generalxp: prevData.generalxp + task.generalxp,
+        subjectxpEnglish: prevData.subjectxpEnglish + task.subjectxp,
+        ...prevData
+      }))
+    } else if (task.subject == 'Science') {
+      setUserData(prevData => ({
+        generalxp: prevData.generalxp + task.generalxp,
+        subjectxpScience: prevData.subjectxpScience + task.subjectxp,
+        ...prevData
+      }))
     }
+
+    const options = {
+      method: "DELETE"
+    }
+    const response = await fetch(`https://project-3-backend-l4m5.onrender.com/posts/Post/${id}`, options);
+    if (response.ok){
+      setTasks(tasks.filter(task => task.item_id == id))
+      console.log(userData)
+    } else{
+      console.log(response)
+
+    }
+  }
 
   let userSprite = ""
 
@@ -91,7 +114,7 @@ function HomePage() {
         <h1>Task List</h1>
         {/* <button>Create new task (creates modal)</button> */}
 
-        {localStorage.getItem("user") && tasks.length>0 && tasks.map((el, i) => <TaskCard task={el} completeTask={completeTask} key={i} />)}
+        {localStorage.getItem("user") && tasks.length > 0 && tasks.map((el, i) => <TaskCard task={el} completeTask={completeTask} key={i} />)}
 
       </div>
     </div>
