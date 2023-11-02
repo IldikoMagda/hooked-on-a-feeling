@@ -19,9 +19,7 @@ function HomePage() {
   async function fetchTasks() {
     const response = await fetch(`https://project-3-backend-l4m5.onrender.com/posts/${localStorage.getItem("user")}`)
     const data = await response.json()
-    console.log(data)
     setTasks(data)
-    console.log(tasks)
   }
   useEffect(() => {
     fetchTasks()
@@ -39,7 +37,6 @@ function HomePage() {
         const response = await fetch(`https://project-3-backend-l4m5.onrender.com/posts/Post/${id}`, options);
         const data = await response.json();
         setTasks(data.filter(task => task.completed == false))
-        console.log("Tasks:" + tasks)
 
         if (data.subject == 'Maths') {
           setUserData(prevData => ({
@@ -83,7 +80,6 @@ function HomePage() {
 
   // Get the sprite path
   const spritePath = getSpritePath(userData.favcolor);
-  console.log(spritePath);
 
   return (
     <div className="home-container">
