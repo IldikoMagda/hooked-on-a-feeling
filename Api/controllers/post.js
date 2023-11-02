@@ -33,7 +33,7 @@ async function showPost(req, res) {
 async function create(req, res) {
     try {
         const data = req.body;
-        const id=req.body.user_id
+        const id = data.user_id
         const Check = await User.checkRole(id);
         const Role= Check.role
         if (Role === "Student"){console.log("Student")}
@@ -50,6 +50,20 @@ async function update(req, res) {
   try {
       const id = parseInt(req.params.id);
       const data = req.body;
+      console.log(data)
+      const itemToUpdate = await Post.getPostsByItemId(id)
+      // console.log(itemToUpdate)
+      console.log(itemToUpdate.duedate)
+
+      data.title ||= itemToUpdate.title
+      data.content ||= itemToUpdate.content
+      data.subject ||= itemToUpdate.subject
+      data.duedate ||= itemToUpdate.duedate
+      data.completed ||= itemToUpdate.completed
+      data.repeatable ||= itemToUpdate.repeatable
+      data.generalxp ||= itemToUpdate.generalxp
+      data.subjectxp ||= itemToUpdate.subjectxp
+
       const updatePost = await Post.updatePost(data,id);
       res.status(200).json(updatePost)
   } catch (err) {
@@ -61,7 +75,7 @@ async function destroy(req, res) {
   try {
       const id = req.params.id;
       const deletePost = await Post.destroy(id);
-      res.json(deletePost);
+      res.status(204).json(deletePost);
   } catch (err) {
       res.status(404).json({error: err.message})
   }

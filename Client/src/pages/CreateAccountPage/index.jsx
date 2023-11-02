@@ -2,7 +2,7 @@ import React, { useState , useEffect} from 'react'
 import { NavLink , useNavigate} from 'react-router-dom'
 import "./CreateAccountPage.css"
 import {useAuth} from "../../contexts"
- 
+import Swal from 'sweetalert2'
 
 export default function CreateAccount() {
   const navigate = useNavigate()
@@ -44,14 +44,22 @@ export default function CreateAccount() {
       const data = await response.json();
 
       if (response.status == 200) {
-        localStorage.setItem("token", data.token); //correct?
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("user_id", data.user_id);
         setUser(data.user_id)
         setMessage("Login successful.")
         setTimeout(()=> {
           setMessage("")
         }, 700)
       } else {
-        alert(data.error)
+        //alert(data.error)
+        console.log("Error Test")
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: data.error,
+          footer: 'Check you entered the correct details or register an account.'
+        })
       }
     }
 
@@ -73,10 +81,27 @@ export default function CreateAccount() {
           const response = await fetch("https://project-3-backend-l4m5.onrender.com/users/register", options);
           const data = await response.json();
           if (response.status == 201) {
+            Swal.fire(
+              'Register Successful',
+              'Please wait to be redirected',
+              'success'
+            )
             login()
           }
+          else{
+            Swal.fire({
+              icon: 'error',
+              title: 'Choose a different Username',
+              text: "Someone is already using that username"
+            })
+          }
         } else {
-          setMessage("Passwords don't match. Try again.")
+          //setMessage("Passwords don't match. Try again.")
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: "Your Passwords don't match. Please try again."
+          })
         }
     } catch (err) {
       console.error(err.message)
@@ -84,6 +109,7 @@ export default function CreateAccount() {
       setTimeout(()=> {
         setMessage("")
       }, 5000)
+     
     }
     }
     register()
@@ -94,32 +120,34 @@ export default function CreateAccount() {
 
   useEffect(() => {
     const getUserData = async () => {
-      try {
-        const response = await fetch(`https://project-3-backend-l4m5.onrender.com/users/${user}`);
-        if (response.ok) {
-          const data = await response.json();
-          setUserData({
-            username: data.username,
-            generalxp: data.generalxp,
-            subjectxpmaths: data.subjectxpmaths,
-            subjectxpenglish: data.subjectxpenglish,
-            subjectxpscience: data.subjectxpscience,
-            favcolor: data.favcolor
-          });
-          setTimeout(() => {
-            setMessage("")
-            navigate("/")
-          }, 700)
-        } else {
-          console.error(`Failed to fetch user data. Status code: ${response.status}`);
+      if (localStorage.getItem("user")) {
+        try {
+          const response = await fetch(`https://project-3-backend-l4m5.onrender.com/users/${localStorage.getItem("user")}`);
+          if (response.ok) {
+            const data = await response.json();
+            setUserData({ //change this so we have the data after every refresh
+              username: data.username,
+              generalxp: data.generalxp,
+              subjectxpmaths: data.subjectxpmaths,
+              subjectxpenglish: data.subjectxpenglish,
+              subjectxpscience: data.subjectxpscience,
+              favcolor: data.favcolor
+            });
+            setTimeout(() => {
+              setMessage("")
+              navigate("/")
+            }, 700)
+          } else {
+            console.error(`Failed to fetch user data. Status code: ${response.status}`);
+          }
+        } catch (error) {
+          // Handle network or other errors
+          console.error('Error fetching user data:', error);
         }
-      } catch (error) {
-        // Handle network or other errors
-        console.error('Error fetching user data:', error);
       }
     };
     getUserData()
-  }, [user])
+  }, [localStorage.getItem("user")])
   return (
     <>
    <div className="register-container">
@@ -134,9 +162,10 @@ export default function CreateAccount() {
       <option value="green">Green</option>
     </select>
     <input className="register-button" type="submit" value='Create Account' />
-  </form>
-  <NavLink className="login-link" to="/login">Already have an account? Login</NavLink>
+    <NavLink className="login-link" to="/login">Already have an account? Login</NavLink>
   <h3 className="register-message">{message}</h3>
+
+  </form>
 </div>
 
     </>

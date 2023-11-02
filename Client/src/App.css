@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=VT323&display=swap");
 
 @keyframes logo-spin {
   from {
@@ -16,13 +16,13 @@
 }
 
 body {
-  background-image: url('./assets/RGP-Style-Background.png');
+  background-image: url("./assets/RGP-Style-Background.png");
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
   max-height: 100%;
-  font-family: 'VT323', monospace;
+  font-family: "VT323", monospace;
 }
 
 .rpg-header {
@@ -39,7 +39,7 @@ body {
 }
 
 .rpg-button {
-  font-family: 'VT323', monospace;
+  font-family: "VT323", monospace;
   padding: 10px 20px;
   background-color: #3e3e3e;
   /* background-color: #4b4231; */
@@ -77,19 +77,26 @@ body {
   padding: 20px; /* Added some padding to give space from edges */
 }
 
-.left-box, .right-box {
+.left-box,
+.right-box {
   padding: 20px;
-  background: rgba(255, 248, 220, 0.9); /* Light parchment-like color for the form background */
+  background: rgba(
+    255,
+    248,
+    220,
+    0.9
+  ); /* Light parchment-like color for the form background */
   border: 8px solid transparent;
   background-clip: padding-box, border-box;
   box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
   margin-bottom: 20px;
-  font-family: 'VT323', monospace;
+  font-family: "VT323", monospace;
   color: #333;
   overflow: auto; /* If content grows, allow scroll */
-  border: 10px solid transparent; 
-  border-image: url('./assets/qubodup-light_wood.png') 40% ;
+  border: 10px solid transparent;
+  border-image: url("./assets/qubodup-light_wood.png") 40%;
+  height: 85vh;
 }
 
 .left-box {
@@ -118,7 +125,6 @@ body {
   margin-bottom: 10px;
 }
 
-
 /* LOGIN PAGE */
 
 /* Container for the login form */
@@ -133,13 +139,18 @@ body {
 /* Styling the login form */
 .login-form {
   position: relative;
-  background: rgba(255, 248, 220, 0.9); /* Light parchment-like color for the form background */
+  background: rgba(
+    255,
+    248,
+    220,
+    0.9
+  ); /* Light parchment-like color for the form background */
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
   max-width: 300px;
-  border: 10px solid transparent; 
-  border-image: url('./assets/qubodup-light_wood.png') 40% ;
+  border: 10px solid transparent;
+  border-image: url("./assets/qubodup-light_wood.png") 40%;
 }
 
 /* Styling the input fields */
@@ -150,7 +161,7 @@ body {
   margin: 10px 0;
   border-radius: 5px;
   border: 2px solid #aaa;
-  font-family: 'VT323', monospace;
+  font-family: "VT323", monospace;
 }
 
 /* Styling the login button */
@@ -161,7 +172,7 @@ body {
   border-radius: 5px;
   background-color: #8b4513;
   color: white;
-  font-family: 'VT323', monospace;
+  font-family: "VT323", monospace;
   font-size: 16px;
 }
 
@@ -177,19 +188,18 @@ body {
 
 /* Styling the registration link */
 .register-link {
-  margin-top: 20px;
-  color: #fff;
-  font-family: 'VT323', monospace;
+  margin-top: 50px;
+  color: rgba(136, 85, 19, 0.747);
+  font-family: "VT323", monospace;
   text-decoration: none;
-  background-color: rgba(136, 85, 19, 0.747);
 }
 
 .register-link:hover {
-  text-decoration: underline;  
-  background-color: rgba(136, 85, 19, 0.99);
-
+  background-color: rgba(136, 85, 19, 0.747);
+  margin-top: 20px;
+  text-decoration: underline;
+  color: #f8f1e4;
 }
-
 
 /* CREATE ACCOUNT */
 
@@ -202,19 +212,27 @@ body {
 }
 
 .register-form {
+  justify-content: center;
+  align-items: center;
   position: relative;
-  background: rgba(255, 248, 220, 0.9); /* Light parchment-like color for the form background */
+  background: rgba(
+    255,
+    248,
+    220,
+    0.9
+  ); /* Light parchment-like color for the form background */
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
   max-width: 300px;
-  border: 10px solid transparent; 
-  border-image: url('./assets/qubodup-light_wood.png') 40% ;
+  border: 10px solid transparent;
+  border-image: url("./assets/qubodup-light_wood.png") 40%;
+  height: 45vh;
 }
 
 .register-form::before,
 .register-form::after {
-  content: '';
+  content: "";
   position: absolute;
   border-style: solid;
   display: block;
@@ -239,14 +257,15 @@ body {
 }
 
 /* Style for the text, placeholders, and dropdown menu */
-.register-form input, .register-form select {
+.register-form input,
+.register-form select {
   width: 100%;
   padding: 10px;
   margin-bottom: 10px;
   border-radius: 5px;
   border: 1px solid #8b4513;
   background-color: #f8f1e4; /* Light paper-like color */
-  font-family: 'VT323', monospace;
+  font-family: "VT323", monospace;
   font-size: 16px;
 }
 
@@ -263,15 +282,207 @@ body {
   background-color: #a0522d;
 }
 
-
-.login-link, .register-message {
-  margin-top: 20px;
-  color: #fff;
-  font-family: 'VT323', monospace;
-  text-decoration: none;
-
+.login-link,
+.register-message {
+    margin-top: 50px;
+    color: rgba(136, 85, 19, 0.747);
+    font-family: "VT323", monospace;
+    text-decoration: none;
 }
 
 .login-link:hover {
+  background-color: rgba(136, 85, 19, 0.747);
+  margin-top: 20px;
   text-decoration: underline;
+  color: #f8f1e4;}
+
+/* LEADERBOARD PAGE */
+
+.leaderboard-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+}
+
+.leaderboard-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* Changed from center to flex-start */
+  min-height: 50vh;
+  max-height: 80vh;
+  width: 80vh;
+  background: rgba(255, 248, 220, 0.9);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  border: 10px solid transparent;
+  border-image: url('./assets/qubodup-light_wood.png') 40%;
+  overflow: auto;
+  box-sizing: border-box; /* Added this line */
+}
+
+.leaderboard-heading {
+  font-size: 3rem;
+  margin-bottom: 40px;
+}
+
+.leaderboard-entry {
+  font-size: 2rem;
+  padding: 10px;
+  margin: 10px;
+  background-color: burlywood;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 60vh;
+}
+
+.leaderboard-position {
+  margin-right: 50px;
+  text-align: left;
+}
+
+.leaderboard-sprite {
+  margin-right: 50px;
+  /* height: 20px; */
+}
+
+.leaderboard-username {
+flex-grow: 1;
+}
+
+.leaderSprite {
+  height: 80px;
+  margin-right: 20px; 
+  margin-left: 5px;
+}
+/*PROFILE*/
+.profile-header {
+  margin-bottom: 10px;
+}
+
+.profile-info {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.profile-sprite img {
+  max-width: 80%;
+}
+
+.profile-card {
+  padding: 20px;
+  font-family: "VT323", monospace;
+  color: #333;
+  text-align: center;
+  height: 30vh;
+}
+
+.left-half,
+.right-half {
+  width: 45%;
+}
+
+
+/* Create task modal */
+
+/* Modal Container */
+/* .modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+} */
+
+/* Modal Content */
+/* .modal-content {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  max-width: 80%;
+  max-height: 80%;
+  overflow-y: auto;
+} */
+
+/* Close Button */
+.close-button {
+  background: none;
+  border: none;
+  color: #333;
+  font-size: 16px;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+/* CREATE TASK MODAL */
+
+/* Styling for the modal overlay */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+/* Styling for the modal content */
+.modal-content {
+  padding: 20px;
+  background: rgba(255, 248, 220, 0.9);
+  border: 8px solid ;
+  border-image: url('./assets/wood-texture.jpg'), url('./assets/wood-texture.jpg');
+  background-clip: padding-box, border-box;
+  background-size: cover;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  font-family: 'VT323', monospace;
+  color: #333;
+  text-align: center;
+  max-width: 70%;
+  max-height: 70%;
+  overflow-y: auto;
+}
+
+/* Styles for input and select elements */
+.homework-modal-content input,
+.homework-modal-content select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 8px;
+  border-radius: 5px;
+}
+
+/* Styles for button elements */
+.modal-content button {
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  background-color: #8b4513;
+  color: white;
+  font-family: "VT323", monospace;
+  font-size: 16px;
+}
+
+/* Hover effect for button elements */
+.modal-content button:hover {
+  background-color: #2980b9;
 }
