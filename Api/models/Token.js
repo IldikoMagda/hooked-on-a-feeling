@@ -35,7 +35,6 @@ class Token {
             return new Token(response.rows[0]);
         }
     }
-
 }
 
 module.exports = Token;
