@@ -45,7 +45,7 @@ export default function CreateAccount() {
 
       if (response.status == 200) {
         localStorage.setItem("token", data.token);
-        localStorage.setItem("user_id", data.user_id);
+        localStorage.setItem("user", data.user_id); //changed "user_id" to "user" 
         setUser(data.user_id)
         setMessage("Login successful.")
         setTimeout(()=> {
