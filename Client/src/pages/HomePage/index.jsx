@@ -1,14 +1,12 @@
-import React from 'react'
-import { Home } from '../../components'
+import React from "react";
+import { Home } from "../../components";
+import LoginPage from "../LoginPage";
 
 export default function HomePage() {
 
- 
+  console.log(localStorage.getItem("user"));
+  const user = localStorage.getItem("user");
+  return <>{user ? <Home data-testid="home-component"/> : <LoginPage />} </>;
 
-  return (
-    <>
-      <Home  data-testid="home-component" />
-    </>
   )
-
 }
