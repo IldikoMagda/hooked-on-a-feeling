@@ -7,7 +7,7 @@ export default function HomePage() {
 
   return (
     <>
-      <Home />
+      <Home  data-testid="home-component" />
     </>
   )
 
