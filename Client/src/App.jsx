@@ -4,6 +4,7 @@ import * as Pages from "./pages";
 import { Header } from './components'
 import { AuthProvider } from "./contexts";
 import "./App.css";
+// import anime from 'animejs/lib/anime.es.js';
 
 function App() {
 
