@@ -104,7 +104,7 @@ function Header() {
                   setIsModalOpen={setIsModalOpen}
                 />
               </div>
-              <button onClick={closeModal}>Back</button>
+              
             </Modal>
           </div>
         }
