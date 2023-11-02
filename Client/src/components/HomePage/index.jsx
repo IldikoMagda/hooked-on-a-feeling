@@ -14,21 +14,17 @@ import BasicOrange from "../../assets/Orange/BasicOrange.png";
 
 function HomePage() {
 
-  const { user, setUser, userData, tasks, setTasks } = useAuth()
+  const { user, setUser, userData, setUserData, tasks, setTasks } = useAuth()
   const { id } = useParams();
-  
   async function fetchTasks() {
-    const response = await fetch(`https://project-3-backend-l4m5.onrender.com/posts/${localStorage.getItem('user')}`)
+    const response = await fetch(`https://project-3-backend-l4m5.onrender.com/posts/${localStorage.getItem("user")}`)
     const data = await response.json()
     setTasks(data)
-    console.log("fetchtasks")
   }
   useEffect(() => {
     fetchTasks()
   }, [localStorage.getItem("user")])
-  // useEffect(() => {
-  //   fetchTasks()
-  // }, [])
+
 
   async function completeTask(id) {
         const options = {
@@ -38,9 +34,31 @@ function HomePage() {
               completed: true
             })
         }
-        const response = await fetch(`https://project-3-backend-l4m5.onrender.com/posts/${id}`, options);
+        const response = await fetch(`https://project-3-backend-l4m5.onrender.com/posts/Post/${id}`, options);
         const data = await response.json();
-        setTasks(data.filter(task => task.item_id !== id))
+        setTasks(data.filter(task => task.completed == false))
+
+        if (data.subject == 'Maths') {
+          setUserData(prevData => ({
+            generalXp: prevData.generalXp + data.generalXp,
+            subjectXpMaths : prevData.subjectXpMaths + data.subjectXp,
+            ...prevData
+          }))
+        } else if (data.subject == 'English') {
+          setUserData(prevData => ({
+            generalXp: prevData.generalXp + data.generalXp,
+            subjectXpEnglish : prevData.subjectXpMaths + data.subjectXp,
+            ...prevData
+          }))
+        } else if (data.subject == 'Science') {
+          setUserData(prevData => ({
+            generalXp: prevData.generalXp + data.generalXp,
+            subjectXpScience : prevData.subjectXpMaths + data.subjectXp,
+            ...prevData
+          }))
+        }
+
+        
     }
 
   let userSprite = ""
@@ -62,7 +80,6 @@ function HomePage() {
 
   // Get the sprite path
   const spritePath = getSpritePath(userData.favcolor);
-  console.log(spritePath);
 
   return (
     <div className="home-container">
