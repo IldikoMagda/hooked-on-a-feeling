@@ -26,6 +26,8 @@ export default function TaskCard ({task,completeTask}) {
   const closeModal = () => {
     setIsModalOpen(false);
   };
+
+  
   return (
     <>
 
@@ -35,7 +37,7 @@ export default function TaskCard ({task,completeTask}) {
           <p>{task.subject}</p>
           <p>Due: {task.duedate.substring(0,10)}</p>
           <p>XP Worth: {task.generalxp}</p>
-          <input type="checkbox" onChange={handleCheckbox}  onClick={() => completeTask(task.item_id)}/> Completed
+          <input type="checkbox" onChange={handleCheckbox}  onClick={() => completeTask(task.item_id, task)}/> Completed
           <div>
             <button className="rpg-button" onClick={openModal}>Edit Task</button>
             <Modal isOpen={isModalOpen} >

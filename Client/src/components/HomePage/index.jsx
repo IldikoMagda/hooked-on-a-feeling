@@ -1,10 +1,10 @@
-import React, {useState,useEffect} from 'react';
-import {useParams} from "react-router-dom"
+import React, { useState, useEffect } from 'react';
+import { useParams } from "react-router-dom"
 
 import ProfileCard from "../ProfileCard";
-import {TaskCard} from "../../components"
-import {useAuth} from "../../contexts"
-  
+import { TaskCard } from "../../components"
+import { useAuth } from "../../contexts"
+
 import BasicSprite from "../../assets/BasicSprite.png";
 import BasicRed from "../../assets/Red/BasicRed.png";
 import BasicGreen from "../../assets/Green/BasicGreen.png";
@@ -26,36 +26,52 @@ function HomePage() {
   }, [localStorage.getItem("user")])
 
 
-  async function completeTask(id) {
-        const options = {
-            method: "DELETE"
-        }
-        const response = await fetch(`https://project-3-backend-l4m5.onrender.com/posts/Post/${id}`, options);
-        const data = await response.json();
-        setTasks(tasks.filter(task => task.item_id == id))
+  async function completeTask(id, task) {
 
-        if (data.subject == 'Maths') {
-          setUserData(prevData => ({
-            generalXp: prevData.generalXp + data.generalXp,
-            subjectXpMaths : prevData.subjectXpMaths + data.subjectXp,
-            ...prevData
-          }))
-        } else if (data.subject == 'English') {
-          setUserData(prevData => ({
-            generalXp: prevData.generalXp + data.generalXp,
-            subjectXpEnglish : prevData.subjectXpMaths + data.subjectXp,
-            ...prevData
-          }))
-        } else if (data.subject == 'Science') {
-          setUserData(prevData => ({
-            generalXp: prevData.generalXp + data.generalXp,
-            subjectXpScience : prevData.subjectXpMaths + data.subjectXp,
-            ...prevData
-          }))
-        }
+    if (task.subject == 'Maths') {
+      console.log(task.subjectxp)
+      setUserData(prevData => ({
+        generalxp: prevData.generalxp + 50,
+        // subjectxpmaths: prevData.subjectxpmaths + 50,
+        ...prevData
+      }))
+      console.log(userData)
+      const options = {
+        method: "PATCH",
+        body: JSON.stringify({
+          generalXp: userData.generalxp,
+          // subjectXpMaths: userData.subjectxpmaths
+        })
+      }
+      const res = await fetch(`https://project-3-backend-l4m5.onrender.com/users/${localStorage.getItem("user")}`, options)
+      const data2 = await res.json()
+      // console.log(options)
 
-        
+    } else if (task.subject == 'English') {
+      setUserData(prevData => ({
+        generalxp: prevData.generalxp + task.generalxp,
+        subjectxpEnglish: prevData.subjectxpEnglish + task.subjectxp,
+        ...prevData
+      }))
+    } else if (task.subject == 'Science') {
+      setUserData(prevData => ({
+        generalxp: prevData.generalxp + task.generalxp,
+        subjectxpScience: prevData.subjectxpScience + task.subjectxp,
+        ...prevData
+      }))
     }
+
+    
+
+    const options = {
+      method: "DELETE"
+    }
+    const response = await fetch(`https://project-3-backend-l4m5.onrender.com/posts/Post/${id}`, options);
+    const data = await response.json();
+    setTasks(tasks.filter(task => task.item_id == id))
+        console.log(userData)
+  
+  }
 
   let userSprite = ""
 
@@ -87,7 +103,7 @@ function HomePage() {
         <h1>Task List</h1>
         {/* <button>Create new task (creates modal)</button> */}
 
-        {localStorage.getItem("user") && tasks.length>0 && tasks.map((el, i) => <TaskCard task={el} completeTask={completeTask} key={i} />)}
+        {localStorage.getItem("user") && tasks.length > 0 && tasks.map((el, i) => <TaskCard task={el} completeTask={completeTask} key={i} />)}
 
       </div>
     </div>
