@@ -15,7 +15,7 @@ import BasicOrange from "../../assets/Orange/BasicOrange.png";
 function HomePage() {
 
   const { user, setUser, userData, setUserData, tasks, setTasks } = useAuth()
-  const { id } = useParams();
+  
   async function fetchTasks() {
     const response = await fetch(`https://project-3-backend-l4m5.onrender.com/posts/${localStorage.getItem("user")}`)
     const data = await response.json()
@@ -36,7 +36,7 @@ function HomePage() {
       const options = {
         method: "PATCH",
         body: JSON.stringify({
-          generalxp:  userData.generalxp + 50
+          generalxp:  userData.generalxp + 20
         }),
         headers: {
           'Content-type': 'application/json; charset=UTF-8',
@@ -50,7 +50,7 @@ function HomePage() {
       const options = {
         method: "PATCH",
         body: JSON.stringify({
-          subjectxpmaths:  userData.subjectxpmaths + 50
+          subjectxpmaths:  userData.subjectxpmaths + 10
         }),
         headers: {
           'Content-type': 'application/json; charset=UTF-8',
@@ -64,7 +64,7 @@ function HomePage() {
       const options = {
         method: "PATCH",
         body: JSON.stringify({
-          subjectxpenglish:  userData.subjectxpenglish + 50
+          subjectxpenglish:  userData.subjectxpenglish + 10
         }),
         headers: {
           'Content-type': 'application/json; charset=UTF-8',
@@ -78,7 +78,7 @@ function HomePage() {
       const options = {
         method: "PATCH",
         body: JSON.stringify({
-          subjectxpscience:  userData.subjectxpscience + 50
+          subjectxpscience:  userData.subjectxpscience + 10
         }),
         headers: {
           'Content-type': 'application/json; charset=UTF-8',
@@ -101,7 +101,7 @@ function HomePage() {
         console.log(response)
       }
     }
-    
+
     addGeneralXp()
 
     if (task.subject == "Maths") {
