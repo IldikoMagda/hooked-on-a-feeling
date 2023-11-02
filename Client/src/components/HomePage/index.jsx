@@ -36,7 +36,7 @@ function HomePage() {
       const options = {
         method: "PATCH",
         body: JSON.stringify({
-          generalxp: 50,
+          generalxp:  userData.generalxp + 50
         }),
         headers: {
           'Content-type': 'application/json; charset=UTF-8',
@@ -49,32 +49,32 @@ function HomePage() {
     }
 
 
-    if (task.subject == 'Maths') {
-      console.log(task.subjectxp)
+    // if (task.subject == 'Maths') {
+    //   console.log(task.subjectxp)
       
-      const optionsTOGET ={
-        method: "GET"
-      }
+    //   const optionsTOGET ={
+    //     method: "GET"
+    //   }
 
-      // now update 
-      let integerversion = parseInt(localStorage.getItem("user"))
+    //   // now update 
+    //   let integerversion = parseInt(localStorage.getItem("user"))
 
-      /// CHANGE LOCALHOST URLS AND VARIABLES 
+    //   /// CHANGE LOCALHOST URLS AND VARIABLES 
 
       
-    } else if (task.subject == 'English') {
-      setUserData(prevData => ({
-        generalxp: prevData.generalxp + task.generalxp,
-        subjectxpEnglish: prevData.subjectxpEnglish + task.subjectxp,
-        ...prevData
-      }))
-    } else if (task.subject == 'Science') {
-      setUserData(prevData => ({
-        generalxp: prevData.generalxp + task.generalxp,
-        subjectxpScience: prevData.subjectxpScience + task.subjectxp,
-        ...prevData
-      }))
-    }
+    // } else if (task.subject == 'English') {
+    //   setUserData(prevData => ({
+    //     generalxp: prevData.generalxp + task.generalxp,
+    //     subjectxpEnglish: prevData.subjectxpEnglish + task.subjectxp,
+    //     ...prevData
+    //   }))
+    // } else if (task.subject == 'Science') {
+    //   setUserData(prevData => ({
+    //     generalxp: prevData.generalxp + task.generalxp,
+    //     subjectxpScience: prevData.subjectxpScience + task.subjectxp,
+    //     ...prevData
+    //   }))
+    // }
 
     const deleteTask = async () => {
       const options = {
