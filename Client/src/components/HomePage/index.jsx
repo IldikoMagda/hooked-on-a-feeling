@@ -29,10 +29,10 @@ function HomePage() {
   async function completeTask(id, task) {
 
     const addGeneralXp = async () => {
-      setUserData(prevData => ({
-        generalxp: prevData.generalxp + 50,
-        ...prevData
-      }))
+      // setUserData(prevData => ({ //dont seem to need this (works without)
+      //   generalxp: prevData.generalxp + 50,
+      //   ...prevData
+      // }))
       const options = {
         method: "PATCH",
         body: JSON.stringify({
@@ -45,7 +45,56 @@ function HomePage() {
       const update = await fetch(`https://project-3-backend-l4m5.onrender.com/users/${localStorage.getItem("user")}`, options) 
       const updated = await update.json()
       console.log("this is what fetch update returns: ", updated)
+    }
+    const addMathsXp = async () => {
+      const options = {
+        method: "PATCH",
+        body: JSON.stringify({
+          subjectxpmaths:  userData.subjectxpmaths + 50
+        }),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        }
+      }
+      const update = await fetch(`https://project-3-backend-l4m5.onrender.com/users/maths/${localStorage.getItem("user")}`, options) 
+      const updated = await update.json()
+      console.log("this is what fetch update returns: ", updated)
+    }
+    const addEnglishXp = async () => {
+      const options = {
+        method: "PATCH",
+        body: JSON.stringify({
+          subjectxpenglish:  userData.subjectxpenglish + 50
+        }),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        }
+      }
+      const update = await fetch(`https://project-3-backend-l4m5.onrender.com/users/english/${localStorage.getItem("user")}`, options) 
+      const updated = await update.json()
+      console.log("this is what fetch update returns: ", updated)
+    }
+    const addScienceXp = async () => {
+      const options = {
+        method: "PATCH",
+        body: JSON.stringify({
+          subjectxpscience:  userData.subjectxpscience + 50
+        }),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        }
+      }
+      const update = await fetch(`https://project-3-backend-l4m5.onrender.com/users/science/${localStorage.getItem("user")}`, options) 
+      const updated = await update.json()
+      console.log("this is what fetch update returns: ", updated)
+    }
 
+    if (task.subject == "Maths") {
+      addMathsXp()
+    } else if (task.subject == "English") {
+      addEnglishXp()
+    } else if (task.subject == "Science") {
+      addScienceXp()
     }
 
 

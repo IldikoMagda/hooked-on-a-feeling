@@ -9,7 +9,6 @@ export default function TaskCard({ task, completeTask }) {
     setCompleted(!completed);
     Swal.fire("Task Completed", "Nice Work. Keep it Up", "success");
   };
-
   //for modal
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -57,7 +56,7 @@ export default function TaskCard({ task, completeTask }) {
           <input
             type="checkbox"
             onChange={handleCheckbox}
-            onClick={() => completeTask(task.item_id)}
+            onClick={() => completeTask(task.item_id, task)}
           />{" "}
           Completed
         </div>
