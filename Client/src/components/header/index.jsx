@@ -36,6 +36,7 @@ function Header() {
     )
     localStorage.removeItem('token');
     localStorage.removeItem('user')
+    localStorage.clear(); 
     setUser(null) //unnecessary?
     setUserData({
       username: "",
