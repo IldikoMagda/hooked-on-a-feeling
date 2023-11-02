@@ -132,9 +132,11 @@ export default function EditForm({ task, closeModal}) {
           value={duedate}
           onChange={handleDuedate}
         />
-        <button type="submit" className="homeworkModal-btn">Submit Tasks</button>
-      <button onClick={closeModal}>Back</button>
-      <button className="homeworkModal-btn" onClick={handleDelete}>Delete Task</button>
+        <div className="button-container">
+          <button type="submit" className="homeworkModal-btn">Submit Tasks</button>
+                <button onClick={closeModal}>Back</button>
+                <button className="homeworkModal-btn" onClick={handleDelete}>Delete Task</button>
+        </div>
       </form>
     </>
   )

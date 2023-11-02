@@ -21,11 +21,12 @@ async function login(req, res) {
   const data = req.body;
   try {
       const user = await User.getOneByUsername(data.username);
+      console.log(user)
       const legit = await bcrypt.compare(data.password, user["password"]); //both . and [] do the same thing
       if (!legit) {
           throw new Error("Incorrect Details")
       } else {
-          const token = await Token.create(user.id)
+          const token = await Token.create(user.user_id)
           res.status(200).json({ authenticated: true, token: token.token, user_id: token.user_id })
       }
   } catch (err) {
