@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { NavLink, useNavigate } from "react-router-dom"
 import { useAuth } from "../../contexts"
 import Swal from 'sweetalert2'
+import SnailAnimation from '../../components/Snail/snail'
 
 
 export default function LoginPage() {
@@ -55,7 +56,7 @@ export default function LoginPage() {
 
       } else {
         //alert(data.error)
-        console.log("Error Test")
+        console.log("Login Error Test")
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
@@ -111,6 +112,7 @@ export default function LoginPage() {
   return (
 
     <div className="login-container">
+      <SnailAnimation/>
       <form className="login-form" onSubmit={handleSubmit}>
         <input className="login-input" type="text" placeholder='Enter username...' onChange={handleTextInput} value={textInput} />
         <input className="login-input" type="password" placeholder='Enter password...' onChange={handlePasswordInput} value={passwordInput} />
