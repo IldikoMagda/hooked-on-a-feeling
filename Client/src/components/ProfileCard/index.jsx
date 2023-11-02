@@ -45,12 +45,12 @@ const ProfileCard = () => {
     </div>
     <div className="profile-info">
       <div className="left-half">
-        <p>Generic XP: {userData.generalxp}</p>
-        <p>Maths XP: {userData.subjectxpenglish}</p>
+        <p>General XP: {userData.generalxp}</p>
+        <p>English XP: {userData.subjectxpenglish}</p>
       </div>
       <div className="right-half">
-        <p>Science XP: {userData.subjectxpmaths}</p>
-        <p>English XP: {userData.subjectxpscience}</p>
+        <p>Maths XP: {userData.subjectxpmaths}</p>
+        <p>Science XP: {userData.subjectxpscience}</p>
       </div>
     </div>
   </div>

@@ -89,42 +89,6 @@ function HomePage() {
       console.log("this is what fetch update returns: ", updated)
     }
 
-    if (task.subject == "Maths") {
-      addMathsXp()
-    } else if (task.subject == "English") {
-      addEnglishXp()
-    } else if (task.subject == "Science") {
-      addScienceXp()
-    }
-
-
-    // if (task.subject == 'Maths') {
-    //   console.log(task.subjectxp)
-      
-    //   const optionsTOGET ={
-    //     method: "GET"
-    //   }
-
-    //   // now update 
-    //   let integerversion = parseInt(localStorage.getItem("user"))
-
-    //   /// CHANGE LOCALHOST URLS AND VARIABLES 
-
-      
-    // } else if (task.subject == 'English') {
-    //   setUserData(prevData => ({
-    //     generalxp: prevData.generalxp + task.generalxp,
-    //     subjectxpEnglish: prevData.subjectxpEnglish + task.subjectxp,
-    //     ...prevData
-    //   }))
-    // } else if (task.subject == 'Science') {
-    //   setUserData(prevData => ({
-    //     generalxp: prevData.generalxp + task.generalxp,
-    //     subjectxpScience: prevData.subjectxpScience + task.subjectxp,
-    //     ...prevData
-    //   }))
-    // }
-
     const deleteTask = async () => {
       const options = {
         method: "DELETE"
@@ -137,7 +101,17 @@ function HomePage() {
         console.log(response)
       }
     }
+    
     addGeneralXp()
+
+    if (task.subject == "Maths") {
+      addMathsXp()
+    } else if (task.subject == "English") {
+      addEnglishXp()
+    } else if (task.subject == "Science") {
+      addScienceXp()
+    }
+
     deleteTask()
   }
 
