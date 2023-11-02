@@ -23,7 +23,7 @@ class Post {
     static async getPostsByUserId(id) {
         const response = await db.query("SELECT * FROM post WHERE user_id = $1 ORDER BY duedate", [id]);
         const posts = response.rows.map(p => new Post(p));
-        return posts.length > 0 ? posts : null;
+        return posts.length > 0 ? posts : [];
     }
 
     static async getPostsByItemId(id) {
