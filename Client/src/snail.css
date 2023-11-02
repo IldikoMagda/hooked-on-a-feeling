@@ -1,0 +1,37 @@
+#snell
+{
+  position:absolute;
+  top:0;
+  width:100%;
+}
+
+#eye1
+{
+animation: swing ease-in-out .6s infinite alternate;
+    transform-origin: bottom;
+    transform-box: fill-box;
+    left: calc(52% - .0rem);
+}
+
+#eye2
+{
+animation: swing ease-in-out .5s infinite alternate;
+    transform-origin: bottom;
+    transform-box: fill-box;
+    left: calc(40% - .0rem);
+}
+
+/*************swing************/
+@keyframes swing {
+    0% { transform: rotate(8deg); }
+    100% { transform: rotate(-8deg); }
+}
+
+
+.position-set
+{
+position:absolute;
+  top:5%;
+}
+
+	
