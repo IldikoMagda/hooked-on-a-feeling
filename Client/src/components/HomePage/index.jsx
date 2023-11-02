@@ -28,15 +28,11 @@ function HomePage() {
 
   async function completeTask(id) {
         const options = {
-            method: "PATCH",
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              completed: true
-            })
+            method: "DELETE"
         }
         const response = await fetch(`https://project-3-backend-l4m5.onrender.com/posts/Post/${id}`, options);
         const data = await response.json();
-        setTasks(data.filter(task => task.completed == false))
+        setTasks(tasks.filter(task => task.item_id == id))
 
         if (data.subject == 'Maths') {
           setUserData(prevData => ({
