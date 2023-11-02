@@ -58,7 +58,7 @@ export default function CreateTaskForm({
 
         .then((data) => {
           console.log('Post request successful:', data);
-
+          
           fetchTasks()
           closeModal()
           Swal.fire('Task Added', 'Are you working hard or hardly working?', 'success');

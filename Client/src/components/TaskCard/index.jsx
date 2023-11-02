@@ -7,7 +7,8 @@ export default function TaskCard({ task, completeTask }) {
   const [completed, setCompleted] = useState(false);
   const handleCheckbox = () => {
     setCompleted(!completed);
-    Swal.fire("Task Completed", "Nice Work. Keep it Up", "success");
+    if (!completed){Swal.fire("Task Completed", "Nice Work. Keep it Up", "success");}
+    else{Swal.fire("Uncompleted Task", "Only click complete once you have completed the task", "info");}
   };
 
   //for modal
