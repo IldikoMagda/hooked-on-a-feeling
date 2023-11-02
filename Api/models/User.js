@@ -56,8 +56,10 @@ static async checkRole(id) {
     return newUser;
 }
   // update (for XPs)
-  static async update(data) {
-    let response = await db.query("UPDATE user_account SET generalXp = $1 WHERE user_id = $2 RETURNING *", [data.generalXp, this.id]);
+  async update(data, user_id) {
+    console.log(data)
+    console.log(this.user_id) // this is undefined!! never going to work
+    let response = await db.query("UPDATE user_account SET generalxp = $1 WHERE user_id = $2 RETURNING *", [data.generalxp, user_id]);
     if (response.rows.length != 1) {
       throw new Error("Unable to update user.")
     }
