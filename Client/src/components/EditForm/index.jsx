@@ -41,8 +41,8 @@ export default function EditForm({ task, closeModal}) {
             content: content,
             dueDate: duedate,
             subject: subject,
-            generalXp: 20,
-            subjectXp: 10
+            generalXp: 50,
+            subjectXp: 50
           }),
           headers: {
             'Content-type': 'application/json; charset=UTF-8',

@@ -28,22 +28,30 @@ function HomePage() {
 
   async function completeTask(id, task) {
 
-    if (task.subject == 'Maths') {
-      console.log(task.subjectxp)
+    const addGeneralXp = async () => {
       setUserData(prevData => ({
         generalxp: prevData.generalxp + 50,
-        // subjectxpmaths: prevData.subjectxpmaths + 50,
         ...prevData
       }))
       const options = {
         method: "PATCH",
         body: JSON.stringify({
-          generalxp: 256464654,
+          generalxp: 50,
         }),
         headers: {
           'Content-type': 'application/json; charset=UTF-8',
         }
       }
+      const update = await fetch(`https://project-3-backend-l4m5.onrender.com/users/${localStorage.getItem("user")}`, options) 
+      const updated = await update.json()
+      console.log("this is what fetch update returns: ", updated)
+
+    }
+
+
+    if (task.subject == 'Maths') {
+      console.log(task.subjectxp)
+      
       const optionsTOGET ={
         method: "GET"
       }
@@ -53,10 +61,7 @@ function HomePage() {
 
       /// CHANGE LOCALHOST URLS AND VARIABLES 
 
-      const update = await fetch(`http://localhost:3000/users/1`, options) 
-      const updated = await update.json()
-      console.log("this is what fetch update returns: ", updated)
-
+      
     } else if (task.subject == 'English') {
       setUserData(prevData => ({
         generalxp: prevData.generalxp + task.generalxp,
@@ -71,16 +76,20 @@ function HomePage() {
       }))
     }
 
-    const options = {
-      method: "DELETE"
+    const deleteTask = async () => {
+      const options = {
+        method: "DELETE"
+      }
+      const response = await fetch(`https://project-3-backend-l4m5.onrender.com/posts/Post/${id}`, options);
+      if (response.ok){
+        setTasks(tasks.filter(task => task.item_id == id))
+        console.log(userData)
+      } else{
+        console.log(response)
+      }
     }
-    const response = await fetch(`https://project-3-backend-l4m5.onrender.com/posts/Post/${id}`, options);
-    if (response.ok){
-      setTasks(tasks.filter(task => task.item_id == id))
-      console.log(userData)
-    } else{
-      console.log(response)
-    }
+    addGeneralXp()
+    deleteTask()
   }
 
   let userSprite = ""
