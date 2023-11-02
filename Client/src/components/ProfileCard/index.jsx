@@ -8,7 +8,6 @@ import { useAuth } from "../../contexts";
 
 const ProfileCard = () => {
     const { userData } = useAuth();
-    console.log(userData);
   
     const getSpritePath = (color, xp) => {
       switch (color) {

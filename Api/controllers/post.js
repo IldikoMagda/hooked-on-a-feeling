@@ -84,6 +84,7 @@ async function destroy(req, res) {
   try {
       const id = req.params.id;
       const deletePost = await Post.destroy(id);
+      console.log(deletePost)
       res.status(204).json(deletePost);
   } catch (err) {
       res.status(404).json({error: err.message})
