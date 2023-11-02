@@ -8,7 +8,7 @@ expect.extend(matchers);
 
 import LeaderboardPage from '.';
 
-describe('Leaderboard component', () => {
+describe('Leader Board Page', () => {
     beforeEach(() => {
       render(
         <BrowserRouter>
