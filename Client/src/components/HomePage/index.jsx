@@ -36,7 +36,7 @@ function HomePage() {
       const options = {
         method: "PATCH",
         body: JSON.stringify({
-          generalxp:  userData.generalxp + 20
+          generalxp:  userData.generalxp + 5
         }),
         headers: {
           'Content-type': 'application/json; charset=UTF-8',
@@ -50,7 +50,7 @@ function HomePage() {
       const options = {
         method: "PATCH",
         body: JSON.stringify({
-          subjectxpmaths:  userData.subjectxpmaths + 10
+          subjectxpmaths:  userData.subjectxpmaths + 3
         }),
         headers: {
           'Content-type': 'application/json; charset=UTF-8',
@@ -64,7 +64,7 @@ function HomePage() {
       const options = {
         method: "PATCH",
         body: JSON.stringify({
-          subjectxpenglish:  userData.subjectxpenglish + 10
+          subjectxpenglish:  userData.subjectxpenglish + 3
         }),
         headers: {
           'Content-type': 'application/json; charset=UTF-8',
@@ -78,7 +78,7 @@ function HomePage() {
       const options = {
         method: "PATCH",
         body: JSON.stringify({
-          subjectxpscience:  userData.subjectxpscience + 10
+          subjectxpscience:  userData.subjectxpscience + 3
         }),
         headers: {
           'Content-type': 'application/json; charset=UTF-8',
@@ -113,6 +113,7 @@ function HomePage() {
     }
 
     deleteTask()
+    window.location.reload()
   }
 
   let userSprite = ""
