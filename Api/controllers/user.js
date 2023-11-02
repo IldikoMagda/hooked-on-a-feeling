@@ -113,7 +113,7 @@ async function updateMaths(req,res) {
     const id = req.params.id
     const data = req.body
     const user = await User.getOneById(id);
-    const result = await user.updateMaths(data);
+    const result = await user.updateMaths(data, user.user_id);
     res.status(200).json(result);
   } catch (err) {
     res.status(404).json({"error": err.message})
@@ -124,7 +124,7 @@ async function updateEnglish(req,res) {
     const id = req.params.id
     const data = req.body
     const user = await User.getOneById(id);
-    const result = await user.updateEnglish(data);
+    const result = await user.updateEnglish(data, user.user_id);
     res.status(200).json(result);
   } catch (err) {
     res.status(404).json({"error": err.message})
@@ -136,7 +136,7 @@ async function updateScience(req,res) {
     const id = req.params.id
     const data = req.body
     const user = await User.getOneById(id);
-    const result = await user.updateScience(data);
+    const result = await user.updateScience(data, user.user_id);
     res.status(200).json(result);
   } catch (err) {
     res.status(404).json({"error": err.message})
