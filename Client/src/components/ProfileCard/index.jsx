@@ -4,7 +4,7 @@ const ProfileCard = () => {
     const { userData } = useAuth();
   
     const safeFavcolor = userData.favcolor ? userData.favcolor.toLowerCase() : 'orange'
-    const spritePath = getSpritePath(safeFavcolor, userData.generalXp);
+    const spritePath = getSpritePath(safeFavcolor, userData.generalxp);
   
   return (
     <div className="profile-card">
