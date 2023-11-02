@@ -35,17 +35,27 @@ function HomePage() {
         // subjectxpmaths: prevData.subjectxpmaths + 50,
         ...prevData
       }))
-      console.log(userData)
       const options = {
         method: "PATCH",
         body: JSON.stringify({
-          generalXp: userData.generalxp,
-          // subjectXpMaths: userData.subjectxpmaths
-        })
+          generalxp: 256464654,
+        }),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        }
       }
-      const res = await fetch(`https://project-3-backend-l4m5.onrender.com/users/${localStorage.getItem("user")}`, options)
-      const data2 = await res.json()
-      // console.log(options)
+      const optionsTOGET ={
+        method: "GET"
+      }
+
+      // now update 
+      let integerversion = parseInt(localStorage.getItem("user"))
+
+      /// CHANGE LOCALHOST URLS AND VARIABLES 
+
+      const update = await fetch(`http://localhost:3000/users/1`, options) 
+      const updated = await update.json()
+      console.log("this is what fetch update returns: ", updated)
 
     } else if (task.subject == 'English') {
       setUserData(prevData => ({
@@ -61,16 +71,16 @@ function HomePage() {
       }))
     }
 
-    
-
     const options = {
       method: "DELETE"
     }
     const response = await fetch(`https://project-3-backend-l4m5.onrender.com/posts/Post/${id}`, options);
-    const data = await response.json();
-    setTasks(tasks.filter(task => task.item_id == id))
-        console.log(userData)
-  
+    if (response.ok){
+      setTasks(tasks.filter(task => task.item_id == id))
+      console.log(userData)
+    } else{
+      console.log(response)
+    }
   }
 
   let userSprite = ""
