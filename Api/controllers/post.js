@@ -55,14 +55,23 @@ async function update(req, res) {
       // console.log(itemToUpdate)
       console.log(itemToUpdate.duedate)
 
-      data.title ||= itemToUpdate.title
-      data.content ||= itemToUpdate.content
-      data.subject ||= itemToUpdate.subject
-      data.duedate ||= itemToUpdate.duedate
-      data.completed ||= itemToUpdate.completed
-      data.repeatable ||= itemToUpdate.repeatable
-      data.generalxp ||= itemToUpdate.generalxp
-      data.subjectxp ||= itemToUpdate.subjectxp
+      data.title = data.title || itemToUpdate.title
+      data.content = data.content || itemToUpdate.content
+      data.subject = data.subject || itemToUpdate.subject
+      data.duedate = data.duedate || itemToUpdate.duedate
+      data.completed = data.completed || itemToUpdate.completed
+      data.repeatable = data.repeatable || itemToUpdate.repeatable
+      data.generalxp = data.generalxp || itemToUpdate.generalxp
+      data.subjectxp = data.subjectxp || itemToUpdate.subjectxp
+
+      // itemToUpdate.title = data.title ? data.title : itemToUpdate.title
+      // itemToUpdate.content = data.content ? data.content: itemToUpdate.content
+      // itemToUpdate.subject = data.subject ? data.subject : itemToUpdate.subject
+      // itemToUpdate.duedate = data.duedate ? data.duedate : itemToUpdate.duedate
+      // itemToUpdate.completed = data.completed ? data.completed: itemToUpdate.completed
+      // itemToUpdate.repeatable = data.repeatable ? data.repeatable : itemToUpdate.repeatable
+      // itemToUpdate.generalxp = data.generalxp ? data.generalxp : itemToUpdate.generalxp
+      // itemToUpdate.subjectxp = data.subjectxp ? data.subjectxp : itemToUpdate.subjectxp
 
       const updatePost = await Post.updatePost(data,id);
       res.status(200).json(updatePost)
