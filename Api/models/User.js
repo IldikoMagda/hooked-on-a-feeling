@@ -74,14 +74,14 @@ static async checkRole(id) {
     return new User(response.rows[0]);
   }
   async updateEnglish(data, user_id) {
-    let response = await db.query("UPDATE user_account SET subjectXpEnglish = $1 WHERE user_id = $2 RETURNING *", [data.subjectxpenglish, user_id]);
+    let response = await db.query("UPDATE user_account SET subjectxpenglish = $1 WHERE user_id = $2 RETURNING *", [data.subjectxpenglish, user_id]);
     if (response.rows.length != 1) {
       throw new Error("Unable to update notes.")
     }
     return new User(response.rows[0]);
   }
   async updateScience(data, user_id) {
-    let response = await db.query("UPDATE user_account SET subjectXpScience = $1 WHERE user_id = $2 RETURNING *", [data.subjectxpscience, user_id]);
+    let response = await db.query("UPDATE user_account SET subjectxpscience = $1 WHERE user_id = $2 RETURNING *", [data.subjectxpscience, user_id]);
     if (response.rows.length != 1) {
       throw new Error("Unable to update notes.")
     }
