@@ -55,7 +55,7 @@ export default function LoginPage() {
 
       } else {
         //alert(data.error)
-        console.log("Error Test")
+        console.log("Login Error Test")
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
