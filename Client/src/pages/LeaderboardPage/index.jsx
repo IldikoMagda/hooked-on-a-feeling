@@ -36,7 +36,7 @@ export default function LeaderboardPage() {
       <div className="leaderboard-page">
         <div className="leaderboard-container">
           <h1 className="leaderboard-heading">Leaderboard</h1>
-          <div>
+          <div className='leaderboard-buttons'>
             <div>
               <label>
                 <input

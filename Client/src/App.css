@@ -155,22 +155,17 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 80vh;
+  height: 80vh;  /* Increased to take up the whole viewport height */
 }
 
 /* Styling the login form */
 .login-form {
   position: relative;
-  background: rgba(
-    255,
-    248,
-    220,
-    0.9
-  ); /* Light parchment-like color for the form background */
-  padding: 20px;
+  background: rgba(255, 248, 220, 0.9);
+  padding: 40px;  /* Increased padding */
   border-radius: 10px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-  max-width: 300px;
+  max-width: 400px;  /* Increased max-width */
   border: 10px solid transparent;
   border-image: url("./assets/qubodup-light_wood.png") 40%;
 }
@@ -178,28 +173,29 @@ body {
 /* Styling the input fields */
 .login-input {
   display: block;
-  width: 200px;
-  padding: 10px;
-  margin: 10px 0;
+  width: 300px;  /* Increased width */
+  padding: 15px;  /* Increased padding */
+  margin: 20px 0;  /* Increased margin */
   border-radius: 5px;
   border: 2px solid #aaa;
   font-family: "VT323", monospace;
+  font-size: 18px;  /* Increased font size */
 }
 
 /* Styling the login button */
 .login-button {
   width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
+  padding: 15px;  /* Increased padding */
+  margin-bottom: 20px;  /* Increased margin-bottom */
   border-radius: 5px;
   background-color: #8b4513;
   color: white;
   font-family: "VT323", monospace;
-  font-size: 16px;
+  font-size: 20px;  /* Increased font size */
 }
 
 .login-button:hover {
-  background-color: #f8f1e4; /* Light paper-like color */
+  background-color: #f8f1e4;
   transform: scale(1.05);
   color: black;
 }
@@ -210,17 +206,16 @@ body {
 
 /* Styling the registration link */
 .register-link {
-  margin-top: 50px;
+  padding-top: 30px;  /* Increased margin-top */
   color: rgba(136, 85, 19, 0.747);
   font-family: "VT323", monospace;
+  font-size: 18px;  /* Increased font size */
   text-decoration: none;
 }
 
 .register-link:hover {
-  background-color: rgba(136, 85, 19, 0.747);
-  margin-top: 20px;
   text-decoration: underline;
-  color: #f8f1e4;
+  color: rgba(81, 48, 5, 0.747);
 }
 
 /* CREATE ACCOUNT */
@@ -230,26 +225,18 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 80vh;
+  height: 80vh;  /* Increased from 80vh */
 }
 
 .register-form {
-  justify-content: center;
-  align-items: center;
   position: relative;
-  background: rgba(
-    255,
-    248,
-    220,
-    0.9
-  ); /* Light parchment-like color for the form background */
-  padding: 20px;
+  background: rgba(255, 248, 220, 0.9);
+  padding: 40px;  /* Increased padding */
   border-radius: 10px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-  max-width: 300px;
+  max-width: 400px;  /* Increased max-width */
   border: 10px solid transparent;
   border-image: url("./assets/qubodup-light_wood.png") 40%;
-  height: 45vh;
 }
 
 .register-form::before,
@@ -282,19 +269,17 @@ body {
 .register-form input,
 .register-form select {
   width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
+  padding: 15px;  /* Increased from 10px */
+  margin-bottom: 15px;  /* Increased from 10px */
   border-radius: 5px;
   border: 1px solid #8b4513;
-  background-color: #f8f1e4; /* Light paper-like color */
+  background-color: #f8f1e4;
   font-family: "VT323", monospace;
-  font-size: 16px;
+  font-size: 18px;  /* Increased from 16px */
 }
 
 .register-form input[type="submit"] {
   background-color: #8b4513;
-  /* background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./assets/qubodup-light_wood.png') ; */
-
   color: white;
   cursor: pointer;
   transition: background-color 0.3s;
@@ -304,21 +289,52 @@ body {
   background-color: #a0522d;
 }
 
-.login-link,
-.register-message {
-    margin-top: 50px;
-    color: rgba(136, 85, 19, 0.747);
-    font-family: "VT323", monospace;
-    text-decoration: none;
+/* Styling the registration link */
+.login-link, .register-message {
+  padding-top: 30px;  /* Increased margin-top */
+  color: rgba(136, 85, 19, 0.747);
+  font-family: "VT323", monospace;
+  font-size: 18px;  /* Increased font size */
+  text-decoration: none;
 }
 
 .login-link:hover {
-  background-color: rgba(136, 85, 19, 0.747);
-  margin-top: 20px;
   text-decoration: underline;
-  color: #f8f1e4;}
+  color: rgba(81, 48, 5, 0.747);
+}
+
+
+
 
 /* LEADERBOARD PAGE */
+
+
+.leaderboard-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+/* Style the labels */
+.leaderboard-container label {
+  font-family: 'VT323', monospace;
+  color: #8b4513; /* Adjust as per your theme */
+  font-size: 16px;
+  cursor: pointer;
+  margin-right: 20px;
+}
+
+/* Style the radio buttons */
+.leaderboard-container input[type="radio"] {
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+/* Style the radio buttons on hover */
+.leaderboard-container input[type="radio"]:hover {
+  transform: scale(1.1);
+}
+
 
 .leaderboard-page {
   display: flex;
@@ -409,35 +425,6 @@ flex-grow: 1;
   width: 45%;
 }
 
-
-/* Create task modal */
-
-/* Modal Container */
-/* .modal {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 1000;
-} */
-
-/* Modal Content */
-/* .modal-content {
-  background-color: #fff;
-  border: 1px solid #ccc;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  max-width: 80%;
-  max-height: 80%;
-  overflow-y: auto;
-} */
-
 /* Close Button */
 .close-button {
   background: none;
@@ -462,7 +449,6 @@ flex-grow: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgba(0, 0, 0, 0.5);
   z-index: 1000;
 }
 
@@ -583,4 +569,152 @@ flex-grow: 1;
 }
 
 
+/* CREATE TASK MODAL */
+/* Style the container holding the modal */
+.createModal-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+/* Style the form content */
+.createModal-content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+/* Style the labels */
+.createModal-label,
+.details label {
+  font-size: 16px;
+  color: #333; /* Adjust as per your theme */
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+/* Style the text inputs */
+.createModal-input,
+.details input[type="date"],
+.details select {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+/* Style the textarea */
+.createModal-textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  resize: vertical;  /* Allows vertical resizing */
+}
+
+/* Style the buttons */
+.createModal-btn,
+.createModal-container button {
+  background-color: #8b4513;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* Hover effect for buttons */
+.createModal-btn:hover,
+.createModal-container button:hover {
+  background-color: #f8f1e4; /* Light paper-like color */
+  transform: scale(1.05);
+  color: black;}
+
+/* Add space between submit button and back button */
+.createModal-btn {
+  margin-bottom: 10px;
+}
+
+/* EDIT TASK */
+/* Style the form container */
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+/* Style the title and content sections */
+.editTask-title {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+/* Style the labels */
+.editTask-label,
+form label {
+  font-size: 16px;
+  color: #333; /* Adjust as per your theme */
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+/* Style the text inputs */
+.editTask-input,
+form input[type="date"],
+form select {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+/* Style the textarea */
+.editTask-textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  resize: vertical;  /* Allows vertical resizing */
+}
+
+/* Style the buttons */
+.editTask-btn,
+.button-container button {
+  background-color: #8b4513;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* Hover effect for buttons */
+.editTask-btn:hover,
+.button-container button:hover {
+  background-color: #f8f1e4; /* Light paper-like color */
+  transform: scale(1.05);
+  color: black;
+}
+
+/* Add space between buttons */
+.button-container button {
+  margin-right: 10px;
+}
 

@@ -95,25 +95,25 @@ export default function EditForm({ task, closeModal}) {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <div className="homeworkModal-title">
-          <label htmlFor="title" className="homeworkModal-label">
+        <div className="editTask-title">
+          <label htmlFor="title" className="editTask-label">
             Title:
           </label>
           <input
             type="text"
             id="title"
-            className="homeworkModal-input"
+            className="editTask-input"
             value={title}
             onChange={handleTitle}
           />
         </div>
-        <div className="homeworkModal-title">
-          <label htmlFor="content" className="homeworkModal-label">
+        <div className="editTask-title">
+          <label htmlFor="content" className="editTask-label">
             Content:
           </label>
           <textarea
             id="content"
-            className="homeworkModal-textarea"
+            className="editTask-textarea"
             value={content}
             onChange={handleContent}
           />
@@ -133,9 +133,9 @@ export default function EditForm({ task, closeModal}) {
           onChange={handleDuedate}
         />
         <div className="button-container">
-          <button type="submit" className="homeworkModal-btn">Submit Tasks</button>
+          <button type="submit" className="editTask-btn">Submit Tasks</button>
                 <button onClick={closeModal}>Back</button>
-                <button className="homeworkModal-btn" onClick={handleDelete}>Delete Task</button>
+                <button className="editTask-btn" onClick={handleDelete}>Delete Task</button>
         </div>
       </form>
     </>

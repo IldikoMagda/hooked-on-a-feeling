@@ -88,29 +88,29 @@ export default function CreateTaskForm({
   }
 
   return (
-    <div className="homeworkModal-container">
-      <form className="homeworkModal-content" onSubmit={handleSubmit}>
-        <div className="homeworkModal-title">
-          <label htmlFor="title" className="homeworkModal-label">
+    <div className="createModal-container">
+      <form className="createModal-content" onSubmit={handleSubmit}>
+        <div className="createModal-title">
+          <label htmlFor="title" className="createModal-label">
             Title:
           </label>
           <input
             type="text"
             id="title"
             placeholder="Enter title..."
-            className="homeworkModal-input"
+            className="createModal-input"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
         </div>
-        <div className="homeworkModal-content">
+        <div className="createModal-content">
           <label htmlFor="content" className="homeworkModal-label">
             Content:
           </label>
           <textarea
             id="content"
             placeholder="Enter content..."
-            className="homeworkModal-textarea"
+            className="createModal-textarea"
             value={content}
             onChange={(e) => setContent(e.target.value)}
           />
@@ -134,7 +134,7 @@ export default function CreateTaskForm({
 
 
         </div>
-          <button type="submit" className="homeworkModal-btn" >Submit</button>
+          <button type="submit" className="createModal-btn" >Submit</button>
       </form>
           <button onClick={closeModal}>Back</button>
     </div>
