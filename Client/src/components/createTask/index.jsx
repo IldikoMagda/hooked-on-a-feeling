@@ -42,8 +42,8 @@ export default function CreateTaskForm({
           content: content,
           dueDate: duedate,
           subject: subject,
-          generalXp: generalXp || 3,
-          subjectXp: subjectXp || 3,
+          generalXp: 5,
+          subjectXp: 3,
         }),
         headers: {
           'Content-type': 'application/json; charset=UTF-8',
@@ -58,10 +58,13 @@ export default function CreateTaskForm({
 
         .then((data) => {
           console.log('Post request successful:', data);
-
+          
           fetchTasks()
           closeModal()
           Swal.fire('Task Added', 'Are you working hard or hardly working?', 'success');
+          setTitle("")
+          setContent("")
+          setSubject("Maths")
         })
         .catch((err) => {
           console.log(err.message);
@@ -81,6 +84,7 @@ export default function CreateTaskForm({
         text: 'Make sure you fill out all the form.',
       });
     }
+    
   }
 
   return (

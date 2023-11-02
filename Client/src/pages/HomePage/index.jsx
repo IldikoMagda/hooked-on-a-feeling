@@ -3,7 +3,10 @@ import { Home } from "../../components";
 import LoginPage from "../LoginPage";
 
 export default function HomePage() {
+
   console.log(localStorage.getItem("user"));
   const user = localStorage.getItem("user");
-  return <>{user ? <Home /> : <LoginPage />} </>;
+  return <>{user ? <Home data-testid="home-component"/> : <LoginPage />} </>;
+
+  )
 }

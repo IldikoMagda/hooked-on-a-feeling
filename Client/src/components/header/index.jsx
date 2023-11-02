@@ -67,7 +67,7 @@ function Header() {
     if (localStorage.getItem("user")) {
       getUserData()
     }
-  }, [localStorage.getItem("user")])
+  }, [localStorage.getItem("user"), ])
 
   return (
     <>

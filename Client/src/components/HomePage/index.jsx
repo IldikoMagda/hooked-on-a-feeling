@@ -15,7 +15,7 @@ import BasicOrange from "../../assets/Orange/BasicOrange.png";
 function HomePage() {
 
   const { user, setUser, userData, setUserData, tasks, setTasks } = useAuth()
-  const { id } = useParams();
+  
   async function fetchTasks() {
     const response = await fetch(`https://project-3-backend-l4m5.onrender.com/posts/${localStorage.getItem("user")}`)
     const data = await response.json()
@@ -28,60 +28,92 @@ function HomePage() {
 
   async function completeTask(id, task) {
 
-    if (task.subject == 'Maths') {
-      console.log(task.subjectxp)
-      setUserData(prevData => ({
-        generalxp: prevData.generalxp + 50,
-        // subjectxpmaths: prevData.subjectxpmaths + 50,
-        ...prevData
-      }))
+    const addGeneralXp = async () => {
+      // setUserData(prevData => ({ //dont seem to need this (works without)
+      //   generalxp: prevData.generalxp + 50,
+      //   ...prevData
+      // }))
       const options = {
         method: "PATCH",
         body: JSON.stringify({
-          generalxp: 256464654,
+          generalxp:  userData.generalxp + 5
         }),
         headers: {
           'Content-type': 'application/json; charset=UTF-8',
         }
       }
-      const optionsTOGET ={
-        method: "GET"
-      }
-
-      // now update 
-      let integerversion = parseInt(localStorage.getItem("user"))
-
-      /// CHANGE LOCALHOST URLS AND VARIABLES 
-
-      const update = await fetch(`http://localhost:3000/users/1`, options) 
+      const update = await fetch(`https://project-3-backend-l4m5.onrender.com/users/${localStorage.getItem("user")}`, options) 
       const updated = await update.json()
       console.log("this is what fetch update returns: ", updated)
-
-    } else if (task.subject == 'English') {
-      setUserData(prevData => ({
-        generalxp: prevData.generalxp + task.generalxp,
-        subjectxpEnglish: prevData.subjectxpEnglish + task.subjectxp,
-        ...prevData
-      }))
-    } else if (task.subject == 'Science') {
-      setUserData(prevData => ({
-        generalxp: prevData.generalxp + task.generalxp,
-        subjectxpScience: prevData.subjectxpScience + task.subjectxp,
-        ...prevData
-      }))
+    }
+    const addMathsXp = async () => {
+      const options = {
+        method: "PATCH",
+        body: JSON.stringify({
+          subjectxpmaths:  userData.subjectxpmaths + 3
+        }),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        }
+      }
+      const update = await fetch(`https://project-3-backend-l4m5.onrender.com/users/maths/${localStorage.getItem("user")}`, options) 
+      const updated = await update.json()
+      console.log("this is what fetch update returns: ", updated)
+    }
+    const addEnglishXp = async () => {
+      const options = {
+        method: "PATCH",
+        body: JSON.stringify({
+          subjectxpenglish:  userData.subjectxpenglish + 3
+        }),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        }
+      }
+      const update = await fetch(`https://project-3-backend-l4m5.onrender.com/users/english/${localStorage.getItem("user")}`, options) 
+      const updated = await update.json()
+      console.log("this is what fetch update returns: ", updated)
+    }
+    const addScienceXp = async () => {
+      const options = {
+        method: "PATCH",
+        body: JSON.stringify({
+          subjectxpscience:  userData.subjectxpscience + 3
+        }),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        }
+      }
+      const update = await fetch(`https://project-3-backend-l4m5.onrender.com/users/science/${localStorage.getItem("user")}`, options) 
+      const updated = await update.json()
+      console.log("this is what fetch update returns: ", updated)
     }
 
-    const options = {
-      method: "DELETE"
+    const deleteTask = async () => {
+      const options = {
+        method: "DELETE"
+      }
+      const response = await fetch(`https://project-3-backend-l4m5.onrender.com/posts/Post/${id}`, options);
+      if (response.ok){
+        setTasks(tasks.filter(task => task.item_id == id))
+        console.log(userData)
+      } else{
+        console.log(response)
+      }
     }
-    const response = await fetch(`https://project-3-backend-l4m5.onrender.com/posts/Post/${id}`, options);
-    if (response.ok){
-      setTasks(tasks.filter(task => task.item_id == id))
-      console.log(userData)
-    } else{
-      console.log(response)
 
+    addGeneralXp()
+
+    if (task.subject == "Maths") {
+      addMathsXp()
+    } else if (task.subject == "English") {
+      addEnglishXp()
+    } else if (task.subject == "Science") {
+      addScienceXp()
     }
+
+    deleteTask()
+    window.location.reload()
   }
 
   let userSprite = ""
