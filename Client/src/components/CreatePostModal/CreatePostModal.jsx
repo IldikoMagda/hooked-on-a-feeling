@@ -17,6 +17,7 @@ export default function CreatePostModal({
     setGeneralXp,
     setSubjectXp,
     handleSubmit,
+    setIsModalOpen
   }) {
   return (
     <>
@@ -35,6 +36,7 @@ export default function CreatePostModal({
         setGeneralXp={setGeneralXp}
         subjectXp={subjectXp}
         setSubjectXp={setSubjectXp}
+        setIsModalOpen={setIsModalOpen}
       />
     </>
   )

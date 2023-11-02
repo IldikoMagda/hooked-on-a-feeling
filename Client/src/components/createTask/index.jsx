@@ -60,7 +60,7 @@ export default function CreateTaskForm({
           console.log('Post request successful:', data);
 
           fetchTasks()
-          // closeModal() This creates an error (setIsModalOpen is not a function)
+          closeModal()
           Swal.fire('Task Added', 'Are you working hard or hardly working?', 'success');
         })
         .catch((err) => {
@@ -128,10 +128,11 @@ export default function CreateTaskForm({
             onChange={(e) => setDueDate(e.target.value)}
           />
 
-          <button type="submit" className="homeworkModal-btn">Submit</button>
 
         </div>
+          <button type="submit" className="homeworkModal-btn" >Submit</button>
       </form>
+          <button onClick={closeModal}>Back</button>
     </div>
   );
 }
