@@ -24,6 +24,28 @@ body {
   max-height: 100%;
   font-family: "VT323", monospace;
 }
+/* Style scrollbar track (background) */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Style scrollbar handle */
+::-webkit-scrollbar-thumb {
+  background-color: burlywood; /* Adjust to match your theme */
+  border-radius: 5px;
+}
+
+/* Style scrollbar handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background-color: darkgoldenrod; /* Adjust to match your theme */
+}
+
+/* Style the scrollbar for Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: burlywood darkgoldenrod;
+}
+
 
 .rpg-header {
   display: flex;
@@ -446,7 +468,7 @@ flex-grow: 1;
 
 /* Styling for the modal content */
 .modal-content {
-  padding: 20px;
+  padding: 30px; /* Increased padding for better spacing */
   background: rgba(255, 248, 220, 0.9);
   border: 8px solid ;
   border-image: url('./assets/wood-texture.jpg'), url('./assets/wood-texture.jpg');
@@ -457,32 +479,108 @@ flex-grow: 1;
   font-family: 'VT323', monospace;
   color: #333;
   text-align: center;
-  max-width: 70%;
-  max-height: 70%;
+  width: 50%; /* Increased width for a larger modal */
+  max-height: 90%; /* Increased max-height for a larger modal */
   overflow-y: auto;
+  display: flex;
+  flex-direction: column; /* Set the direction to column to organize content */
+  justify-content: space-between; /* Space out the content evenly */
 }
 
-/* Styles for input and select elements */
+.homeworkModal-title {
+  margin-bottom: 15px; /* Add space between each input box */
+}
+
+/* Styles for input, textarea, and select elements */
 .homework-modal-content input,
+.homework-modal-content textarea,
 .homework-modal-content select {
-  width: 100%;
+  width: calc(100% - 20px); /* Adjusted width to account for padding */
   padding: 10px;
-  margin-top: 8px;
+  margin-top: 20px;
+  margin-bottom: 20px; /* Added bottom margin for better spacing */
   border-radius: 5px;
 }
 
 /* Styles for button elements */
 .modal-content button {
   padding: 10px;
-  margin-bottom: 10px;
   border-radius: 5px;
   background-color: #8b4513;
   color: white;
   font-family: "VT323", monospace;
   font-size: 16px;
+  margin: 1px; /* Added margin for better spacing between buttons */
 }
 
-/* Hover effect for button elements */
-.modal-content button:hover {
-  background-color: #2980b9;
+/* Container for the buttons */
+.modal-content .button-container {
+  display: flex; /* Align the buttons in a row */
+  justify-content: space-between; /* Space the buttons evenly */
+  margin-top: auto; /* Push the buttons to the bottom */
 }
+
+/* Adjustments for form */
+.homework-modal-content form {
+  display: flex;
+  flex-direction: column; /* Organize form content in a column */
+  height: 100%; /* Make the form take the full height of the modal */
+}
+
+
+
+/* TO-DO TASK CARDS */
+.todo-item {
+  padding: 20px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  padding-bottom: 50px;
+  background-color: #f8f1e4; /* Light paper-like color */
+}
+
+.todo-title {
+  width: 100%;  
+  border-bottom: 2px solid #ccc;  
+  padding-bottom: 10px;  
+  margin-bottom: 20px;  
+  text-align: center; 
+
+}
+.todo-title h3 {
+  font-size: 1.5em;
+  margin: 0;
+}
+
+.todo-content{
+  font-size: 1.5em;
+  margin: 10px 0;
+}
+
+.todo-subject, .todo-duedate, .todo-xp {
+  font-size: 1.2em;
+  margin: 5px 0;
+}
+
+.todo-completed {
+  display: flex;
+  align-items: center;
+  font-size: 1.2em;
+  position: absolute; 
+  top: 50%;          
+  right: 20px;       
+  transform: translateY(-50%); 
+}
+
+.todo-edit-button {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+
+
+
