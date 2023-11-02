@@ -17,10 +17,14 @@ export default function CreateTaskForm({
   setRepeatable,
   setGeneralXp,
   setSubjectXp,
-  closeModal
+  setIsModalOpen
 }) {
 
   const { setTasks } = useAuth()
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -56,6 +60,7 @@ export default function CreateTaskForm({
           console.log('Post request successful:', data);
 
           fetchTasks()
+          // closeModal() This creates an error (setIsModalOpen is not a function)
           Swal.fire('Task Added', 'Are you working hard or hardly working?', 'success');
         })
         .catch((err) => {
@@ -76,7 +81,6 @@ export default function CreateTaskForm({
         text: 'Make sure you fill out all the form.',
       });
     }
-    
   }
 
   return (
