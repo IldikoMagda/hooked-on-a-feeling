@@ -8,11 +8,13 @@ Welcome to the Revision Realm​, your tool for boosting your productivity.
 
 ## Installation
 
-You can access our project either through our website which can be accessed by the link below or you can run it locally on your machine.
+You can access our project either through our website  or you can run it locally on your machine.
+
+-To access our project through our website:
 
 https://project-3-frontend-kruw.onrender.com/
 
-To run the Revision Realm, follow these steps:
+-To access our project locally:
 
 1. Clone the repository to your local machine.
 
@@ -46,4 +48,4 @@ npm run dev
 
 ```
 
-The server will listen on port 3000 by default.
+Enjoy!!!!!
